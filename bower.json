@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "ngFx": "~1.0.5"
+    "ngFx": "~1.0.5",
+    "angular-ui-router": "~0.2.13"
   }
 }

@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/silver-octopus-labs/mlp/issues"
   },
-  "homepage": "https://github.com/silver-octopus-labs/mlp"
+  "homepage": "https://github.com/silver-octopus-labs/mlp",
+  "dependencies": {
+    "bookshelf": "^0.7.9",
+    "express": "^4.10.4",
+    "knex": "^0.7.3",
+    "mysql": "^2.5.3",
+    "passport": "^0.2.1"
+  }
 }

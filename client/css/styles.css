@@ -1,0 +1,90 @@
+/************ CSS RESET ************/
+body, html { margin:0; padding:0; font-family: 'Raleway', sans-serif; }
+a { text-decoration: none; }
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0px #333 !important; }
+
+/************ BROWSER SPECIFIC ************/
+#header { margin:30px auto; width:180px; }
+
+#main { position:relative; margin:0 auto; width:400px; }
+#iphone { width:100%; height:100%; }
+#iphone-screen{ position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#E74747;}
+
+/************ APP - MLPhoto ************/
+#app-wrapper { position:relative; width:100%; height: 100%; }
+
+/* LOGO */
+.app-logo { font-size:40px; font-weight:100; }
+.app-logo span { color:#E74747; font-weight:500; }
+
+/* TITLE */
+.app-title { margin:15px 0 15px 0; text-align:center; color:#FFF; font-weight:400; }
+
+/* SPINNER */
+.app-spinner {}
+.app-spinner {}
+.app-spinner div{position:absolute;width:20px;height:20px;border-radius:50%;background-color:rgba(255,255,255,0);}
+.app-spinner div:nth-child(1){-webkit-animation:orbitVortex 2s linear infinite;animation:orbitVortex 2s linear infinite}
+.app-spinner div:nth-child(2){-webkit-animation:orbitVortex 2s .5s linear infinite;animation:orbitVortex 2s .5s linear infinite}
+.app-spinner div:nth-child(3){-webkit-animation:orbitVortex 2s 1s linear infinite;animation:orbitVortex 2s 1s linear infinite;}
+.app-spinner div:nth-child(4){-webkit-animation:orbitVortex 2s 1.5s linear infinite;animation:orbitVortex 2s 1.5s linear infinite;}
+
+@-webkit-keyframes orbitVortex {
+	from {-webkit-transform: skewX(0deg) rotate(0deg) translateY(15px) rotate(0deg) scale(1.0);}
+	to   {-webkit-transform: skewX(90deg) rotate(360deg) translateY(10px) rotate(-360deg) scale(0.1);background-color:rgba(255,255,255,1);}
+}
+@keyframes orbitVortex {
+    from { 
+    	transform: skewX(0deg) rotate(0deg) translateY(15px) rotate(0deg) scale(1.0);
+        -moz-transform: skewX(0deg) rotate(0deg) translateY(15px) rotate(0deg) scale(1.0)}
+    to   { 
+    	transform: skewX(90deg) rotate(360deg) translateY(10px) rotate(-360deg) scale(0.1);background-color:rgba(242,105,100,1);
+    	-moz-transform: skewX(90deg) rotate(360deg) translateY(10px) rotate(-360deg) scale(0.1);background-color:rgba(242,105,100,1);}
+}
+
+/* LOADING PAGE */
+.app-loading { position:absolute; top:50%; width:100%; transform: translateY(-100%); -webkit-transform: translateY(-100%);}
+.app-loading .app-logo { margin-left:30px; font-size:30px; font-weight:100; text-align:center; }
+.app-loading .app-logo span { color:#FFF; }
+.app-loading .app-spinner { position:absolute; top: 10px; left: 35px; }
+
+/* LOGIN PAGE */
+.app-login { position:absolute; top:50%; width:100%; height: 100px; transform: translateY(-100%); -webkit-transform: translateY(-100%);}
+.app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
+.app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
+.app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}
+.app-login input[type=submit] { margin-top: 20px; width: 60px; height: 60px; color:#333; background-color:transparent; border-radius: 50%; border:2px solid #333; -webkit-transition: background-color .5s, color .5s;}
+.app-login input[type=submit]:hover {background-color: #333; color:#FFF; -webkit-transition: background-color .5s, color .5s;}
+
+/* PHOTO PAGE */
+.app-photo { position:absolute; top:100%; left:0; width:100%; height: 100%; transform: translateY(-100%);}
+.app-photo .app-photo-image { position:absolute; top:0; left:0; width:100%; height: 100%; }
+.app-photo .app-photo-overlay { position:absolute; bottom:0; left:0; width:100%; min-height:30px; height:auto; background-color:#333;opacity:0.8;}
+.app-photo .app-photo-scroll { margin:5px auto; width:10px; height:10px; background-color:#FFF; border-radius: 50%;}
+.app-photo .app-photo-overlay2 { position:absolute; bottom:0; left:0; width:100%; height:100%; background-color:#333; }
+.app-photo .app-photo-scroll2 { margin:5px auto; width:15px; height:15px; background-color:#FFF; border-radius: 50%;}
+.app-photo .app-photo-vote-box { margin:10px auto; width:176px; height:30px; }
+.app-photo .app-photo-vote-up, .app-photo .app-photo-vote-down { float:left; margin:0 4px 0 4px;width:80px; height:30px; border-radius:5px; background-color:#FFF;text-align:center; line-height:30px; font-size:13px;}
+.app-photo .app-photo-vote-down { }
+.app-photo .app-photo-user { margin-bottom:10px; color:#FFF; text-align:center; font-size:14px; font-weight:100;}
+.app-photo .app-photo-user span { font-weight:600; }
+.app-photo .app-comment-bubble-left, .app-photo .app-comment-bubble-right{ position:relative; padding:10px; width: 80%;min-height: 18px;color:#FFF; border-radius: 5px;background-color:#F26964; font-size:14px;}
+.app-photo .app-comment-bubble-left span, .app-photo .app-comment-bubble-right span{ color:#333; font-weight:600;}
+.app-photo .app-comment-bubble-left { float:left; margin:20px 0 0 15px; }
+.app-photo .app-comment-bubble-right{ float:right; margin:20px 15px 0 0; }
+.app-photo .app-comment-bubble-left:after, .app-photo .app-comment-bubble-right:after {content: "";position: absolute;top: calc(50% - 8px);border-top: 8px solid transparent; border-bottom: 8px solid transparent;}
+.app-photo .app-comment-bubble-left:after { right:100%; border-right:8px solid #F26964; }
+.app-photo .app-comment-bubble-right:after { left:100%; border-left:8px solid #F26964; }
+
+/* ALL PROMPTS PAGE */
+.app-allprompts .app-box { float:left; padding:10px 0 10px 0; margin-bottom:2px; width:100%; min-height:50px; color: #FFF; font-size:13px; font-weight:100; background-color:#333; overflow:hidden;}
+.app-allprompts .app-box:hover { background-color:#666; }
+.app-allprompts .app-box-text { float:left; margin:0 0 0 10px; width:calc(100% - 40px);}
+.app-allprompts .app-box-time { float:left; margin:10px 0 0 10px; width:calc(100% - 40px); font-weight:600; }
+.app-allprompts .app-box-arrow { float:right; margin:20px 10px 0 0; width:15px; height:15px; background-color:#FFF; border-radius:50%; }
+.app-allprompts .app-box-arrow img { width:15px; display:block;}
+
+/* PROMPT PAGE */
+.app-prompt .app-prompt-challenge { position: relative; margin:50px 30px 30px 30px; width:calc(100% - 60px); height:50px; color:#FFF; text-align:center; }
+.app-prompt .app-prompt-challenge:before {content:"\201C";position: absolute;top:-40px;left:-25px;width:30px;height:30px;font-size:100px;color: #30302F;}
+.app-prompt .app-prompt-challenge:after {content:"\201D";position: absolute;bottom:-5px;right:-15px;width:20px;height:20px;font-size:100px;color: #30302F;}

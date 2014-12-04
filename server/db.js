@@ -1,11 +1,11 @@
-//user model - email, password, 
+//user model - email, password,
 //model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
 //photo - one to one with user, id, upvotes
 
-var Bookshelf = require('bookshelf');
+var knex = require('knex');
 var path = require('path');
 
-var db = Bookshelf.initialize({
+var db = knex({
   client: 'sqlite3',
   connection: {
     host: '127.0.0.1',
@@ -13,12 +13,12 @@ var db = Bookshelf.initialize({
     password: 'password',
     database: 'majorleguedb',
     charset: 'utf8',
-    filename: path.join(__dirname, '../db/shortly.sqlite')
+    filename: path.join(__dirname, './shortly.sqlite')
   }
 });
 
-//user model - email, password, 
-db.knex.schema.hasTable('users').then(function (exists) {
+//user model - email, password,
+db.schema.hasTable('users').then(function (exists) {
   if (!exists) {
     db.knex.schema.createTable('users', function (user) {
       user.increments('id').primary();
@@ -32,15 +32,15 @@ db.knex.schema.hasTable('users').then(function (exists) {
 });
 
 //model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
-db.knex.schema.hasTable('prompts').then(function (exists) {
+db.schema.hasTable('prompts').then(function (exists) {
   if (!exists) {
-    db.knex.schema.createTable('promts', function (link) {
+    db.knex.schema.createTable('prompts', function (prompt) {
       prompt.increments('id').primary();
       prompt.string('title', 255);
       prompt.string('winner', 255);
       prompt.timestamp('startTime');
       prompt.timestamp('endTime');
-      promts.timestamp('votingEndTime');
+      prompt.timestamp('votingEndTime');
       prompt.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
@@ -49,9 +49,9 @@ db.knex.schema.hasTable('prompts').then(function (exists) {
 });
 
 //photo - one to one with user, id, upvotes
-db.knex.schema.hasTable('photo').then(function (exists) {
+db.schema.hasTable('photo').then(function (exists) {
   if (!exists) {
-    db.knex.schema.createTable('photo', function (click) {
+    db.knex.schema.createTable('photo', function (photo) {
       photo.increments('id').primary();
       photo.integer('upvotes');
       photo.timestamps();

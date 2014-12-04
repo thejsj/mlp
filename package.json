@@ -1,0 +1,19 @@
+{
+  "name": "mlp",
+  "version": "1.0.0",
+  "description": "mlp",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silver-octopus-labs/mlp"
+  },
+  "author": "silver octopus labs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silver-octopus-labs/mlp/issues"
+  },
+  "homepage": "https://github.com/silver-octopus-labs/mlp"
+}

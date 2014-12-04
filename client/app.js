@@ -18,21 +18,10 @@
           speed: 400
         }
       })
-      .state('events', {
-        templateUrl: 'templates/events.html',
-        controller: 'eventsController',
+      .state('photo', {
+        templateUrl: 'templates/photo.html',
+        controller: 'photoController',
         url: '/events',
-        animation: {
-          enter: 'shrink-in',
-          leave: 'grow-out',
-          ease: 'back',
-          speed: 400
-        }
-      })
-      .state('event', {
-        templateUrl: 'templates/event.html',
-        controller: 'eventController',
-        url: '/event',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',

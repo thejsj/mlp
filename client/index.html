@@ -13,7 +13,14 @@
 <body ng-app="mlp">
 
   <div id="header" class="app-logo">ML<span>Photo<span></div>
-
+  
+  <!-- Temporary nav buttons -->
+  <div style="width: 300px; margin: auto">
+    <a ui-sref="login">go to login</a> |
+    <a ui-sref="loading">go to loading</a> |
+    <a ui-sref="photo">go to photo</a>
+  </div>
+ 
   <div id="main">
 
     <img id="iphone" src="img/iphone.png" />
@@ -22,15 +29,12 @@
 
       <div id="app-wrapper">
         <div ui-view></div>
-        <a ui-sref="login">go to login</a>
-        <a ui-sref="loading">go to loading</a>
-        <a ui-sref="events">go to events</a>
-        <a ui-sref="event">go to event</a>
       </div>
 
     </div>
 
   </div>
+
 
 
 </body>

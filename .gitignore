@@ -33,8 +33,6 @@ server/media/*.gif
 # Users Environment Variables
 .lock-wscript
 
-*.sqllite
-**/*.sqllite
 
 # Component directories
 node_modules/*
@@ -43,3 +41,5 @@ bower_components/*
 
 # Misc
 .DS_store
+**/*.sqllite
+*.sqllite

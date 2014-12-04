@@ -1,0 +1,22 @@
+{
+  "name": "mlp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/brianjscoles/mlp",
+  "authors": [
+    "(Silver Octopus Labs)"
+  ],
+  "description": "mlp",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngFx": "~1.0.5",
+    "angular-ui-router": "~0.2.13"
+  }
+}

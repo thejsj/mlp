@@ -9,12 +9,14 @@ var apiRoutes = require('./routes/api');
 var mediaRoutes = require('./routes/media');
 
 var app = express();
-
-app.use('/media', mediaRoutes.route);
-app.use('/api', apiRoutes.route);
-app.use(express.static(__dirname + '/../client'));
-
-
 var port = process.env.PORT || 8000;
 console.log('Server listening on ' + port);
-app.listen(port);
+
+app
+  .use('/media', mediaRoutes.route)
+  .use('/api', apiRoutes.route)
+  .use(express.static(path.resolve(__dirname + '/../client/')))
+  .use('*', function (req, res) {
+    res.status(404).end();
+  })
+  .listen(port);

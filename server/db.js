@@ -61,4 +61,5 @@ db.schema.hasTable('photo').then(function (exists) {
   }
 });
 
-module.exports = db;
+var bookshelf = require('bookshelf')(db);
+module.exports = bookshelf;

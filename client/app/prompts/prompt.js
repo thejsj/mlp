@@ -3,6 +3,12 @@ angular.module("mlp.prompt",['ngFx'])
 .controller("promptController", function ($scope){
   console.log("I am the prompt controller");
   
+  var dummyId = 1;
+
+  
+
+
+
   $scope.prompt = {
   	id : 1,
   	title : "A dog that looks like it's smiling but really isn't.",

@@ -11,36 +11,30 @@ angular.module('mlp.services', [])
   
   var logIn = function (user) {
    console.log("Authfactory logging in user: ", user)
-    // return $http({
-    //   method: 'POST',
-    //   url: '/api/users/login',
-    //   data: user
-    // })
-    // .then(function (resp) {
-    //   return resp.data.token;
-    // });
+    return $http.post('/login', {
+      email: user.email,
+      password: user.password
+    })
+    .then(function (res) {
+      console.log(res);
+    });
   };
 
   var signUp = function (user) {
-    
     console.log("Authfactory signing up user: ", user);
-    // return $http({
-    //   method: 'POST',
-    //   url: '/api/users/signup',
-    //   data: user
-    // })
-    // .then(function (resp) {
-    //   return resp.data.token;
-    // });
+    return $http.post('/signup', {
+      email: user.email,
+      password: user.password
+    })
+    .then(function (res) {
+      console.log(res);
+    });
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.shortly');
   };
 
   var signOut = function () {
-    $window.localStorage.removeItem('com.shortly');
-    $location.path('/signin');
   };
 
 

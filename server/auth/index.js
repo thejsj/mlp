@@ -4,12 +4,10 @@ var User = require('../models').User;
 var collections = require('../collections');
 
 passport.serializeUser(function (user, done) {
-  console.log('serializeUser:', user);
   return done(null, user.get('id'));
 });
 
 passport.deserializeUser(function (id, done) {
-  console.log('deserializeUser: ', id);
   collections.Users
     .query('where', 'id', '=', id)
     .fetchOne()

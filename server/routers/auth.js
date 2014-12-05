@@ -6,8 +6,6 @@ var collections = require('../collections');
 var authRouter = express.Router();
 
 authRouter.post('/login', auth.authenticate('local'), function (req, res) {
-  console.log('req.user');
-  console.log(req.user);
   res.send('You\'re logged in').end();
 });
 

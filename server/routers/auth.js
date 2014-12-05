@@ -1,6 +1,6 @@
 var express = require('express');
 var auth = require('../auth');
-var User = require('../models');
+var models = require('../models');
 var collections = require('../collections');
 
 var authRouter = express.Router();
@@ -18,7 +18,7 @@ authRouter.post('/signup', function (req, res) {
     res.status(400).end(); // Client Error
     return;
   }
-  var user = new User({
+  var user = new models.User({
       email: email,
       password: password
     }).save()

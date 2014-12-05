@@ -34,9 +34,6 @@ models.User = db.Model.extend({
   }
 });
 
-<<<<<<< HEAD
-module.exports = User;
-=======
 //model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
 models.Prompt = db.Model.extend({
   tableName: 'prompt',
@@ -65,4 +62,3 @@ models.Photo = db.Model.extend({
 });
 
 module.exports = models;
->>>>>>> Update model.js

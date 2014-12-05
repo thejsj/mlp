@@ -10,4 +10,12 @@ collections.Users = db.Collection.extend({
   model: models.User
 });
 
+collection.Photos = db.Collection.extend({
+	model: models.Photo
+});
+
+collection.Prompts = db.Collection.extend({
+	model: models.Prompt
+});
+
 module.exports = collections;

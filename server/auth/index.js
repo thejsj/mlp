@@ -4,12 +4,10 @@ var User = require('../models').User;
 var collections = require('../collections');
 
 passport.serializeUser(function (user, done) {
-  console.log('serializeUser:', user);
   return done(null, user.get('id'));
 });
 
 passport.deserializeUser(function (id, done) {
-  console.log('deserializeUser: ', id);
   collections.Users
     .query('where', 'id', '=', id)
     .fetchOne()
@@ -25,8 +23,15 @@ passport.use(new LocalStrategy({
     collections.Users
       .query('where', 'email', '=', email)
       .fetchOne()
-      .then(function (model) {
-        return done(null, model);
+      .then(function (user) {
+        return user.checkPassword(password)
+          .then(function (isMatch) {
+            if (!isMatch) return done(null, false);
+            return done(null, user);
+          });
+      })
+      .catch(function (err) {
+        return done(null, false);
       });
   }
 ));

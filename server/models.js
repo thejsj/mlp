@@ -9,6 +9,7 @@ var bcrypt = require('bcrypt-nodejs');
 var db = require('./db');
 var models = {};
 
+// User
 models.User = db.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
@@ -27,38 +28,58 @@ models.User = db.Model.extend({
   },
   checkPassword: function (password) {
     var compare = bluebird.promisify(bcrypt.compare);
-    return compare(this.get('password'), password)
+    return compare(password, this.get('password'))
       .then(function (isMatch) {
         return isMatch;
       });
+  },
+  photo: function () {
+    return this.belongsTo(models.Photo);
   }
 });
 
-//model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
+// Prompt - one to many photo, winner - photo id, start time and end time, voting end time, title
 models.Prompt = db.Model.extend({
   tableName: 'prompt',
   hasTimestamps: true,
   photos: function () {
-    return this.hasMany(Photo, 'photo_id');
+    return this.hasMany(models.Photo, 'prompt_id');
   },
-  winner: function(){
-  	return this.hasOne(Photo, 'photo_id');
+  winner: function () {
+    return this.hasOne(models.Photo, 'winner_id');
   }
 });
 
-//photo - one to one with user, id, upvotes
+// Photo - one to one with user, id, upvotes
 models.Photo = db.Model.extend({
   tableName: 'photo',
   hasTimestamps: true,
-  user: function() {
-    return this.hasOne(User, 'user_id');
+  user: function () {
+    return this.hasOne(models.User, 'user_id');
   },
   defaults: {
     upvotes: 0
   },
-  upvote: function(){
-  	this.upvotes++;
+  upvote: function () {
+    this.upvotes++;
+  },
+  winner: function () {
+    return this.belongsTo(models.Prompt);
+  },
+  prompt: function () {
+    return this.belongsTo(models.Prompt);
   }
 });
 
+// Comment
+models.Comment = db.Model.extend({
+  tableName: 'comment',
+  hasTimestamps: true,
+  user: function () {
+    return this.hasOne(models.User, 'user_id');
+  },
+  prompt: function () {
+    return this.hasOne(models.Prompt, 'prompt_id');
+  },
+});
 module.exports = models;

@@ -31,13 +31,13 @@ db.schema.hasTable('users').then(function (exists) {
   }
 });
 
-//model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
+// Model for prompts - one to many photo, winner - photo id, start time and end time, voting end time, title
 db.schema.hasTable('prompts').then(function (exists) {
   if (!exists) {
     db.schema.createTable('prompts', function (prompt) {
       prompt.increments('id').primary();
       prompt.string('title', 255);
-      prompt.string('winner', 255);
+      prompt.integer('winner_id').references('photo.id');
       prompt.timestamp('startTime');
       prompt.timestamp('endTime');
       prompt.timestamp('votingEndTime');
@@ -48,12 +48,30 @@ db.schema.hasTable('prompts').then(function (exists) {
   }
 });
 
-//photo - one to one with user, id, upvotes
+// Photo - one to one with user, id, upvotes
 db.schema.hasTable('photo').then(function (exists) {
   if (!exists) {
     db.schema.createTable('photo', function (photo) {
       photo.increments('id').primary();
       photo.integer('upvotes');
+      photo.string('filename', 255); // Relative to /media/
+      photo.integer('user_id').references('users.id');
+      photo.integer('prompt_id').references('prompts.id');
+      photo.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
+// Comment - one to one with user, belongsTo prompts
+db.schema.hasTable('comment').then(function (exists) {
+  if (!exists) {
+    db.schema.createTable('comment', function (photo) {
+      photo.increments('id').primary();
+      photo.string('content', 255);
+      photo.integer('user_id').references('users.id');
+      photo.integer('prompt_id').references('prompts.id');
       photo.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);

@@ -13,6 +13,8 @@ var mediaRouter = require('./routers/media');
 // Middleware
 var app = express();
 app.use(cookieParser());
+// Fix this line when we get our first million
+// http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
 app.use(bodyParser.urlencoded({
   extended: false
 }));

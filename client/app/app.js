@@ -94,7 +94,7 @@
       .state('prompt', {
         templateUrl: 'app/prompts/prompt.html',
         controller: 'promptController',
-        url: '/prompt',
+        url: '/prompt/:id',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',

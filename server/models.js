@@ -7,8 +7,9 @@
 var bluebird = require('bluebird');
 var bcrypt = require('bcrypt-nodejs');
 var db = require('./db');
+var models = {};
 
-var User = db.Model.extend({
+models.User = db.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
   initialize: function () {
@@ -33,4 +34,35 @@ var User = db.Model.extend({
   }
 });
 
+<<<<<<< HEAD
 module.exports = User;
+=======
+//model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
+models.Prompt = db.Model.extend({
+  tableName: 'prompt',
+  hasTimestamps: true,
+  photos: function () {
+    return this.hasMany(Photo, 'photo_id');
+  },
+  winner: function(){
+  	return this.hasOne(Photo, 'photo_id');
+  }
+});
+
+//photo - one to one with user, id, upvotes
+models.Photo = db.Model.extend({
+  tableName: 'photo',
+  hasTimestamps: true,
+  user: function() {
+    return this.hasOne(User, 'user_id');
+  },
+  defaults: {
+    upvotes: 0
+  },
+  upvote: function(){
+  	this.upvotes++;
+  }
+});
+
+module.exports = models;
+>>>>>>> Update model.js

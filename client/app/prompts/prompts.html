@@ -1,31 +1,12 @@
-<div class="app-allprompts">
+<div class="app-allprompts" ng-controller="promptsController">
   <div class="app-title">All Prompts</div>
-  <a href="#"  class="app-box">
-    <div class="app-box-text">"A picture of the best chocolate bar ever."</div>
-    <div class="app-box-arrow">
-      <img src="img/next.png" />
-    </div>
-    <div class="app-box-time">6 minutes left</div>
-  </a>
-  <a href="#"  class="app-box">
-    <div class="app-box-text">"Goofiest face contest."</div>
-    <div class="app-box-arrow">
-      <img src="img/next.png" />
-    </div>
-    <div class="app-box-time">51 minutes left</div>
-  </a>
-  <a href="#"  class="app-box">
-    <div class="app-box-text">"Men in high heels."</div>
-    <div class="app-box-arrow">
-      <img src="img/next.png" />
-    </div>
-    <div class="app-box-time">1 hour left</div>
-  </a>
-  <a href="#" class="app-box">
-    <div class="app-box-text">A dog that looks like it's smiling but really isn't.</div>
-    <div class="app-box-arrow">
-      <img src="img/next.png" />
-    </div>
-    <div class="app-box-time">2 hours, 27 minutes left</div>
-  </a>
+  <div ng-repeat="prompt in prompts">
+    <a href="#"  class="app-box">
+      <div class="app-box-text">"{{ prompt.title }}"</div>
+      <div class="app-box-arrow">
+        <img src="img/next.png" />
+      </div>
+      <div class="app-box-time">{{ prompt.duration }}</div>
+    </a>
+  </div>
 </div>

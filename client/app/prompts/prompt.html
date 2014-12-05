@@ -1,21 +1,14 @@
-<div class="app-prompt">
+<div class="app-prompt" ng-app="promptController">
   <div class="app-title">Prompt</div>
   <div class="app-prompt-challenge">
-    A dog that looks like it's smiling but really isn't.
+    {{ prompt.title }}
   </div>
   <a href="#" class="app-prompt-upload">Upload</a>
-  <div class="app-prompt-box">Created by <span>Loring</span></div>
-  <div class="app-prompt-box"><span>51</span> minutes left</div>
-  <div class="app-prompt-box">Winner: <span>Not announced</span></div>
-  <div class="app-prompt-box">Total Votes: <span>6</span></div>
-  <div class="app-prompt-box red"><!-- Pictures -->Photos!</div>
-  <div class="app-prompt-gallery">
-    <a href="#"><img src="img/test-gallery1.jpg"/></a>
-    <a href="#"><img src="img/test-gallery2.jpg"/></a>
-    <a href="#"><img src="img/test-gallery3.jpg"/></a>
-    <a href="#"><img src="img/test-gallery4.jpg"/></a>
-    <a href="#"><img src="img/test-gallery5.jpg"/></a>
-    <a href="#"><img src="img/test-gallery6.jpg"/></a>
-    <a href="#"><img src="img/test-gallery7.jpg"/></a>
+  <div class="app-prompt-box">Created by <span>{{ prompt.user }}</span></div>
+  <div class="app-prompt-box"><span>{{ prompt.duration }}</span> minutes left</div>
+  <div class="app-prompt-box">Winner: <span>{{ prompt.winner }}</span></div>
+  <div class="app-prompt-box red">Photos!</div>
+  <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
+    <a href="#"><img src="img/'{{ prompt.user }}'"/></a>
   </div>
 </div>

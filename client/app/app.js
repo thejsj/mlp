@@ -9,6 +9,8 @@
      'mlp.photo',
      'mlp.prompt',
      'mlp.prompts',
+     'mlp.suggestions',
+     'mlp.suggestions_prompts',
      'mlp.services'
      ])
 
@@ -93,6 +95,30 @@
         templateUrl: 'app/prompts/prompt.html',
         controller: 'promptController',
         url: '/prompt',
+        animation: {
+          enter: 'shrink-in',
+          leave: 'grow-out',
+          ease: 'back',
+          speed: 400
+        }
+      })
+
+      .state('suggestions', {
+        templateUrl: 'app/suggestions/suggestions.html',
+        controller: 'suggestionsController',
+        url: '/suggestions',
+        animation: {
+          enter: 'shrink-in',
+          leave: 'grow-out',
+          ease: 'back',
+          speed: 400
+        }
+      })
+
+      .state('suggestions_prompts', {
+        templateUrl: 'app/suggestions/suggestions_prompts.html',
+        controller: 'suggestionsPromptsController',
+        url: '/suggestions_prompts',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',

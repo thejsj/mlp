@@ -1,13 +1,7 @@
-angular.module("mlp.prompts",['ngFx'])
+angular.module("mlp.suggestions",['ngFx'])
 
-.controller("promptsController", function ($scope){
-  console.log("I am the prompts controller");
+.controller("suggestionsController", function ($scope){
+  console.log("I am the suggestionsController controller");
 
-  $scope.prompts = [
-    {title: "Dustin", startTime: '1234', endTime: '1234', duration: '1 hour'},
-    {title: "Loring", startTime: '1234', endTime: '1234', duration: '1 hour'},
-    {title: "Brian", startTime: '1234', endTime: '1234', duration: '1 hour'},
-    {title: "Jorge", startTime: '1234', endTime: '1234', duration: '1 hour'},
-  ];
 
 });

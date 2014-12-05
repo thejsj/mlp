@@ -1,19 +1,12 @@
 <div class="app-allprompts">
   <div class="app-title">All Prompts</div>
   <div ng-repeat="prompt in prompts">
-    <a href="#" class="app-prompt-box left-align hover-red paragraph">
-      <div class="app-box-text">{{ prompt.title }}</div>
-      <div class="app-box-duration">{{ prompt.duration }}</div>
+    <a ui-sref="prompt({ id: id })" class="app-prompt-box left-align hover-red paragraph" ng-class="{'last':$last}">
+      <div class="app-box-text">"{{ limitChar(prompt.title,20) }}"</div>
+      <div class="app-box-duration">{{ prompt.votingEndTime }}</div>
       <div class="app-box-arrow">
         <img src="img/next.png" />
       </div>
     </a>
-<!--     <a href="#"  class="app-box">
-      <div class="app-box-text">"{{ prompt.title }}"</div>
-      <div class="app-box-arrow">
-        <img src="img/next.png" />
-      </div>
-      <div class="app-box-time">{{ prompt.duration }}</div>
-    </a> -->
   </div>
 </div>

@@ -1,4 +1,4 @@
-angular.module('mlp-services', [])
+angular.module('mlp.services', [])
 
 /*
 .factory('Auth', function ($http, $location, $window) {

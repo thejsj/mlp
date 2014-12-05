@@ -36,8 +36,6 @@ server/media/*.gif
 
 # Component directories
 node_modules/*
-bower_components/*
-
 client/lib*
 
 

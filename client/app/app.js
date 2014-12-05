@@ -5,7 +5,9 @@
      'ngFx',
      'mlp.loading',
      'mlp.login',
-     'mlp.photo'
+     'mlp.signup',
+     'mlp.photo',
+     'mlp.services'
      ])
 
   .config(function($stateProvider, $urlRouterProvider) {
@@ -28,7 +30,7 @@
       .state('photo', {
         templateUrl: 'app/photo/photo.html',
         controller: 'photoController',
-        url: '/events',
+        url: '/photo',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',
@@ -40,7 +42,7 @@
       .state('photoComments', {
         templateUrl: 'app/photo/photoComments.html',
         controller: 'photoController',
-        url: '/events',
+        url: '/photo',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',
@@ -49,9 +51,21 @@
         }
       })
 
-      .state('login', {
+      .state('signUp', {
+        templateUrl: 'app/signUp/signUp.html',
+        controller: 'signUpController',
+        url: '/signUp',
+        animation: {
+          enter: 'shrink-in',
+          leave: 'grow-out',
+          ease: 'back',
+          speed: 400
+        }
+      })
+
+      .state('logIn', {
         templateUrl: 'app/login/login.html',
-        controller: 'loginController',
+        controller: 'logInController',
         url: '/login',
         animation: {
           enter: 'shrink-in',

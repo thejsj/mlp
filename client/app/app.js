@@ -1,3 +1,6 @@
+// main angular module.  whole thing is wrapped in an IIFE
+// (immediately invoked function expression) to guard against
+// errors on startup.
 (function(){
   console.log("initializing");
   var app = angular.module('mlp', 
@@ -14,6 +17,8 @@
      'mlp.services'
      ])
 
+
+  //routes for rendering the various HTML templates (found in app/*)
   .config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/login');
@@ -128,11 +133,5 @@
       })
 
   })
-
-.controller('mainController', function($state, $timeout){
-  
-})
-
-
 
 })();

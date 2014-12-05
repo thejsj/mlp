@@ -7,6 +7,8 @@
      'mlp.login',
      'mlp.signup',
      'mlp.photo',
+     'mlp.prompt',
+     'mlp.prompts',
      'mlp.services'
      ])
 
@@ -22,6 +24,30 @@
         animation: {
           enter: 'grow-in',
           leave: 'shrink-out',
+          ease: 'back',
+          speed: 400
+        }
+      })
+
+      .state('signUp', {
+        templateUrl: 'app/signUp/signUp.html',
+        controller: 'signUpController',
+        url: '/signUp',
+        animation: {
+          enter: 'shrink-in',
+          leave: 'grow-out',
+          ease: 'back',
+          speed: 400
+        }
+      })
+
+      .state('logIn', {
+        templateUrl: 'app/login/login.html',
+        controller: 'logInController',
+        url: '/login',
+        animation: {
+          enter: 'shrink-in',
+          leave: 'grow-out',
           ease: 'back',
           speed: 400
         }
@@ -51,10 +77,10 @@
         }
       })
 
-      .state('signUp', {
-        templateUrl: 'app/signUp/signUp.html',
-        controller: 'signUpController',
-        url: '/signUp',
+      .state('prompts', {
+        templateUrl: 'app/prompts/prompts.html',
+        controller: 'promptsController',
+        url: '/prompts',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',
@@ -63,17 +89,18 @@
         }
       })
 
-      .state('logIn', {
-        templateUrl: 'app/login/login.html',
-        controller: 'logInController',
-        url: '/login',
+      .state('prompt', {
+        templateUrl: 'app/prompts/prompt.html',
+        controller: 'promptController',
+        url: '/prompt',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',
           ease: 'back',
           speed: 400
         }
-      });
+      })
+
   })
 
 .controller('mainController', function($state, $timeout){

@@ -8,7 +8,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 
 #main { position:relative; margin:0 auto; width:400px; }
 #iphone { width:100%; height:100%; }
-#iphone-screen{ position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#E74747; overflow: scroll;}
+#iphone-screen{ position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#FFF; overflow: scroll;}
 
 /************ APP - MLPhoto ************/
 #app-wrapper { position:relative; width:100%; height: 100%; }
@@ -18,11 +18,11 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-logo span { color:#E74747; font-weight:500; }
 
 /* TITLE */
-.app-title { margin:15px 0 15px 0; text-align:center; color:#FFF; font-weight:400; }
+.app-title { margin:15px 0 15px 0; text-align:center; color:#E74747; font-weight:400; }
 
 /* SPINNER */
 .app-spinner {}
-.app-spinner div{position:absolute;width:20px;height:20px;border-radius:50%;background-color:rgba(255,255,255,0);}
+.app-spinner div{position:absolute;width:20px;height:20px;border-radius:50%;background-color:rgba(231,71,71,0);}
 .app-spinner div:nth-child(1){-webkit-animation:orbitVortex 2s linear infinite;animation:orbitVortex 2s linear infinite}
 .app-spinner div:nth-child(2){-webkit-animation:orbitVortex 2s .5s linear infinite;animation:orbitVortex 2s .5s linear infinite}
 .app-spinner div:nth-child(3){-webkit-animation:orbitVortex 2s 1s linear infinite;animation:orbitVortex 2s 1s linear infinite;}
@@ -30,7 +30,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 
 @-webkit-keyframes orbitVortex {
 	from {-webkit-transform: skewX(0deg) rotate(0deg) translateY(15px) rotate(0deg) scale(1.0);}
-	to   {-webkit-transform: skewX(90deg) rotate(360deg) translateY(10px) rotate(-360deg) scale(0.1);background-color:rgba(255,255,255,1);}
+	to   {-webkit-transform: skewX(90deg) rotate(360deg) translateY(10px) rotate(-360deg) scale(0.1);background-color:rgba(231,71,71,1);}
 }
 @keyframes orbitVortex {
     from { 
@@ -44,7 +44,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 /* LOADING PAGE */
 .app-loading { position:absolute; top:50%; width:100%; transform: translateY(-100%); -webkit-transform: translateY(-100%);}
 .app-loading .app-logo { margin-left:30px; font-size:30px; font-weight:100; text-align:center; }
-.app-loading .app-logo span { color:#FFF; }
+.app-loading .app-logo span { color:#E74747; }
 .app-loading .app-spinner { position:absolute; top: 10px; left: 35px; }
 
 /* LOGIN PAGE */
@@ -52,7 +52,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
 .app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
 .app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}
-.app-login input[type=submit] { margin-top: 20px; width: 60px; height: 60px; color:#333; background-color:transparent; border-radius: 50%; border:2px solid #333; -webkit-transition: background-color .5s, color .5s;}
+.app-login input[type=submit] { margin-top: 20px; width: 60px; height: 60px; color:#E74747; text-transform:uppercase; background-color:transparent; border-radius: 50%; border:2px solid #333; -webkit-transition: background-color .5s, color .5s;}
 .app-login input[type=submit]:hover {background-color: #333; color:#FFF; -webkit-transition: background-color .5s, color .5s;}
 
 /* PHOTO PAGE */
@@ -76,6 +76,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-photo .app-comment-bubble-right:after { left:100%; border-left:8px solid #F26964; }
 
 /* ALL PROMPTS PAGE */
+.app-allprompts { }
 .app-allprompts .app-box { float:left; padding:10px 0 10px 0; margin-bottom:2px; width:100%; min-height:50px; color: #FFF; font-size:13px; font-weight:100; background-color:#333; overflow:hidden;}
 .app-allprompts .app-box:hover { background-color:#666; }
 .app-allprompts .app-box-text { float:left; margin:0 0 0 10px; width:calc(100% - 40px);}
@@ -99,7 +100,17 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-gallery a img { width:120px; height:120px; }
 .app-prompt .app-prompt-gallery a img:hover { opacity:0.7; }
 
-
+.app-prompt-box { position:relative; margin:0 0 0 0; width:auto; min-height:50px; text-align:center; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; display:block; overflow:hidden;}
+.app-prompt-box .app-box-arrow { position:absolute; top:calc(50% - 25px); right:5px; }
+.app-prompt-box .app-box-text { float:left; line-height: 50px; width:calc(100% - 50px);}
+.app-prompt-box span { font-weight:600; color:#333; }
+.app-prompt-box.red { background-color:#F26964; color:#FFF; border-top: solid 2px #B03531;letter-spacing: 0.2em; font-weight: bold; text-transform: uppercase; }
+.app-prompt-box.left-align { padding-left: 10px; color:#333; text-align:left;}
+.app-prompt-box.hover-red { background-color:transparent; color:#333; -webkit-transition: background-color .5s, color .5s;}
+.app-prompt-box.hover-red:hover { background-color:#F26964; color:#FFF; -webkit-transition: background-color .5s, color .5s;}
+.app-prompt-box.paragraph { width:auto; }
+.app-prompt-box.paragraph .app-box-text{ padding:10px 0 10px 10px; width:calc(100% - 60px); line-height:120%; }
+.app-prompt-box.last { border-bottom:1px solid #F26964; }
 
 /* ANIMATIONS 
 

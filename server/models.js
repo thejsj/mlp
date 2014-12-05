@@ -31,6 +31,9 @@ models.User = db.Model.extend({
       .then(function (isMatch) {
         return isMatch;
       });
+  },
+  photo: function () {
+    return this.belongsTo(models.Photo);
   }
 });
 
@@ -39,10 +42,10 @@ models.Prompt = db.Model.extend({
   tableName: 'prompt',
   hasTimestamps: true,
   photos: function () {
-    return this.hasMany(Photo, 'photo_id');
+    return this.hasMany(models.Photo, 'prompt_id');
   },
-  winner: function(){
-  	return this.hasOne(Photo, 'photo_id');
+  winner: function () {
+    return this.hasOne(models.Photo, 'winner_id');
   }
 });
 
@@ -50,14 +53,20 @@ models.Prompt = db.Model.extend({
 models.Photo = db.Model.extend({
   tableName: 'photo',
   hasTimestamps: true,
-  user: function() {
+  user: function () {
     return this.hasOne(User, 'user_id');
   },
   defaults: {
     upvotes: 0
   },
-  upvote: function(){
-  	this.upvotes++;
+  upvote: function () {
+    this.upvotes++;
+  },
+  winner: function () {
+    return this.belongsTo(models.Prompt);
+  },
+  prompt: function () {
+    return this.belongsTo(models.Prompt);
   }
 });
 

@@ -38,6 +38,8 @@ server/media/*.gif
 node_modules/*
 bower_components/*
 
+client/lib*
+
 
 # Misc
 .DS_store

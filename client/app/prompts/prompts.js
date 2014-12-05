@@ -1,6 +1,6 @@
 angular.module("mlp.prompts",['ngFx'])
 
-.controller("promptsController", function ($scope){
+.controller("promptsController", function ($scope,$http){
   console.log("I am the prompts controller");
 
   var dummyPrompts = [{
@@ -36,5 +36,15 @@ angular.module("mlp.prompts",['ngFx'])
   }
 
   $scope.prompts = dummyPrompts;
+
+  var getData = function() {
+   console.log("getting photo data from server");
+   return $http.get('/api/prompt')
+    .then(function (res) {
+      console.log(res);
+    });
+  };
+
+  getData();
 
 });

@@ -45,13 +45,15 @@ describe('API', function () {
 
   describe('Photo', function () {
     it('should create a photo in a post request', function (done) {
+      var fileContents = fs.readFileSync(__dirname + '/Chicago.png');
+      fs.writeFileSync(__dirname + '/_Chicago.png', fileContents);
       request
         .post({
             url: 'http://localhost:8000/api/photo',
             form: {
               user_id: 20,
               prompt_id: 1,
-              image: fs.createReadStream(__dirname + '/Chicago.png')
+              image: fs.createReadStream(__dirname + '/_Chicago.png')
             }
           },
           function (err, response, body) {
@@ -63,9 +65,7 @@ describe('API', function () {
     it('should get all photos', function (done) {
       request
         .get('http://localhost:8000/api/photo', function (err, response, body) {
-          console.log(body);
           var result = JSON.parse(body);
-          console.log(_.last(result));
           expect(response.statusCode).to.equal(200);
           expect(_.last(result).prompt_id).to.equal(_promptId);
           done();

@@ -55,7 +55,7 @@ apiRouter.post('/photo', function (req, res) {
 });
 
 apiRouter.get('/photo', function (req, res) {
-  collections.Photo
+  models.Photo // Doesn't seem to be working
     .fetchAll()
     .then(function (coll) {
       res.json(coll.toJSON()).end();

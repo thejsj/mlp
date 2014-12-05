@@ -6,7 +6,8 @@
      'mlp.loading',
      'mlp.login',
      'mlp.signup',
-     'mlp.photo'
+     'mlp.photo',
+     'mlp.services'
      ])
 
   .config(function($stateProvider, $urlRouterProvider) {

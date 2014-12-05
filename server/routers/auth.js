@@ -10,8 +10,8 @@ authRouter.post('/login', auth.authenticate('local'), function (req, res) {
 });
 
 authRouter.post('/signup', function (req, res) {
-  var email = req.body.email;
-  var password = req.body.password;
+  var email = req.body.email || req.param('email');
+  var password = req.body.password || req.param('password');
   if (!email || !password) {
     res.status(400).end(); // Client Error
     return;
@@ -23,7 +23,7 @@ authRouter.post('/signup', function (req, res) {
     .then(function (userModel) {
       res.json({
         email: email
-      });
+      }).end();
     });
 });
 

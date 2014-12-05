@@ -27,8 +27,9 @@ models.User = db.Model.extend({
   },
   checkPassword: function (password) {
     var compare = bluebird.promisify(bcrypt.compare);
-    return compare(this.get('password'), password)
+    return compare(password, this.get('password'))
       .then(function (isMatch) {
+        console.log('User:isMatch: ', isMatch);
         return isMatch;
       });
   },

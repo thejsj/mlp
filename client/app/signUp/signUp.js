@@ -1,14 +1,15 @@
-angular.module("mlp.signup",[])
+angular.module("mlp.signUp",[])
 
-.controller("signUpController", function ($scope){
+.controller("signUpController", function ($scope, Auth){
   console.log("I am the signup controller");
 
   $scope.submitCredentials = function(){
     var credentials = {
-      username: $scope.username,
+      email: $scope.email,
       password: $scope.password
     };
     //send creds to server
-    console.log("submitting credentials: " + $scope.username + " " + $scope.password);
+    console.log("submitting credentials: " + $scope.email + " " + $scope.password);
+    Auth.signUp(credentials);
   };
 });

@@ -1,6 +1,6 @@
 angular.module('mlp.services', [])
 
-/*
+
 .factory('Auth', function ($http, $location, $window) {
   // this is responsible for authenticating our user
   // by exchanging the user's username and password
@@ -9,46 +9,47 @@ angular.module('mlp.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   
-
-  var signin = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/api/users/signin',
-      data: user
-    })
-    .then(function (resp) {
-      return resp.data.token;
-    });
+  var logIn = function (user) {
+   console.log("Authfactory logging in user: ", user)
+    // return $http({
+    //   method: 'POST',
+    //   url: '/api/users/login',
+    //   data: user
+    // })
+    // .then(function (resp) {
+    //   return resp.data.token;
+    // });
   };
 
-  var signup = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/api/users/signup',
-      data: user
-    })
-    .then(function (resp) {
-      return resp.data.token;
-    });
+  var signUp = function (user) {
+    
+    console.log("Authfactory signing up user: ", user);
+    // return $http({
+    //   method: 'POST',
+    //   url: '/api/users/signup',
+    //   data: user
+    // })
+    // .then(function (resp) {
+    //   return resp.data.token;
+    // });
   };
 
   var isAuth = function () {
     return !!$window.localStorage.getItem('com.shortly');
   };
 
-  var signout = function () {
+  var signOut = function () {
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };
 
 
   return {
-    signin: signin,
-    signup: signup,
+    logIn: logIn,
+    signUp: signUp,
     isAuth: isAuth,
-    signout: signout
+    signOut: signOut
   };
 
 });
 
-*/

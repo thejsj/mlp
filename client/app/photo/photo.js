@@ -2,8 +2,13 @@ angular.module("mlp.photo",['ngFx'])
 
 .controller("photoController", function ($scope){
   console.log("I am the photo controller");
-  $scope.counter = 0;
 
+  var dummyPhoto = {
+    url: "img/test-photo.jpg",
+    author: "Loring"
+  }
+
+  $scope.photo = dummyPhoto;
 
 })
 
@@ -17,6 +22,7 @@ angular.module("mlp.photo",['ngFx'])
     {author: "Jorge", text: "I'm leaving this group....more like Silver Octo-loser."},
   ]
 
+    $scope.hideOverlay = true;
     $scope.comments = dummyComments;
   
 

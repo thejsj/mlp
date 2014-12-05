@@ -4,8 +4,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var path = require('path');
 
-var db = require('./db');
-var models = require('./models');
 var auth = require('./auth');
 
 var authRouter = require('./routers/auth');

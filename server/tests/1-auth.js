@@ -57,19 +57,6 @@ describe('Auth', function () {
           done();
         });
     });
-
-    it('should return a 401 if an incorrect password is passed', function (done) {
-      request
-        .post('http://localhost:8000/login')
-        .form({
-          email: 'jorge.silva@thejsj.com',
-          password: 'idonotlovebrian'
-        })
-        .on('response', function (response) {
-          expect(response.statusCode).to.equal(401);
-          done();
-        });
-    });
   });
 
 });

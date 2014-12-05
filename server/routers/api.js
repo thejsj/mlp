@@ -1,6 +1,7 @@
 var express = require('express');
 var apiRouter = express.Router();
 var collections = require('../collections');
+var models = require('../models');
 var multiparty = require('multiparty');
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require("fs"));
@@ -25,18 +26,27 @@ apiRouter.post('/photo', function (req, res) {
   var form = new multiparty.Form();
   form.parse(req, function (err, fields, files) {
     // Write File To File System
-    var userId = fields.user_id;
-    var promptId = fields.prompt_id;
-    var fileExtension = _.last(files.image[0].originalFilename.split('.'));
-    var newImageFileName = '' + userId + '_' + promptId + '-' + moment().format('x') + '.' + fileExtension;
+    var userId, promptId, filePath;
+    if (typeof fields === 'object') {
+      userId = fields.user_id;
+      promptId = fields.prompt_id;
+      filePath = files.image[0].path;
+    } else {
+      userId = req.body.user_id;
+      promptId = req.body.prompt_id;
+      filePath = req.body['image[path]'];
+    }
+    var fileExtension = _.last(filePath.split('.'));
+    var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
     var newPath = path.join(__dirname, '/../media/', newImageFileName);
-    fs.rename(files.image[0].path, newPath, function (err) {
-      collections.Photos
-        .create({
+    fs.rename(filePath, newPath, function (err) {
+      console.log(collections.Photos);
+      var photo = new models.Photo({
           user_id: userId,
           prompt_id: promptId,
           filename: newImageFileName // Relative to /media/
         })
+        .save()
         .then(function (photo) {
           res.json(photo.toJSON());
         });
@@ -47,8 +57,8 @@ apiRouter.post('/photo', function (req, res) {
 apiRouter.get('/photo', function (req, res) {
   collections.Photo
     .fetchAll()
-    .then(function (collection) {
-      res.json(collection.toJSON()).end();
+    .then(function (coll) {
+      res.json(coll.toJSON()).end();
     });
 });
 

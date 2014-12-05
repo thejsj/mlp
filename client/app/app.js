@@ -62,6 +62,10 @@
       });
   })
 
+.controller('mainController', function($state, $timeout){
+  
+})
+
 
 
 })();

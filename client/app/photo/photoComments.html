@@ -6,17 +6,8 @@
       <div class="app-photo-vote-up">up</div>
       <div class="app-photo-vote-down">down</div>
     </div>  
-    <div class="app-comment-bubble-left">
-      <span>Dustin:</span> Looks like a dog.
-    </div>
-    <div class="app-comment-bubble-right">
-      <span>Brian:</span> The prompt was that you were supposed to get a picture of a Butterfinger bar.
-    </div>
-    <div class="app-comment-bubble-left">
-      <span>Loring:</span> This is stupid.
-    </div>
-    <div class="app-comment-bubble-right">
-      <span>Jorge:</span> I'm leaving this group....more like Silver Octo-loser.
+    <div ng-class-odd="'app-comment-bubble-left'" ng-class-even="'app-comment-bubble-right'" ng-repeat="comment in comments">
+      <span>{{comment.author}}:</span> {{comment.text}}
     </div>
   </div>
 </div>

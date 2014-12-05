@@ -8,6 +8,7 @@ var db = require('./db');
 var models = require('./models');
 var auth = require('./auth');
 
+var authRouter = require('./routers/auth');
 var apiRouter = require('./routers/api');
 var mediaRouter = require('./routers/media');
 
@@ -32,9 +33,9 @@ console.log('Server listening on ' + port);
 
 app
   .use(express.static(path.resolve(__dirname + '/../client/')))
-  // .post('/login', auth.checkIfLoggedIn)
-  .use('/media', mediaRouter)
-  .use('/api', apiRouter)
+  .use(authRouter)
+  .use('/media', auth.checkIfLoggedIn, mediaRouter)
+  .use('/api', auth.checkIfLoggedIn, apiRouter)
   .use('*', function (req, res) {
     res.status(404).end();
   })

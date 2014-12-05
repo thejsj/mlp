@@ -1,10 +1,11 @@
-//use bookshelf and knex to 
+//use bookshelf and knex to
 
-//user model - email, password, 
+//user model - email, password,
 //model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
 //photo - one to one with user, id, upvotes
 
-
+var bluebird = require('bluebird');
+var bcrypt = require('bcrypt-nodejs');
 var db = require('./db');
 
 var User = db.Model.extend({
@@ -15,13 +16,13 @@ var User = db.Model.extend({
   },
   addPassword: function (model) {
     var cipher = bluebird.promisify(bcrypt.hash);
-    return cipher(model.attributes.__password, null, null).bind(this)
+    return cipher(model.attributes.password, null, null)
       .then(function (hash) {
+        delete model.attributes.password;
+        delete this.password;
         model.attributes.password = hash;
-        delete model.attributes.__password;
-        delete this.__password;
         this.password = hash;
-      });
+      }.bind(this));
   },
   checkPassword: function (password) {
     var compare = bluebird.promisify(bcrypt.compare);
@@ -32,4 +33,4 @@ var User = db.Model.extend({
   }
 });
 
-
+module.exports = User;

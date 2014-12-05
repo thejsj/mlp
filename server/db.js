@@ -20,7 +20,7 @@ var db = knex({
 //user model - email, password,
 db.schema.hasTable('users').then(function (exists) {
   if (!exists) {
-    db.knex.schema.createTable('users', function (user) {
+    db.schema.createTable('users', function (user) {
       user.increments('id').primary();
       user.string('email', 255);
       user.string('password', 255);
@@ -34,7 +34,7 @@ db.schema.hasTable('users').then(function (exists) {
 //model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
 db.schema.hasTable('prompts').then(function (exists) {
   if (!exists) {
-    db.knex.schema.createTable('prompts', function (prompt) {
+    db.schema.createTable('prompts', function (prompt) {
       prompt.increments('id').primary();
       prompt.string('title', 255);
       prompt.string('winner', 255);
@@ -51,7 +51,7 @@ db.schema.hasTable('prompts').then(function (exists) {
 //photo - one to one with user, id, upvotes
 db.schema.hasTable('photo').then(function (exists) {
   if (!exists) {
-    db.knex.schema.createTable('photo', function (photo) {
+    db.schema.createTable('photo', function (photo) {
       photo.increments('id').primary();
       photo.integer('upvotes');
       photo.timestamps();

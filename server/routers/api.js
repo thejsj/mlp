@@ -2,6 +2,8 @@ var express = require('express');
 var apiRouter = express.Router();
 
 apiRouter.get('/prompt', function (req, res) {
+  console.log('req.user');
+  console.log(req.user);
   res.status(200).end();
 });
 

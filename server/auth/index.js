@@ -1,26 +1,41 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var User = require('../models');
+var collections = require('../collections');
 
-passport.use(new LocalStrategy(
-  function (username, password, done) {
-    console.log('Username: ', username);
-    console.log('Password: ', password);
-    if (username === 'thejsj' && password === 'ilovebrian') {
-      return done(null, {
-        username: username,
-        password: password
-      });
-    }
-    return done(null, null, {
-      message: 'Incorrect password.'
+passport.serializeUser(function (user, done) {
+  console.log('serializeUser:', user);
+  return done(null, user.get('id'));
+});
+
+passport.deserializeUser(function (id, done) {
+  console.log('deserializeUser: ', id);
+  collections.Users
+    .query('where', 'id', '=', id)
+    .fetchOne()
+    .then(function (model) {
+      return done(null, model);
     });
+});
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+  },
+  function (email, password, done) {
+    collections.Users
+      .query('where', 'email', '=', email)
+      .fetchOne()
+      .then(function (model) {
+        return done(null, model);
+      });
   }
 ));
 
-passport.checkIfLoggedIn = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-});
+passport.checkIfLoggedIn = function (req, res, next) {
+  if (req.user) {
+    return next();
+  }
+  return res.status(401).send('You\'re not logged in');
+};
 
 module.exports = passport;

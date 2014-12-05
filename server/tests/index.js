@@ -1,4 +1,4 @@
 describe('Server', function () {
-  require('./auth');
-  require('./api');
+  require('./1-auth');
+  require('./2-api');
 });

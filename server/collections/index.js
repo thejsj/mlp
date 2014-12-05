@@ -9,7 +9,6 @@ collections.Users = db.Collection.extend({
 });
 
 collections.Photos = db.Collection.extend({
-<<<<<<< HEAD
   model: models.Photo
 });
 
@@ -19,13 +18,7 @@ collections.Prompts = db.Collection.extend({
 
 collections.Comments = db.Collection.extend({
   model: models.Comment
-=======
-	model: models.Photo
 });
 
-collections.Prompts = db.Collection.extend({
-	model: models.Prompt
->>>>>>> Add prompt routes to collections/index.js
-});
 
 module.exports = collections;

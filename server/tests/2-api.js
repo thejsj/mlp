@@ -24,7 +24,7 @@ describe('API', function () {
       });
   });
 
-  xdescribe('Prompt', function () {
+  describe('Prompt', function () {
     it('should create a prompt', function (done) {
       var now = moment();
       request

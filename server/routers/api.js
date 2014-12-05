@@ -9,16 +9,40 @@ var moment = require('moment');
 var path = require('path');
 var _ = require('lodash');
 
-apiRouter.get('/prompt', function (req, res) {
-  res.status(200).end();
+apiRouter.get('/prompt', function ( req, res) {
+  models.Prompt.fetchAll().then(function(collection){
+    res.json(collection.toJSON());
+  })
 });
 
 apiRouter.post('/prompt', function (req, res) {
-  res.status(201).end();
+  var title = req.body.title || req.param('title');
+  var startTime = req.body.startTime || req.param('startTime');
+  var endTime = req.body.endTime || req.param('endTime');
+  var votingEndTime = req.body.votingEndTime || req.param('votingEndTime');
+
+  if(!title || !startTime || !endTime || !votingEndTime){
+    res.status(400).end();
+  }
+  var newPrompt = new models.Prompt({
+      title: title,
+      startTime: startTime,
+      endTime: endTime,
+      votingEndTime: votingEndTime
+    })
+    .save()
+    .then(function(model){
+      res.json(model.toJSON());
+    })
 });
 
 apiRouter.get('/prompt/:id', function (req, res) {
-  res.send(req.params.id).end();
+  collections.Prompts
+    .query('where', 'id', '=', req.param.id)
+    .fetchOne()
+    .then(function(model){
+      res.json(model.toJSON());
+    });
 });
 
 // Photo

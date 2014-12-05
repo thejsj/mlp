@@ -54,6 +54,22 @@ db.schema.hasTable('photo').then(function (exists) {
     db.schema.createTable('photo', function (photo) {
       photo.increments('id').primary();
       photo.integer('upvotes');
+      photo.string('filename', 255); // Relative to /media/
+      photo.integer('user_id').references('users.id');
+      photo.integer('prompt_id').references('prompts.id');
+      photo.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
+// Comment - one to one with user, belongsTo prompts
+db.schema.hasTable('comment').then(function (exists) {
+  if (!exists) {
+    db.schema.createTable('comment', function (photo) {
+      photo.increments('id').primary();
+      photo.string('content', 255);
       photo.integer('user_id').references('users.id');
       photo.integer('prompt_id').references('prompts.id');
       photo.timestamps();

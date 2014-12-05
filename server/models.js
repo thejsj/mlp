@@ -9,6 +9,7 @@ var bcrypt = require('bcrypt-nodejs');
 var db = require('./db');
 var models = {};
 
+// User
 models.User = db.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
@@ -29,7 +30,6 @@ models.User = db.Model.extend({
     var compare = bluebird.promisify(bcrypt.compare);
     return compare(password, this.get('password'))
       .then(function (isMatch) {
-        console.log('User:isMatch: ', isMatch);
         return isMatch;
       });
   },
@@ -38,7 +38,7 @@ models.User = db.Model.extend({
   }
 });
 
-//model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
+// Prompt - one to many photo, winner - photo id, start time and end time, voting end time, title
 models.Prompt = db.Model.extend({
   tableName: 'prompt',
   hasTimestamps: true,
@@ -50,12 +50,12 @@ models.Prompt = db.Model.extend({
   }
 });
 
-//photo - one to one with user, id, upvotes
+// Photo - one to one with user, id, upvotes
 models.Photo = db.Model.extend({
   tableName: 'photo',
   hasTimestamps: true,
   user: function () {
-    return this.hasOne(User, 'user_id');
+    return this.hasOne(models.User, 'user_id');
   },
   defaults: {
     upvotes: 0
@@ -71,4 +71,15 @@ models.Photo = db.Model.extend({
   }
 });
 
+// Comment
+models.Comment = db.Model.extend({
+  tableName: 'comment',
+  hasTimestamps: true,
+  user: function () {
+    return this.hasOne(models.User, 'user_id');
+  },
+  prompt: function () {
+    return this.hasOne(models.Prompt, 'prompt_id');
+  },
+});
 module.exports = models;

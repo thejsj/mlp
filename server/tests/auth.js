@@ -31,6 +31,20 @@ describe('Auth', function () {
         });
     });
 
+    it('should return the user id when logging in', function (done) {
+      request
+        .post({
+          url: 'http://localhost:8000/login',
+          form: {
+            email: 'jorge.silva@thejsj.com',
+            password: 'ilovebrian'
+          }
+        }, function (error, response, body) {
+          JSON.parse(body).user_id.should.be.Integer;
+          done();
+        });
+    });
+
     it('should return a 401 if a user doesn\'t exist', function (done) {
       request
         .post('http://localhost:8000/login')

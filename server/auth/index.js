@@ -24,17 +24,13 @@ passport.use(new LocalStrategy({
       .query('where', 'email', '=', email)
       .fetchOne()
       .then(function (user) {
-        console.log('checkPassword: ', password);
-        console.log('-: ', user.get('password'));
         return user.checkPassword(password)
           .then(function (isMatch) {
-            console.log('isMatch');
             if (!isMatch) return done(null, false);
             return done(null, user);
           });
       })
       .catch(function (err) {
-        console.log('catch:', err);
         return done(null, false);
       });
   }

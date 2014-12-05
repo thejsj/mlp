@@ -3,17 +3,21 @@
 <head>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600,700,300' rel='stylesheet' type='text/css'>
   <link href='css/styles.css' rel='stylesheet' type='text/css'>
-  <script src="../bower_components/angular/angular.min.js"></script>
-  <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="../bower_components/ngFx/dist/ngFx.min.js"></script>
-  <script src="app.js"></script>
 </head>
 
 <html>
 <body ng-app="mlp">
 
   <div id="header" class="app-logo">ML<span>Photo<span></div>
-
+  
+  <!-- Temporary nav buttons -->
+  <div style="width: 300px; margin: auto">
+    <a ui-sref="login">go to login</a> |
+    <a ui-sref="loading">go to loading</a> |
+    <a ui-sref="photo">go to photo</a>
+    <a ui-sref="photoComments">go to photo comments</a>
+  </div>
+ 
   <div id="main">
 
     <img id="iphone" src="img/iphone.png" />
@@ -22,16 +26,18 @@
 
       <div id="app-wrapper">
         <div ui-view></div>
-        <a ui-sref="login">go to login</a>
-        <a ui-sref="loading">go to loading</a>
-        <a ui-sref="events">go to events</a>
-        <a ui-sref="event">go to event</a>
       </div>
 
     </div>
 
   </div>
 
-
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="lib/ngFx/dist/ngFx.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/loading/loading.js"></script>
+  <script src="app/login/login.js"></script>
+  <script src="app/photo/photo.js"></script>
 </body>
 </html>

@@ -1,7 +1,14 @@
 angular.module("mlp.photo",['ngFx'])
 
-.controller("photoController", function ($scope, $timeout){
+.controller("photoController", function ($scope){
   console.log("I am the photo controller");
+  $scope.counter = 0;
+
+
+})
+
+.controller("commentController", function($scope){
+  console.log("I am the comment controller");
   
   var dummyComments = [
     {author: "Dustin", text: "Looks like a dog."},
@@ -11,7 +18,8 @@ angular.module("mlp.photo",['ngFx'])
   ]
 
     $scope.comments = dummyComments;
+  
 
+})
 
-
-});
+;

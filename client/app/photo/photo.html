@@ -1,11 +1,15 @@
-<div class="app-photo ">
-  <img class="app-photo-image" src="img/test-photo.jpg"/>
+<div class="app-photo" ng-controller="photoController">
+  <!-- <img class="app-photo-image" src="img/test-photo.jpg"/> -->
+  <div class="app-photo-user">Image by: <span>Loring {{counter}} <span></div>  
   <div class="app-photo-overlay">
-    <div class="app-photo-scroll"></div>
+    <div class="app-photo-scroll" ng-click="'toggle commentscroll'"></div>
     <div class="app-photo-vote-box">
       <div class="app-photo-vote-up">up</div>
       <div class="app-photo-vote-down">down</div>
+      <div ng-class-odd="'app-comment-bubble-left'" ng-class-even="'app-comment-bubble-right'" ng-repeat="comment in comments">
+        <span>{{comment.author}}:</span> {{comment.text}}
+      </div>
     </div>
-    <div class="app-photo-user">Image by: <span>Loring<span></div>  
   </div>
 </div>
+

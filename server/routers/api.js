@@ -64,7 +64,6 @@ apiRouter.post('/photo', function (req, res) {
     var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
     var newPath = path.join(__dirname, '/../media/', newImageFileName);
     fs.rename(filePath, newPath, function (err) {
-      console.log(collections.Photos);
       var photo = new models.Photo({
           user_id: userId,
           prompt_id: promptId,

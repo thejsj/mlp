@@ -40,7 +40,7 @@ models.User = db.Model.extend({
 
 // Prompt - one to many photo, winner - photo id, start time and end time, voting end time, title
 models.Prompt = db.Model.extend({
-  tableName: 'prompt',
+  tableName: 'prompts',
   hasTimestamps: true,
   photos: function () {
     return this.hasMany(models.Photo, 'prompt_id');
@@ -52,7 +52,7 @@ models.Prompt = db.Model.extend({
 
 // Photo - one to one with user, id, upvotes
 models.Photo = db.Model.extend({
-  tableName: 'photo',
+  tableName: 'photos',
   hasTimestamps: true,
   user: function () {
     return this.hasOne(models.User, 'user_id');
@@ -73,7 +73,7 @@ models.Photo = db.Model.extend({
 
 // Comment
 models.Comment = db.Model.extend({
-  tableName: 'comment',
+  tableName: 'comments',
   hasTimestamps: true,
   user: function () {
     return this.hasOne(models.User, 'user_id');

@@ -49,9 +49,9 @@ db.schema.hasTable('prompts').then(function (exists) {
 });
 
 // Photo - one to one with user, id, upvotes
-db.schema.hasTable('photo').then(function (exists) {
+db.schema.hasTable('photos').then(function (exists) {
   if (!exists) {
-    db.schema.createTable('photo', function (photo) {
+    db.schema.createTable('photos', function (photo) {
       photo.increments('id').primary();
       photo.integer('upvotes');
       photo.string('filename', 255); // Relative to /media/
@@ -65,9 +65,9 @@ db.schema.hasTable('photo').then(function (exists) {
 });
 
 // Comment - one to one with user, belongsTo prompts
-db.schema.hasTable('comment').then(function (exists) {
+db.schema.hasTable('comments').then(function (exists) {
   if (!exists) {
-    db.schema.createTable('comment', function (photo) {
+    db.schema.createTable('comments', function (photo) {
       photo.increments('id').primary();
       photo.string('content', 255);
       photo.integer('user_id').references('users.id');

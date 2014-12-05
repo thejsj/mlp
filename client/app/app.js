@@ -64,7 +64,7 @@
 
       .state('logIn', {
         templateUrl: 'app/login/login.html',
-        controller: 'loginController',
+        controller: 'logInController',
         url: '/login',
         animation: {
           enter: 'shrink-in',

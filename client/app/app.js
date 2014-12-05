@@ -58,7 +58,7 @@
       .state('photo', {
         templateUrl: 'app/photo/photo.html',
         controller: 'photoController',
-        url: '/photo',
+        url: '/photo/:id',
         animation: {
           enter: 'shrink-in',
           leave: 'grow-out',

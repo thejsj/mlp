@@ -9,10 +9,10 @@ var moment = require('moment');
 var path = require('path');
 var _ = require('lodash');
 
-apiRouter.get('/prompt', function ( req, res) {
-  models.Prompt.fetchAll().then(function(collection){
+apiRouter.get('/prompt', function (req, res) {
+  models.Prompt.fetchAll().then(function (collection) {
     res.json(collection.toJSON());
-  })
+  });
 });
 
 apiRouter.post('/prompt', function (req, res) {
@@ -21,7 +21,7 @@ apiRouter.post('/prompt', function (req, res) {
   var endTime = req.body.endTime || req.param('endTime');
   var votingEndTime = req.body.votingEndTime || req.param('votingEndTime');
 
-  if(!title || !startTime || !endTime || !votingEndTime){
+  if (!title || !startTime || !endTime || !votingEndTime) {
     res.status(400).end();
   }
   var newPrompt = new models.Prompt({
@@ -31,16 +31,16 @@ apiRouter.post('/prompt', function (req, res) {
       votingEndTime: votingEndTime
     })
     .save()
-    .then(function(model){
+    .then(function (model) {
       res.json(model.toJSON());
-    })
+    });
 });
 
 apiRouter.get('/prompt/:id', function (req, res) {
   collections.Prompts
     .query('where', 'id', '=', req.param.id)
     .fetchOne()
-    .then(function(model){
+    .then(function (model) {
       res.json(model.toJSON());
     });
 });
@@ -82,6 +82,15 @@ apiRouter.get('/photo', function (req, res) {
     .fetchAll()
     .then(function (coll) {
       res.json(coll.toJSON()).end();
+    });
+});
+
+apiRouter.get('/photo/:id', function (req, res) {
+  collections.Photos // Doesn't seem to be working
+    .query('where', 'id', '=', req.param.id)
+    .fetchOne()
+    .then(function (model) {
+      res.json(model.toJSON()).end();
     });
 });
 

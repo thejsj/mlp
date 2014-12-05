@@ -9,8 +9,8 @@ var fs = require('fs');
 
 describe('API', function () {
 
-  describe('Unatheticated Users', function () {
-    it('should return a 401 if unatheticated', function (done) {
+  describe('Unauthenticated Users', function () {
+    it('should return a 401 if unauthenticated', function (done) {
       request
         .get('http://localhost:8000/api/photo', function (err, response, body) {
           expect(response.statusCode).to.equal(401);
@@ -39,6 +39,7 @@ describe('API', function () {
     });
 
     describe('Prompt', function () {
+      var prompt_id;
       it('should create a prompt', function (done) {
         var now = moment();
         request
@@ -50,8 +51,33 @@ describe('API', function () {
               endTime: now.add(4, 'h').format('x'),
               votingEndTime: now.add(6, 'h').format('x'),
             }
-          }, function (err, response) {
+          }, function (err, response, body) {
+            var json = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
+            expect(json.id).to.be.a.Integer;
+            prompt_id = json.id;
+            done();
+          });
+      });
+
+      it('should get all prompts', function (done) {
+        request
+          .get('http://localhost:8000/api/prompt', function (err, response, body) {
+            var json = JSON.parse(body);
+            expect(response.statusCode).to.equal(200);
+            expect(json).to.be.a.Array;
+            expect(_.last(json).id).to.equal(prompt_id);
+            done();
+          });
+      });
+
+      it('should get all prompts', function (done) {
+        request
+          .get('http://localhost:8000/api/prompt', function (err, response, body) {
+            var json = JSON.parse(body);
+            expect(response.statusCode).to.equal(200);
+            expect(json).to.be.a.Array;
+            expect(_.last(json).id).to.equal(prompt_id);
             done();
           });
       });
@@ -79,6 +105,16 @@ describe('API', function () {
       it('should get all photos', function (done) {
         request
           .get('http://localhost:8000/api/photo', function (err, response, body) {
+            var result = JSON.parse(body);
+            expect(response.statusCode).to.equal(200);
+            expect(_.last(result).prompt_id).to.equal(_promptId);
+            done();
+          });
+      });
+
+      it('should get a specific photo', function (done) {
+        request
+          .get('http://localhost:8000/api/photo/' + photo_id, function (err, response, body) {
             var result = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
             expect(_.last(result).prompt_id).to.equal(_promptId);

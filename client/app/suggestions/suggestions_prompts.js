@@ -1,53 +1,7 @@
-angular.module("mlp.prompt",['ngFx'])
+angular.module("mlp.suggestions_prompts",['ngFx'])
 
-.controller("promptController", function ($scope){
-  console.log("I am the prompt controller");
-  
-  $scope.prompt = {
-  	title : "",
-  	creator : "",
-  	duration : "",
-  	startTime : "",
-  	endTime : "",
-  	winner : "",
-  	photos : [{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		},
-  		{
-  	  		photo : "",
-  	  		user : ""
-  		}]
-  };
-
-  $scope.uploadImage = function() {
-
-  }
-
-  $scope.triggerGallery = function() {
-  	
-  }
-
+.controller("suggestionsPromptsController", function ($scope){
+  console.log("I am the suggestionsPromptsController controller");
 
 
 

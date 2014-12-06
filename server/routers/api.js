@@ -90,7 +90,11 @@ apiRouter.get('/photo/:id', function (req, res) {
     .query('where', 'id', '=', req.param.id)
     .fetchOne()
     .then(function (model) {
-      res.json(model.toJSON()).end();
+      if (!model) {
+        res.status(404).end();
+      } else {
+        res.json(model.toJSON()).end();
+      }
     });
 });
 

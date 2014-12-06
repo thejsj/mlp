@@ -1,8 +1,5 @@
-angular.module("mlp.suggestions_prompts",['ngFx'])
+angular.module("mlp.suggestions_prompts", ['ngFx'])
 
-.controller("suggestionsPromptsController", function ($scope){
-  console.log("I am the suggestionsPromptsController controller");
-
-
-
+.controller("suggestionsPromptsController", function ($scope, Auth) {
+  Auth.isAuth();
 });

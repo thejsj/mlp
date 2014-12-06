@@ -58,6 +58,8 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 /* PHOTO PAGE */
 .app-photo { position:absolute; top:100%; left:0; width:100%; height: 100%; transform: translateY(-100%);}
 .app-photo .app-photo-image { position:absolute; top:0; left:0; width:100%; height: 100%; }
+.app-photo .app-photo-back { position:absolute; top:10px; left:10px; width:60px; height: 60px; line-height:60px; text-align:center; font-size:12px; background-color:#333; color:#FFF; border-radius:50%; -webkit-transition: background-color .5s, color .5s;}
+.app-photo .app-photo-back:hover { background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s; }
 .app-photo .app-photo-overlay { position:absolute; top:0; left:0; width:100%; height:auto;}
 .app-photo .app-photo-overlay-bg { position:absolute; top:0; left:0; width:100%; min-height:430px; background-color:#333;opacity:0.8;}
 .app-photo .app-photo-overlay-hidden { top:350px !important;}

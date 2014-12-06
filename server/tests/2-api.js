@@ -126,4 +126,36 @@ describe('API', function () {
       });
     });
   });
+
+  describe('Comment', function () {
+    var _commentId;
+    
+    it('should create a comment', function (done) {
+      request
+        .post({
+          url: 'http://localhost:8000/api/comment',
+          form: {
+            user_id: 20,
+            prompt_id: 1,
+            content: 'I hope this works'
+          }
+        }, function (err, response, body) {
+          var json = JSON.parse(body);
+          _commentId = json.id;
+          expect(response.statusCode).to.equal(200);
+          expect(json.id).to.be.Integer;
+          done();
+        });
+    });
+
+    it('should get all comments', function (done) {
+      request
+        .get('http://localhost:8000/api/comment', function (err, response, body) {
+          var result = JSON.parse(body);
+          expect(response.statusCode).to.equal(200);
+          expect(_.last(result).id).to.equal(_commentId);
+          done();
+        });
+    });
+  });
 });

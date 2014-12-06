@@ -82,4 +82,5 @@ models.Comment = db.Model.extend({
     return this.hasOne(models.Prompt, 'prompt_id');
   },
 });
+
 module.exports = models;

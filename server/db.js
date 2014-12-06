@@ -64,14 +64,14 @@ db.schema.hasTable('photos').then(function (exists) {
   }
 });
 
-// Comment - one to one with user, belongsTo prompts
+// Comment - one to one with user, belongsTo prompts - needs a user and needs a photo
 db.schema.hasTable('comments').then(function (exists) {
   if (!exists) {
     db.schema.createTable('comments', function (photo) {
       photo.increments('id').primary();
-      photo.string('content', 255);
-      photo.integer('user_id').references('users.id');
-      photo.integer('prompt_id').references('prompts.id');
+      photo.string('content', 255).notNullable();
+      photo.integer('user_id').references('users.id').notNullable();
+      photo.integer('prompt_id').references('prompts.id').notNullable();
       photo.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);

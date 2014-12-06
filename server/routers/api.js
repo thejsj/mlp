@@ -9,6 +9,8 @@ var moment = require('moment');
 var path = require('path');
 var _ = require('lodash');
 
+
+//Prompt
 apiRouter.get('/prompt', function (req, res) {
   models.Prompt.fetchAll().then(function (collection) {
     res.json(collection.toJSON());
@@ -38,6 +40,37 @@ apiRouter.post('/prompt', function (req, res) {
 
 apiRouter.get('/prompt/:id', function (req, res) {
   collections.Prompts
+    .query('where', 'id', '=', req.param.id)
+    .fetchOne()
+    .then(function (model) {
+      res.json(model.toJSON());
+    });
+});
+
+//Comment
+apiRouter.get('/comment', function (req, res) {
+  models.Comment.fetchAll().then(function (collection) {
+    res.json(collection.toJSON());
+  })
+});
+
+apiRouter.post('/comment', function (req, res) {
+  var content = req.body.content || req.param('content');
+
+  if (!content) {
+    res.status(400).end();
+  }
+  var newComment = new models.Comment({
+      content: content
+    })
+    .save()
+    .then(function (model) {
+      res.json(model.toJSON());
+    })
+});
+
+apiRouter.get('/comment/:id', function (req, res) {
+  collections.Comments
     .query('where', 'id', '=', req.param.id)
     .fetchOne()
     .then(function (model) {

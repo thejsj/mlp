@@ -11,6 +11,17 @@ authRouter.post('/login', auth.authenticate('local'), function (req, res) {
   });
 });
 
+authRouter.get('/isloggedin', auth.checkIfLoggedIn, function (req, res) {
+  res.status(200).end();
+});
+
+authRouter.use('/signout', function (req, res) {
+  req.session.destroy(function (err) {
+    req.logout();
+    res.redirect('/');
+  });
+});
+
 authRouter.post('/signup', function (req, res) {
   var email = req.body.email || req.param('email');
   var password = req.body.password || req.param('password');

@@ -84,6 +84,8 @@ describe('API', function () {
     });
 
     describe('Photo', function () {
+      var photo_id;
+
       it('should create a photo in a post request', function (done) {
         var fileContents = fs.readFileSync(__dirname + '/Chicago.png');
         fs.writeFileSync(__dirname + '/_Chicago.png', fileContents);
@@ -108,6 +110,7 @@ describe('API', function () {
             var result = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
             expect(_.last(result).prompt_id).to.equal(_promptId);
+            photo_id = _.last(result).id;
             done();
           });
       });

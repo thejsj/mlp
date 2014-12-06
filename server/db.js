@@ -53,7 +53,6 @@ db.schema.hasTable('photos').then(function (exists) {
   if (!exists) {
     db.schema.createTable('photos', function (photo) {
       photo.increments('id').primary();
-      photo.integer('upvotes');
       photo.string('filename', 255); // Relative to /media/
       photo.integer('user_id').references('users.id');
       photo.integer('prompt_id').references('prompts.id');

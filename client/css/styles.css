@@ -48,7 +48,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-loading .app-spinner { position:absolute; top: 10px; left: 35px; }
 
 /* LOGIN PAGE */
-.app-login { position:absolute; top:50%; width:100%; height: 100px; transform: translateY(-100%); -webkit-transform: translateY(-100%);}
+.app-login { float:left; margin: 100px 0 0 0 0;width:100%; height: 100px; }
 .app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
 .app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
 .app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}
@@ -60,7 +60,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-photo .app-photo-image { position:absolute; top:0; left:0; width:100%; height: 100%; }
 .app-photo .app-photo-back { position:absolute; top:10px; left:10px; width:60px; height: 60px; line-height:60px; text-align:center; font-size:12px; background-color:#333; color:#FFF; border-radius:50%; -webkit-transition: background-color .5s, color .5s;}
 .app-photo .app-photo-back:hover { background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s; }
-.app-photo .app-photo-overlay { position:absolute; top:0; left:0; width:100%; height:auto;}
+.app-photo .app-photo-overlay { position:absolute; top:0; left:0; width:100%; height:auto; overflow:hidden;}
 .app-photo .app-photo-overlay-bg { position:absolute; top:0; left:0; width:100%; min-height:430px; background-color:#333;opacity:0.8;}
 .app-photo .app-photo-overlay-hidden { top:350px !important;}
 .app-photo .app-photo-scroll { margin:5px auto; width:10px; height:10px; background-color:#FFF; border-radius: 50%;}
@@ -136,5 +136,43 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
     transition:all .5s ease-in-out;
 }
 
-*/ 
+*/
 
+
+[ui-view].ng-leave {
+  -webkit-animation:slideOutLeft .25s ease-in-out;
+  animation:slideOutLeft .25s ease-in-out;
+}
+
+@-webkit-keyframes slideOutLeft {
+  from {-webkit-transform: translateX(0px); opacity:1 }
+  to   {-webkit-transform: translateX(-242px); opacity:0 }
+}
+@keyframes slideOutLeft {
+    from { 
+      transform: translateX(0px); opacity:1;
+        -moz-transform: translateX(-242px)); opacity:0 }
+    to   { 
+      transform: translateX(0px); opacity:1;
+      -moz-transform: translateX(-242px)); opacity:0}
+}
+
+
+
+[ui-view].ng-enter {
+  -webkit-animation:slideInRight .25s ease-in-out;
+  animation:slideInRight .25s ease-in-out;
+}
+
+@-webkit-keyframes slideInRight {
+  from {-webkit-transform: translateX(242px); opacity:0 }
+  to   {-webkit-transform: translateX(0px); opacity:1 }
+}
+@keyframes slideInRight {
+    from { 
+      transform: translateX(242px); opacity:0;
+        -moz-transform: translateX(0px); opacity:1 }
+    to   { 
+      transform: translateX(242px); opacity:0;
+      -moz-transform: translateX(0px); opacity:1}
+}

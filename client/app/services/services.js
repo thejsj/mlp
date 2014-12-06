@@ -1,5 +1,6 @@
 angular.module('mlp.services', [])
   .factory('Auth', function ($http, $location, $window, $state) {
+    // Auth
     // this is responsible for authenticating our user
     // by exchanging the user's username and password
     // for a JWT from the server

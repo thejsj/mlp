@@ -2,6 +2,8 @@ angular.module("mlp.photo",['ngFx'])
 
 .controller("photoController", function ($scope){
   console.log("I am the photo controller");
+  
+
 
   var dummyPhoto = {
     url: "img/test-photo.jpg",

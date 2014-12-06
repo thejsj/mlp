@@ -1,7 +1,7 @@
 angular.module('mlp.services', [])
 
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http) {
   // this is responsible for authenticating our user
   // by exchanging the user's username and password
   // for a JWT from the server
@@ -45,5 +45,35 @@ angular.module('mlp.services', [])
     signOut: signOut
   };
 
-});
+})
+
+.factory('PromptFactory', function ($http){
+
+  var getAllPromptsData = function(dest) {
+   console.log("getting all prompts data from server")
+    return $http.get('/api/prompt')
+    .then(function (res) {
+      console.log(res.body);
+      dest = res.body;
+    });
+  };
+
+  //NOTE! currently hard-coded to get the first prompt on server no matter what.
+  var getPromptData = function(id,dest) {
+   console.log("getting photo data from server")
+    return $http.get('/api/prompt')
+    .then(function (res) {
+      console.log(res.data);
+      dest = res.data[0];
+      console.log(dest);
+    });
+  };
+
+  return {
+    getAllPromptsData: getAllPromptsData,
+    getPromptData: getPromptData
+  };
+
+})
+
 

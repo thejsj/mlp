@@ -54,8 +54,14 @@ angular.module("mlp.prompt",['ngFx'])
   }
 
   $scope.prompt = dummyPrompt;
-  PromptFactory.getPromptData(dummyId,$scope.prompt);
+
+  //this PromptFactory line disabled due to callback/promise problems
+  //PromptFactory.getPromptData(dummyId,$scope.prompt);
  
+  //alt version of the function is hardcoded here until more elegant solutions are available
+  $http.get('api/prompt').success(function(data) {
+    $scope.prompt = data[0];
+  });
 
   $scope.uploadImage = function() {
 

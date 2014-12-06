@@ -3,12 +3,17 @@
   <div class="app-prompt-challenge">
     {{ prompt.title }}
   </div>
-  <input type="file" class="app-prompt-upload">Upload</a>
+  <form ng-click="postImage()">
+    <input type="file" ng-model="file" name="image" value="Upload"/>
+    <input type="submit" class="app-prompt-upload" value="Submit"/>
+  </form>
   <div class="app-prompt-box">Created by <span>{{ prompt.email }}</span></div>
   <div class="app-prompt-box"><span>{{ prompt.endTime }}</span> minutes left</div>
   <div class="app-prompt-box">Winner: <span>{{ prompt.winner }}</span></div>
   <div class="app-prompt-box red">Photos!</div>
   <!-- <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
     <a ui-sref="photo({ id: id })"><img src="img/{{ photo.filename }}"/></a> -->
+  <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
+    <a ui-sref="photo({ id: id })"><img src=""/></a>
   </div>
 </div>

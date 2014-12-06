@@ -12,37 +12,46 @@ angular.module("mlp.prompt",['ngFx'])
     endTime : "",
     winner : "Not Announced",
     photos : [{
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       },
       {
-          photo : "",
+          filename : "test-photo.jpg",
           user : ""
       }]
   };
 
 
-  //getData();
+  $scope.postImage = function() {
+  	console.log("received image in function");
+  	var file = document.getElementById('file').files[0],
+	  reader = new FileReader();
+	  reader.onloadend = function(e){
+	    var data = e.target.result;
+	    // send via $http
+	  }
+	  reader.readAsBinaryString(file);
+  }
 
   $scope.prompt = dummyPrompt;
   PromptFactory.getPromptData(dummyId,$scope.prompt);

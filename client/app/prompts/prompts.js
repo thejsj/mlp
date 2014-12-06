@@ -36,6 +36,8 @@ angular.module("mlp.prompts",['ngFx'])
   }
 
   $scope.prompts = dummyPrompts;
+
   PromptFactory.getAllPromptsData($scope.realPrompts)
+
 
 });

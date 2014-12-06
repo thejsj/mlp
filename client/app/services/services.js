@@ -52,7 +52,7 @@ angular.module('mlp.services', [])
   var getAllPromptsData = function(dest) {
    console.log("getting all prompts data from server")
     return $http.get('/api/prompt')
-    .then(function (res) {
+    .success(function (res) {
       console.log(res.body);
       dest = res.body;
     });

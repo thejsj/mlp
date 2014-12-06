@@ -6,7 +6,7 @@ angular.module("mlp.loading",['ui.router'])
   // Representation of a loading screen
   $timeout(function () {
     $state.go('logIn');
-  }, 100000);
+  }, 500);
 
   // Realistically: Needs to check if there's a session
   	// if session === true && authenticated

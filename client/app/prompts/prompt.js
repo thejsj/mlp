@@ -48,7 +48,7 @@ angular.module("mlp.prompt",['ngFx'])
 	  reader = new FileReader();
 	  reader.onloadend = function(e){
 	    var data = e.target.result;
-	    //send you binary data via $http or $resource or do anything else with it
+	    // send via $http
 	  }
 	  reader.readAsBinaryString(file);
   }

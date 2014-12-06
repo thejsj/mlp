@@ -44,12 +44,13 @@ angular.module("mlp.prompt", ['ngFx'])
     reader.readAsBinaryString(file);
   };
   $scope.prompt = dummyPrompt;
-  //this PromptFactory line disabled due to callback/promise problems
-  //PromptFactory.getPromptData(dummyId,$scope.prompt);
-  //alt version of the function is hardcoded here until more elegant solutions are available
-  $http.get('api/prompt').success(function (data) {
-    $scope.prompt = data[0];
-  });
+
+  
+  PromptFactory.getPromptData(dummyId)
+    .then(function (data) {
+      $scope.prompt = data;
+    })
+
   $scope.uploadImage = function () {
 
   };

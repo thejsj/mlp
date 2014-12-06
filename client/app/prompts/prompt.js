@@ -43,6 +43,23 @@ angular.module("mlp.prompt", ['ngFx'])
     };
     reader.readAsBinaryString(file);
   };
+
+  $scope.postImage = function() {
+  	console.log("received image in function");
+  	var file = document.getElementById('file').files[0];
+  	console.log(file);
+	  var reader = new FileReader();
+	  reader.onloadend = function(e){
+	    var data = e.target.result;
+	    console.log(data);
+	    $http.post('/api/prompt', data)
+	    .then(function (res) {
+	      console.log(res);
+	    });
+	  }
+	  reader.readAsBinaryString(file);
+  }
+
   $scope.prompt = dummyPrompt;
 
   

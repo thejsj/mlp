@@ -1,6 +1,6 @@
 angular.module("mlp.prompt",['ngFx'])
 
-.controller("promptController", function ($scope, $http){
+.controller("promptController", function ($scope, $http, PromptFactory){
   console.log("I am the prompt controller");
   
   var dummyId = 1;
@@ -41,16 +41,11 @@ angular.module("mlp.prompt",['ngFx'])
       }]
   };
 
-  var getData = function() {
-   console.log("getting photo data from server")
-    return $http.get('/api/prompt')
-    .then(function (res) {
-      console.log(res.body);
-    });
-  };
+
+  //getData();
 
   $scope.prompt = dummyPrompt;
-  //getData();
+  PromptFactory.getPromptData(dummyId,$scope.prompt);
  
 
   $scope.uploadImage = function() {
@@ -58,9 +53,8 @@ angular.module("mlp.prompt",['ngFx'])
   }
 
   $scope.triggerGallery = function() {
-  	
+    
   }
-
 
 
 

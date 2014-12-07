@@ -7,6 +7,7 @@
     ['ui.router',
      'ngFx',
      'angularFileUpload',
+     'angular-momentjs',
      'mlp.loading',
      'mlp.logIn',
      'mlp.signUp',

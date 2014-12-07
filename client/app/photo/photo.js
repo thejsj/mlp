@@ -8,9 +8,6 @@ angular.module("mlp.photo", ['ngFx'])
     };
     $scope.photo = dummyPhoto;
 
-    $scope.counter = 0;
-
-
   })
 
 

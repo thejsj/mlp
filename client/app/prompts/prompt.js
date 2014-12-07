@@ -61,11 +61,6 @@ angular.module("mlp.prompt", ['ngFx'])
   //  reader.readAsBinaryString(file);
   // }
 
-
-  //TODO: take out dummyID here and instead make it fetch the proper prompt
-  //and its data.  question: how does it know which prompt_id to request?
-
-  $scope.prompt = dummyPrompt;
   //TODO: take out dummyID here and instead make it fetch the proper prompt
   //and its data.  question: how does it know which prompt_id to request?
   PromptFactory.getPromptData(dummyId)

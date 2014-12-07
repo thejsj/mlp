@@ -4,8 +4,7 @@
     {{ prompt.title }}
   </div>
   <form >
-    <input type="file" ng-file-select="onFileSelect($files)" id="file" name="image" value="Upload"/>
-    <input type="submit" class="app-prompt-upload" value="Submit"/>
+    <input type="submit" ng-file-select="onFileSelect($files)" class="app-prompt-upload" value="Upload"/>
   </form>
   <div class="app-prompt-box">Created by <span>{{ prompt.email }}</span></div>
   <div class="app-prompt-box"><span>{{ prompt.endTime }}</span> minutes left</div>
@@ -14,7 +13,5 @@
   <div class="app-prompt-box red">Photos!</div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
     <a ui-sref="photo({ id: id })"><img src="media/{{ photo.filename }}"/></a>
-  <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
-    <a ui-sref="photo({ id: id })"><img src=""/></a>
   </div>
 </div>

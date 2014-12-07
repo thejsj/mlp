@@ -66,7 +66,9 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-photo .app-photo-scroll { margin:5px auto; width:10px; height:10px; background-color:#FFF; border-radius: 50%; cursor:pointer;}
 .app-photo .app-photo-scroll:hover {background-color:#F26964}
 .app-photo .app-photo-vote-box { margin:10px auto; width:140px; height:30px; }
-.app-photo .app-photo-choose-winner { float:left; margin:0 4px 0 4px; width:120px; height:30px; border-radius:5px; background-color:#FFF;text-align:center; line-height:30px; font-size:13px;}
+.app-photo .app-photo-choose-winner { float:left; margin:0 4px 0 4px; width:120px; height:30px; border-radius:5px; background-color:#FFF;color:#333;text-align:center; line-height:30px; font-size:13px;cursor:pointer;-webkit-transition: box-shadow .5s;}
+.app-photo .app-photo-choose-winner:hover {background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s;}
+.app-photo .app-photo-choose-winner span {font-weight:700; }
 .app-photo .app-photo-user { margin-bottom:10px; color:#FFF; text-align:center; font-size:14px; font-weight:100;}
 .app-photo .app-photo-user span { font-weight:600; }
 .app-photo .app-comment-bubble-left, .app-photo .app-comment-bubble-right{ position:relative; padding:10px; min-height: 18px;color:#FFF; border-radius: 5px;background-color:#F26964; font-size:14px;}

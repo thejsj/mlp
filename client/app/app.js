@@ -6,6 +6,7 @@
   var app = angular.module('mlp', 
     ['ui.router',
      'ngFx',
+     'angularFileUpload',
      'mlp.loading',
      'mlp.logIn',
      'mlp.signUp',

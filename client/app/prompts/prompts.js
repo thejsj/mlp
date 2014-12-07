@@ -1,6 +1,6 @@
 angular.module("mlp.prompts", ['ngFx'])
 
-.controller("promptsController", function ($scope, $http, PromptFactory, Auth) {
+.controller("promptsController", function ($scope, $http, PromptFactory, Auth, $moment) {
   Auth.isAuth();
   var dummyPrompts = [{
     id: 1,
@@ -34,6 +34,9 @@ angular.module("mlp.prompts", ['ngFx'])
   };
   $scope.prompts = dummyPrompts;
   $http.get('api/prompt').success(function (data) {
+    angular.forEach(data, function(prompt){
+      prompt.votingEndTime = $moment(prompt.votingEndTime, 'mm').fromNow();
+    });
     $scope.prompts = data;
   });
   //PromptFactory.getAllPromptsData($scope.realPrompts)

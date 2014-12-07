@@ -18,6 +18,7 @@
   "dependencies": {
     "ngFx": "~1.0.5",
     "angular-ui-router": "~0.2.13",
-    "moment": "~2.8.4"
+    "moment": "~2.8.4",
+    "angular-momentjs": "~0.1.8"
   }
 }

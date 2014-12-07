@@ -1,6 +1,6 @@
 angular.module("mlp.prompt", ['ngFx'])
 
-.controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload) {
+.controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload, $moment) {
   Auth.isAuth();
   var dummyId = 1;
 
@@ -65,7 +65,7 @@ angular.module("mlp.prompt", ['ngFx'])
   //and its data.  question: how does it know which prompt_id to request?
   PromptFactory.getPromptData(dummyId)
     .then(function (data) {
-      console.log(data);
+      data.votingEndTime = $moment(data.votingEndTime, 'mm').fromNow();
       $scope.prompt = data;
     });
 

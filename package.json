@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/silver-octopus-labs/mlp",
   "dependencies": {
+    "angular-file-upload-shim": "^1.6.4",
     "angular-ui-router": "^0.2.11",
     "bcrypt": "^0.8.0",
     "bcrypt-nodejs": "0.0.3",

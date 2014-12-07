@@ -91,7 +91,8 @@ angular.module("mlp.prompt", ['ngFx'])
 
   $scope.prompt = dummyPrompt;
 
-  
+  //TODO: take out dummyID here and instead make it fetch the proper prompt
+  //and its data.  question: how does it know which prompt_id to request?  
   PromptFactory.getPromptData(dummyId)
     .then(function (data) {
       console.log(data);

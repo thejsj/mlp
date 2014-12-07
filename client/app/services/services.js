@@ -48,6 +48,7 @@ angular.module('mlp.services', [])
       signOut: signOut
     };
   })
+
   .factory('PromptFactory', function ($http) {
     var getAllPromptsData = function (dest) {
       console.log("getting all prompts data from server");
@@ -57,17 +58,31 @@ angular.module('mlp.services', [])
           dest = res.body;
         });
     };
+
     //NOTE! currently hard-coded to get the first prompt on server no matter what.
+    //TODO: make this serve specific prompts.
+    //TODO: make prompt.js use this function to render itself.
     var getPromptData = function (id) {
-      console.log("getting photo data from server");
+      console.log("getting prompt data from server");
       return $http.get('/api/prompt')
         .then(function (res) {
           console.log(res.data);
           return res.data[0];
         });
     };
+
+    var setPromptWinner = function(promptId, photoId){
+      console.log("setting prompt winner");
+      $http.post('/api/prompt/setWinner',{
+          prompt_id: prompt_id,
+          password: photo_id
+      });
+    };
+
     return {
       getAllPromptsData: getAllPromptsData,
       getPromptData: getPromptData
     };
+
+
   });

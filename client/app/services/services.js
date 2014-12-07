@@ -61,7 +61,7 @@ angular.module('mlp.services', [])
 
     //NOTE! currently hard-coded to get the first prompt on server no matter what.
     var getPromptData = function (id) {
-      console.log("getting photo data from server");
+      console.log("getting prompt data from server");
       return $http.get('/api/prompt')
         .then(function (res) {
           console.log(res.data);
@@ -71,11 +71,12 @@ angular.module('mlp.services', [])
 
     var setPromptWinner = function(promptId, photoId){
       console.log("setting prompt winner");
-      $http.post('/api/prompt/setWinner'){
+      $http.post('/api/prompt/setWinner',{
           prompt_id: prompt_id,
           password: photo_id
-      }
-    }
+      });
+    };
+
     return {
       getAllPromptsData: getAllPromptsData,
       getPromptData: getPromptData

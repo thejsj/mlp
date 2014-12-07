@@ -1,12 +1,16 @@
 angular.module("mlp.photo", ['ngFx'])
 
-.controller("photoController", function ($scope, Auth) {
+.controller("photoController", function ($scope, Auth, PromptFactory) {
     Auth.isAuth();
     var dummyPhoto = {
       url: "img/test-photo.jpg",
       author: "Loring"
     };
     $scope.photo = dummyPhoto;
+
+    $scope.counter = 0;
+
+
   })
 
 

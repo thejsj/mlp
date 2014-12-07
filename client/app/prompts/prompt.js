@@ -3,36 +3,6 @@ angular.module("mlp.prompt", ['ngFx'])
 .controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload) {
   Auth.isAuth();
   var dummyId = 1;
-  var dummyPrompt = {
-    title: "A dog that looks like it's smiling but really isn't.",
-    user: "Loring",
-    duration: "51",
-    startTime: "",
-    endTime: "",
-    winner: "Not Announced",
-    photos: [{
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }, {
-      filename: "test-photo.jpg",
-      user: ""
-    }]
-  };
 
   $scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
@@ -89,10 +59,10 @@ angular.module("mlp.prompt", ['ngFx'])
 	 //  reader.readAsBinaryString(file);
   // }
 
-  $scope.prompt = dummyPrompt;
 
   //TODO: take out dummyID here and instead make it fetch the proper prompt
   //and its data.  question: how does it know which prompt_id to request?  
+
   PromptFactory.getPromptData(dummyId)
     .then(function (data) {
       console.log(data);

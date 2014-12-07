@@ -63,11 +63,11 @@ angular.module('mlp.services', [])
     //TODO: make this serve specific prompts.
     //TODO: make prompt.js use this function to render itself.
     var getPromptData = function (id) {
-      console.log("getting prompt data from server");
-      return $http.get('/api/prompt')
+      console.log("getting photo data from server");
+      return $http.get('/api/prompt/1')
         .then(function (res) {
           console.log(res.data);
-          return res.data[0];
+          return res.data;
         });
     };
 

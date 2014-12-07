@@ -71,13 +71,13 @@ describe('API', function () {
           });
       });
 
-      it('should get all prompts', function (done) {
+      it('should get a single prompt', function (done) {
         request
-          .get('http://localhost:8000/api/prompt', function (err, response, body) {
+          .get('http://localhost:8000/api/prompt/' + prompt_id, function (err, response, body) {
             var json = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
             expect(json).to.be.a.Array;
-            expect(_.last(json).id).to.equal(prompt_id);
+            expect(json.id).to.equal(prompt_id);
             done();
           });
       });
@@ -129,7 +129,7 @@ describe('API', function () {
 
   describe('Comment', function () {
     var _commentId;
-    
+
     it('should create a comment', function (done) {
       request
         .post({

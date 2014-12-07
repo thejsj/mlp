@@ -40,10 +40,17 @@ apiRouter.post('/prompt', function (req, res) {
 
 apiRouter.get('/prompt/:id', function (req, res) {
   collections.Prompts
-    .query('where', 'id', '=', req.param.id)
-    .fetchOne()
+    .query('where', 'id', '=', req.param('id'))
+    .fetchOne({
+      withRelated: ['photos']
+    })
     .then(function (model) {
+      if (!model) res.status(404).end();
+      // Look for images associates with this id
       res.json(model.toJSON());
+      return true;
+    }).catch(function (err) {
+      res.status(404).end();
     });
 });
 
@@ -51,7 +58,7 @@ apiRouter.get('/prompt/:id', function (req, res) {
 apiRouter.get('/comment', function (req, res) {
   models.Comment.fetchAll().then(function (collection) {
     res.json(collection.toJSON());
-  })
+  });
 });
 
 apiRouter.post('/comment', function (req, res) {
@@ -66,7 +73,7 @@ apiRouter.post('/comment', function (req, res) {
     .save()
     .then(function (model) {
       res.json(model.toJSON());
-    })
+    });
 });
 
 apiRouter.get('/comment/:id', function (req, res) {

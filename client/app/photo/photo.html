@@ -1,7 +1,7 @@
 <div class="app-photo" ng-controller="commentController">
   <img class="app-photo-image" ng-src="{{photo.url}}"/>
   <a ui-sref="prompt({ id: id })" class="app-photo-back">Back</a>
-  <div class="app-photo-overlay-bg" ng-class="{'app-photo-overlay-hidden': hideOverlay}"></div>
+<!--   <div class="app-photo-overlay-bg" ng-class="{'app-photo-overlay-hidden': hideOverlay}"></div> -->
   <div class="app-photo-overlay" ng-class="{'app-photo-overlay-hidden': hideOverlay}">
     <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>
     <div class="app-photo-vote-box">

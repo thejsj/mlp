@@ -8,7 +8,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 
 #main { position:relative; margin:0 auto; width:400px; }
 #iphone { width:100%; height:100%; }
-#iphone-screen{ position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#FFF; overflow: scroll;}
+#iphone-screen{ position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#FFF; overflow:scroll;}
 
 /************ APP - MLPhoto ************/
 #app-wrapper { position:relative; width:100%; height: 100%; }
@@ -56,25 +56,25 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-login input[type=submit]:hover {background-color: #333; color:#FFF; -webkit-transition: background-color .5s, color .5s;}
 
 /* PHOTO PAGE */
-.app-photo { position:absolute; top:100%; left:0; width:100%; height: 100%; transform: translateY(-100%);}
-.app-photo .app-photo-image { position:absolute; top:0; left:0; width:100%; height: 100%; }
+.app-photo { position:absolute; top:100%; left:0; width:100%; height:430px; transform: translateY(-100%); overflow:hidden;}
+.app-photo .app-photo-image { position:absolute; top:0; left:0; width:242px; height: 430px; }
 .app-photo .app-photo-back { position:absolute; top:10px; left:10px; width:60px; height: 60px; line-height:60px; text-align:center; font-size:12px; background-color:#333; color:#FFF; border-radius:50%; -webkit-transition: background-color .5s, color .5s;}
 .app-photo .app-photo-back:hover { background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s; }
-.app-photo .app-photo-overlay { position:absolute; top:0; left:0; width:100%; height:auto; overflow:hidden;}
+.app-photo .app-photo-overlay { position:absolute; top:0; left:0; padding:0 0 20px 0; width:100%; height:430px; background-color:#333; overflow:scroll;}
 .app-photo .app-photo-overlay-bg { position:absolute; top:0; left:0; width:100%; min-height:430px; background-color:#333;opacity:0.8;}
-.app-photo .app-photo-overlay-hidden { top:350px !important;}
+.app-photo .app-photo-overlay-hidden { top:350px !important; overflow:hidden !important;}
 .app-photo .app-photo-scroll { margin:5px auto; width:10px; height:10px; background-color:#FFF; border-radius: 50%; cursor:pointer;}
 .app-photo .app-photo-scroll:hover {background-color:#F26964}
 .app-photo .app-photo-vote-box { margin:10px auto; width:140px; height:30px; }
-.app-photo .app-photo-choose-winner { float:left; margin:0 4px 0 4px; width:120px; height:30px; border-radius:5px; background-color:#FFF;color:#333;text-align:center; line-height:30px; font-size:13px;cursor:pointer;-webkit-transition: box-shadow .5s;}
+.app-photo .app-photo-choose-winner { float:left; margin:0 4px 20px 4px; width:120px; height:30px; border-radius:5px; background-color:#FFF;color:#333;text-align:center; line-height:30px; font-size:13px;cursor:pointer;-webkit-transition: box-shadow .5s;}
 .app-photo .app-photo-choose-winner:hover {background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s;}
 .app-photo .app-photo-choose-winner span {font-weight:700; }
 .app-photo .app-photo-user { margin-bottom:10px; color:#FFF; text-align:center; font-size:14px; font-weight:100;}
 .app-photo .app-photo-user span { font-weight:600; }
 .app-photo .app-comment-bubble-left, .app-photo .app-comment-bubble-right{ position:relative; padding:10px; min-height: 18px;color:#FFF; border-radius: 5px;background-color:#F26964; font-size:14px;}
 .app-photo .app-comment-bubble-left span, .app-photo .app-comment-bubble-right span{ color:#333; font-weight:600;}
-.app-photo .app-comment-bubble-left { float:left; margin:20px 0 0 15px; }
-.app-photo .app-comment-bubble-right{ float:right; margin:20px 15px 0 0; }
+.app-photo .app-comment-bubble-left { float:left; margin:20px 15px 0 15px; }
+.app-photo .app-comment-bubble-right{ float:right; margin:20px 15px 0 15px; }
 .app-photo .app-comment-bubble-left:after, .app-photo .app-comment-bubble-right:after {content: "";position: absolute;top: calc(50% - 8px);border-top: 8px solid transparent; border-bottom: 8px solid transparent;}
 .app-photo .app-comment-bubble-left:after { right:100%; border-right:8px solid #F26964; }
 .app-photo .app-comment-bubble-right:after { left:100%; border-left:8px solid #F26964; }

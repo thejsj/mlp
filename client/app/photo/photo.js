@@ -28,6 +28,15 @@ angular.module("mlp.photo", ['ngFx'])
       text: "I'm leaving this group....more like Silver Octo-loser."
     }, {
       author: "Loring",
+      text: "Time to have fun."
+    }, {
+      author: "Loring",
+      text: "Ok bye"
+    },{
+      author: "Loring",
+      text: "Time to have fun."
+    }, {
+      author: "Loring",
       text: "Ok bye"
     }];
     $scope.hideOverlay = true;

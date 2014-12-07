@@ -12,6 +12,7 @@ mediaRouter.get('/:id', function (req, res) {
     .query('where', 'id', '=', req.param('id'))
     .fetchOne()
     .then(function (model) {
+      if (!model) return res.status(404).end();
       var fileName = model.get('filename');
       var filePath = path.join(mediaPath + '/' + fileName);
       res.sendFile(filePath);

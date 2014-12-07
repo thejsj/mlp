@@ -11,8 +11,14 @@ authRouter.post('/login', auth.authenticate('local'), function (req, res) {
   });
 });
 
-authRouter.get('/isloggedin', auth.checkIfLoggedIn, function (req, res) {
-  res.status(200).end();
+authRouter.get('/isloggedin', function (req, res) {
+  var user_id = null;
+  if (req.user && req.user.get('id')) {
+    user_id = req.user.get('id');
+  }
+  res.json({
+    user_id: user_id
+  });
 });
 
 authRouter.use('/signout', function (req, res) {

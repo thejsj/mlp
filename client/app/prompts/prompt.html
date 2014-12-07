@@ -4,7 +4,7 @@
     {{ prompt.title }}
   </div>
   <form ng-click="postImage()">
-    <input type="file" ng-model="file" name="image" value="Upload"/>
+    <input type="file" id="file" name="image" value="Upload"/>
     <input type="submit" class="app-prompt-upload" value="Submit"/>
   </form>
   <div class="app-prompt-box">Created by <span>{{ prompt.email }}</span></div>

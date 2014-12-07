@@ -16,9 +16,12 @@ app.use(cookieParser());
 // Fix this line when we get our first million
 // http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: false,
+  limit: '10mb'
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: '10mb'
+}));
 app.use(session({
   secret: 'keyboard cat',
   resave: false,

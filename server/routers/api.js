@@ -92,28 +92,39 @@ apiRouter.post('/photo', function (req, res) {
     // Write File To File System
     var userId, promptId, filePath;
     if (typeof fields === 'object') {
+      console.log('fields', fields);
       userId = fields.user_id;
       promptId = fields.prompt_id;
-      filePath = files.image[0].path;
+      filePath = files.image[0].path || null;
     } else {
+      console.log('req.body', req.body);
       userId = req.body.user_id;
       promptId = req.body.prompt_id;
-      filePath = req.body['image[path]'];
+      filePath = req.body['image[path]'] || null;
+      imageString = req.body.image_string || null;
     }
-    var fileExtension = _.last(filePath.split('.'));
-    var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
-    var newPath = path.join(__dirname, '/../media/', newImageFileName);
-    fs.rename(filePath, newPath, function (err) {
-      var photo = new models.Photo({
-          user_id: userId,
-          prompt_id: promptId,
-          filename: newImageFileName // Relative to /media/
-        })
-        .save()
-        .then(function (photo) {
-          res.json(photo.toJSON());
-        });
-    });
+    console.log('filePath: ', filePath);
+    console.log('filePath: ', filePath);
+
+    if (filePath !== null) {
+      var fileExtension = _.last(filePath.split('.'));
+      var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
+      var newPath = path.join(__dirname, '/../media/', newImageFileName);
+      fs.rename(filePath, newPath, function (err) {
+        var photo = new models.Photo({
+            user_id: userId,
+            prompt_id: promptId,
+            filename: newImageFileName // Relative to /media/
+          })
+          .save()
+          .then(function (photo) {
+            res.json(photo.toJSON());
+          });
+      });
+    } else if (imageString !== null) {
+      
+    }
+
   });
 });
 

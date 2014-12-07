@@ -94,7 +94,14 @@ apiRouter.post('/photo', function (req, res) {
     if (typeof fields === 'object') {
       userId = fields.user_id;
       promptId = fields.prompt_id;
-      filePath = files.image[0].path || null;
+      if (files.file) {
+        filePath = files.file[0].path || null;
+      } else if (files.image) {
+        filePath = files.image[0].path || null;
+      } else {
+        console.log('files:', files);
+        res.status(404).end();
+      }
     } else {
       userId = req.body.user_id;
       promptId = req.body.prompt_id;

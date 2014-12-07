@@ -60,6 +60,8 @@ angular.module('mlp.services', [])
     };
 
     //NOTE! currently hard-coded to get the first prompt on server no matter what.
+    //TODO: make this serve specific prompts.
+    //TODO: make prompt.js use this function to render itself.
     var getPromptData = function (id) {
       console.log("getting prompt data from server");
       return $http.get('/api/prompt')

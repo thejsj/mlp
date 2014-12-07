@@ -38,6 +38,7 @@ db.schema.hasTable('prompts').then(function (exists) {
       prompt.increments('id').primary();
       prompt.string('title', 255);
       prompt.integer('winner_id').references('photo.id');
+      prompt.integer('user_id').references('users.id')
       prompt.timestamp('startTime');
       prompt.timestamp('endTime');
       prompt.timestamp('votingEndTime');

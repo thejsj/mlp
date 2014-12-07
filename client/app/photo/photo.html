@@ -6,8 +6,12 @@
     <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>
     <div class="app-photo-user">Image by: <span>{{photo.author}}<span></div>  
     <div class="app-photo-vote-box">
-      <div class="app-photo-vote-up">up </div> 
-      <div class="app-photo-vote-down">down</div> {{hideOverlay}}
+      <!-- 
+        Only render the voting button if session user_id = prompt user_id.
+        make the user button a form.  on submit:
+        post request to api/something/something to set prompt winner_id to this photos user_id. 
+      -->
+      <div class="app-photo-vote-up">Select As Winner</div> 
       <div ng-class-odd="'app-comment-bubble-left'" ng-class-even="'app-comment-bubble-right'" ng-repeat="comment in comments">
         <span>{{comment.author}}:</span> {{comment.text}}
       </div>

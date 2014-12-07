@@ -92,20 +92,15 @@ apiRouter.post('/photo', function (req, res) {
     // Write File To File System
     var userId, promptId, filePath;
     if (typeof fields === 'object') {
-      console.log('fields', fields);
       userId = fields.user_id;
       promptId = fields.prompt_id;
       filePath = files.image[0].path || null;
     } else {
-      console.log('req.body', req.body);
       userId = req.body.user_id;
       promptId = req.body.prompt_id;
       filePath = req.body['image[path]'] || null;
       imageString = req.body.image_string || null;
     }
-    console.log('filePath: ', filePath);
-    console.log('filePath: ', filePath);
-
     if (filePath !== null) {
       var fileExtension = _.last(filePath.split('.'));
       var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
@@ -121,8 +116,8 @@ apiRouter.post('/photo', function (req, res) {
             res.json(photo.toJSON());
           });
       });
-    } else if (imageString !== null) {
-      
+    } else {
+      res.status(400).end();
     }
 
   });
@@ -138,7 +133,7 @@ apiRouter.get('/photo', function (req, res) {
 
 apiRouter.get('/photo/:id', function (req, res) {
   collections.Photos // Doesn't seem to be working
-    .query('where', 'id', '=', req.param.id)
+    .query('where', 'id', '=', req.param('id'))
     .fetchOne()
     .then(function (model) {
       if (!model) {

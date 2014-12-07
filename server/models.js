@@ -57,12 +57,6 @@ models.Photo = db.Model.extend({
   user: function () {
     return this.hasOne(models.User, 'user_id');
   },
-  defaults: {
-    upvotes: 0
-  },
-  upvote: function () {
-    this.upvotes++;
-  },
   winner: function () {
     return this.belongsTo(models.Prompt);
   },

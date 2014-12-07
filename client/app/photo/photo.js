@@ -8,6 +8,8 @@ angular.module("mlp.photo", ['ngFx'])
     };
     $scope.photo = dummyPhoto;
   })
+
+
   .controller("commentController", function ($scope) {
     console.log("I am the comment controller");
 

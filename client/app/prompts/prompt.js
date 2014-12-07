@@ -94,6 +94,7 @@ angular.module("mlp.prompt", ['ngFx'])
   
   PromptFactory.getPromptData(dummyId)
     .then(function (data) {
+      console.log(data);
       $scope.prompt = data;
     })
 

@@ -38,6 +38,9 @@ server/media/*.gif
 node_modules/*
 client/lib*
 
+# Compiled Files
+client/css/*
+client/css/**/*
 
 # Misc
 .DS_store

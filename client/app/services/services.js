@@ -96,10 +96,15 @@ angular.module('mlp.services', [])
     };
     return photoFactory;
   })
-  .directive('appHeader', function () {
-    console.log('APP HEADER');
+  .directive('appHeader', function() {
     return {
       restrict: 'E',
       templateUrl: 'app/templates/app-header.html'
+    };
+  })
+  .directive('appPromptBox', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/templates/app-prompt-box.html'
     };
   });

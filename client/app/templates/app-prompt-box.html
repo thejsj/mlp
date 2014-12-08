@@ -1,0 +1,12 @@
+<a ui-sref="prompt({ id: prompt.id })" class="app-prompt-box left-align hover-red paragraph" ng-class="{'last':$last}">
+  <div class="app-box-text">"{{ limitChar(prompt.title,30) }}"</div>
+  <div ng-if='!prompt.winner_id' class="app-box-duration">
+    <span am-time-ago="prompt.votingEndTime"></span>
+  </div>
+  <div ng-if='prompt.winner_id' class="app-box-duration">
+    <span>Winner Selected!</span>
+  </div>
+  <div class="app-box-arrow">
+    <img src="img/next.png" />
+  </div>
+</a>

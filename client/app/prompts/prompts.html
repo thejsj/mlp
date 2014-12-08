@@ -1,20 +1,26 @@
-<div class="app-allprompts">
+<div class="app-allprompts" style="overflow:scroll">
   <app-header></app-header>
-  <div class="app-title">All Prompts</div>
-  <div ng-repeat="prompt in prompts">
-    <a ui-sref="prompt({ id: prompt.id })" class="app-prompt-box left-align hover-red paragraph" ng-class="{'last':$last}">
-      <div class="app-box-text">"{{ limitChar(prompt.title,20) }}"</div>
-      <div ng-if='!prompt.winner_id' class="app-box-duration">
-        <span am-time-ago="prompt.votingEndTime"></span>
-      </div>
-      <div ng-if='prompt.winner_id' class="app-box-duration">
-        <span>Winner Selected!</span>
-      </div>
-      <div class="app-box-arrow">
-        <img src="img/next.png" />
-      </div>
-    </a>
-  </div>
+  <div class="app-title">Open Rounds</div>
+    <div ng-if="status.open.length === 0" class="app-prompt-box left-align last" >
+      <div class="app-box-text">No rounds open.</div>
+    </div>  
+    <div ng-if="status.open.length > 0" ng-repeat="prompt in status.open">
+      <app-prompt-box></app-prompt-box>
+    </div>
+  <div class="app-title">Pending Rounds</div>
+    <div ng-if="status.pending.length === 0" class="app-prompt-box left-align last">
+      <div class="app-box-text">No rounds pending.</div>
+    </div>  
+    <div ng-if="status.pending.length > 0" ng-repeat="prompt in status.pending">
+      <app-prompt-box></app-prompt-box>
+    </div>
+  <div class="app-title">Closed Rounds</div>
+    <div ng-if="status.closed.length === 0" class="app-prompt-box left-align last">
+      <div class="app-box-text">No rounds closed.</div>
+    </div>  
+    <div ng-repeat="prompt in status.closed">
+      <app-prompt-box></app-prompt-box>
+    </div>
   <a ui-sref="createPrompt" class="app-button app-grey-out">Create Prompt</a>
   <br/>
 <!--   <a href='#' ng-click="signOut()">Sign Out</a> -->

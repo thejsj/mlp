@@ -27,7 +27,14 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 }
 #iphone-screen{
   @include breakpoint($mobile_breakpoint) {
-    position:absolute; top:102px; left:78px; width:242px; height:430px; background-color:#FFF; overflow:scroll;
+    position:absolute;
+    top:102px;
+    left:78px;
+    width:242px;
+    height:430px;
+    background-color:#FFF;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
@@ -48,6 +55,8 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-header-back img {-ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg); }
 .app-header-sandwich {
   // position:absolute; top:0; right:0;
+  position: absolute; // Takes Care of overflow
+  right: 0;
   width: 100px;
   float: right;
 }
@@ -107,7 +116,12 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 
 /* LOGIN PAGE */
 .app-login {
-//  position:absolute; top:0; left:0; width:100%; height:100%;
+  // It's this way in order to work correctly with animations
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
 }
 .app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
 .app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}

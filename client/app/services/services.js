@@ -95,4 +95,11 @@ angular.module('mlp.services', [])
       }
     };
     return photoFactory;
+  })
+  .directive('appHeader', function() {
+    console.log('APP HEADER');
+    return {
+      restrict: 'E',
+      templateUrl: 'app/templates/app-header.html'
+    };
   });

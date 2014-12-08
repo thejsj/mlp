@@ -17,7 +17,7 @@
       'mlp.prompts',
       'mlp.suggestions',
       'mlp.suggestions_prompts',
-      'mlp.services'
+      'mlp.services',
     ])
     //routes for rendering the various HTML templates (found in app/*)
     .config(function ($stateProvider, $urlRouterProvider) {

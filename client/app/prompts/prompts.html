@@ -1,4 +1,15 @@
 <div class="app-allprompts">
+  <div class="app-header">
+    <a href="#" class="app-header-back">
+      <img src="img/next.png" />
+    </a>
+    <a href="#" class="app-header-sandwich">
+      <img src="img/sandwich.png" />
+      <div class="app-header-menu">
+        <div class="app-grey-out">Sign Out </div>
+      </div>
+    </a>
+  </div>
   <div class="app-title">All Prompts</div>
   <div ng-repeat="prompt in prompts">
     <a ui-sref="prompt({ id: prompt.id })" class="app-prompt-box left-align hover-red paragraph" ng-class="{'last':$last}">
@@ -14,7 +25,7 @@
       </div>
     </a>
   </div>
-  <a ui-sref="createPrompt">Create Prompt</a>
+  <a ui-sref="createPrompt" class="app-button app-grey-out">Create Prompt</a>
   <br/>
-  <a href='#' ng-click="signOut()">Sign Out</a>
+<!--   <a href='#' ng-click="signOut()">Sign Out</a> -->
 </div>

@@ -1,5 +1,15 @@
 <div class="app-prompt" ng-app="promptController">
-  <a ui-sref="prompts" class="app-photo-back">Back</a>
+  <div class="app-header">
+    <a ui-sref="prompts" class="app-header-back">
+      <img src="img/next.png" />
+    </a>
+    <a href="#" class="app-header-sandwich">
+      <img src="img/sandwich.png" />
+      <div class="app-header-menu">
+        <div class="app-grey-out">Sign Out </div>
+      </div>
+    </a>
+  </div>
   <div class="app-title">Prompt</div>
   <div class="app-prompt-challenge">
     {{ prompt.title }}

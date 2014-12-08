@@ -74,7 +74,7 @@ angular.module('mlp.services', [])
         });
     };
     var setPromptWinner = function (promptId, photoId) {
-      return $http.put(Main.get('/api/prompt/' + promptId), {
+      return $http.put(MainUrl.get('/api/prompt/' + promptId), {
         photoId: photoId,
       });
     };
@@ -96,7 +96,7 @@ angular.module('mlp.services', [])
     };
     return photoFactory;
   })
-  .directive('appHeader', function() {
+  .directive('appHeader', function () {
     console.log('APP HEADER');
     return {
       restrict: 'E',

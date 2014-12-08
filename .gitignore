@@ -25,10 +25,10 @@ build/Release
 node_modules
 
 # Ignore Media
-server/media/*.jpg
-server/media/*.jpeg
-server/media/*.png
-server/media/*.gif
+server/media/**/*.jpg
+server/media/**/*.jpeg
+server/media/**/*.png
+server/media/**/*.gif
 
 # Users Environment Variables
 .lock-wscript

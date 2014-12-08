@@ -7,6 +7,7 @@ var fs = Promise.promisifyAll(require("fs"));
 var moment = require('moment');
 var path = require('path');
 var _ = require('lodash');
+var imageMagick = Promise.promisifyAll(require('imagemagick'));
 
 var photoRouter = express.Router();
 
@@ -34,13 +35,32 @@ photoRouter.post('/', function (req, res) {
     if (filePath !== null) {
       filePath = path.resolve(filePath);
       var fileExtension = _.last(filePath.split('.'));
-      var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
-      var newPath = path.join(__dirname, '/../../media/', newImageFileName);
+
+      var name = '' + userId + '-' + promptId + '-' + moment().format('x');
+      var newImageFileName = name + '.' + fileExtension;
+      var newPath = path.join(__dirname, '/../../media/original/', newImageFileName);
+      var new200Path = path.join(__dirname, '/../../media/square-200px/', newImageFileName);
+      var new500Path = path.join(__dirname, '/../../media/square-500px/', newImageFileName);
+
       fs.chmodAsync(filePath, '0777')
         .then(function () {
           return fs.renameAsync(filePath, newPath);
         })
         .then(function () {
+          return imageMagick.cropAsync({
+            srcPath: newPath,
+            dstPath: new200Path,
+            width: 200,
+            height: 200
+          });
+        }).then(function () {
+          return imageMagick.cropAsync({
+            srcPath: newPath,
+            dstPath: new500Path,
+            width: 500,
+            height: 500
+          });
+        }).then(function () {
           return new models.Photo({
               user_id: userId,
               prompt_id: promptId,

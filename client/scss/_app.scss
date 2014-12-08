@@ -46,17 +46,33 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-header { width:100%; height:35px; background-color:#F26964 !important; z-index:1000}
 .app-header-back { float:left; margin:4px 0 0 1px; display:block; }
 .app-header-back img {-ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg); }
-.app-header-sandwich { position:absolute; top:0; right:0; width: 100px; }
+.app-header-sandwich {
+  // position:absolute; top:0; right:0;
+  width: 100px;
+  float: right;
+}
 .app-header-sandwich:hover .app-header-menu { display:block; }
 .app-header-sandwich img { float:right; height: 18px; margin:8px 12px 0 0;}
 .app-header-sandwich .app-header-menu { float:right; margin-top:10px; background-color:#F26964; border-top:1px solid #FFF; display:none; }
-.app-header-sandwich .app-header-menu div { float:left; padding:10px; width:70px; color:#FFF; text-align:center; list-style-type:none; } 
+.app-header-sandwich .app-header-menu div { float:left; padding:10px; width:70px; color:#FFF; text-align:center; list-style-type:none; }
 
 /* TITLE */
 .app-title { margin:15px 0 15px 0; text-align:center; color:#E74747; font-weight:400; }
 
 /* STANDARD BUTTON */
-.app-button { position:absolute; bottom:0; left:0; width:100%; height:50px; text-align:center; background-color:#F26964; color:#FFF; line-height:50px; display:block; overflow:hidden;}
+.app-button {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:50px;
+  text-align:center;
+  background-color:#F26964;
+  color:#FFF;
+  line-height:50px;
+  display:block;
+  overflow:hidden;
+}
 
 /* HOVER TYPES */
 .app-grey-out { background-color:#F26964; }
@@ -90,7 +106,9 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-loading .app-spinner { position:absolute; top: 10px; left: 35px; }
 
 /* LOGIN PAGE */
-.app-login { position:absolute; top:0; left:0; width:100%; height:100%; }
+.app-login {
+//  position:absolute; top:0; left:0; width:100%; height:100%;
+}
 .app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
 .app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
 .app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}

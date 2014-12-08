@@ -7,13 +7,23 @@
   
   <!-- Show user's photo if they have submitted one for this prompt -->
   <!-- TODO: make css nicer; overlay "your submission" over the img -->
-  <div ng-if="userPhotoSubmission">
-    <img src="media/{{userPhotoSubmission.filename}}">
-    <div>Your Submission</div>
+  <div ng-if="prompt.winner_id != null">
+    <div class="app-prompt-image-container">
+      <img class="app-prompt-image" ng-src="media/{{prompt.winner.filename}}">
+      <div class="app-prompt-image-caption" >The winning photo</div>
+    </div>
+  </div>
+    
+  <div ng-if="userPhotoSubmission && prompt.winner_id == null">
+    <div class="app-prompt-image-container">
+      <img class="app-prompt-image" ng-src="media/{{userPhotoSubmission.filename}}">
+      <div class="app-prompt-image-caption">Your submission</div>
+    </div>
   </div>
 
+
   <!-- show upload button IF allowed -->
-  <div ng-if="userId != prompt.user.id && !userPhotoSubmission && submissionPeriodIsOpen">
+  <div ng-if="userId != prompt.user.id && !userPhotoSubmission && submissionPeriodIsOpen && !prompt.winner_id">
     <form>
       <input type="submit" ng-file-select="onFileSelect($files)" class="app-prompt-upload" value="Upload"/>
     </form>
@@ -29,18 +39,18 @@
   
 
   <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>
-  <div class="app-prompt-box">
+  <div ng-if="!prompt.winner" class="app-prompt-box">
       <span class='notice'>Prompt Closes</span>
       <span am-time-ago="prompt.endTime"></span>
     </div>
-  <div class="app-prompt-box">
+  <div ng-if="!prompt.winner" class="app-prompt-box">
     <span class='notice'>Voting Ends</span>
     <span am-time-ago="prompt.votingEndTime"></span>
   </div>
   <!-- if there is a prompt.winner, display it here (photo and photo.userID) -->
-  <div class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'No Winner'}}</span></div>
+  <div class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
   <div class="app-prompt-box red">Photos!</div>
-  <div ng-if="!prompt.photos.length"><br><center>no photos yet :(</center><br></div>
+  <div ng-if="!prompt.photos.length"><br><center>No photos yet - be the first!</center><br></div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
     <a ui-sref="photo({ id: photo.id })"><img src="media/{{ photo.filename }}"/></a>
   </div>

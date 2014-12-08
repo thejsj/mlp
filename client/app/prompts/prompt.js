@@ -31,6 +31,7 @@ angular.module("mlp.prompt", ['ngFx'])
   };
   
   $scope.update = function(){
+    console.log("updating prompt view")
     PromptFactory.getPromptData($scope.id)
       .then(function (data) {
         $scope.prompt = data;
@@ -55,9 +56,11 @@ angular.module("mlp.prompt", ['ngFx'])
     for (var i = 0; i < photos.length; i++) {
       var photo = photos[i];
       if(photo.user_id===$scope.userId){
+        console.log("user has submitted: ", photo)
         return photo;
       }
     };
+    console.log("user has not submitted a photo.")
     return undefined;
   }
 

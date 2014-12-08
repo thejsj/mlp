@@ -19,7 +19,6 @@
   "dependencies": {
     "angular-file-upload-shim": "^1.6.4",
     "angular-ui-router": "^0.2.11",
-    "bcrypt": "^0.8.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^2.3.11",
     "body-parser": "^1.10.0",

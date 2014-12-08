@@ -46,17 +46,33 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-header { width:100%; height:35px; background-color:#F26964 !important; z-index:1000}
 .app-header-back { float:left; margin:4px 0 0 1px; display:block; }
 .app-header-back img {-ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg); }
-.app-header-sandwich { position:absolute; top:0; right:0; width: 100px; }
+.app-header-sandwich {
+  // position:absolute; top:0; right:0;
+  width: 100px;
+  float: right;
+}
 .app-header-sandwich:hover .app-header-menu { display:block; }
 .app-header-sandwich img { float:right; height: 18px; margin:8px 12px 0 0;}
 .app-header-sandwich .app-header-menu { float:right; margin-top:10px; background-color:#F26964; border-top:1px solid #FFF; display:none; }
-.app-header-sandwich .app-header-menu div { float:left; padding:10px; width:70px; color:#FFF; text-align:center; list-style-type:none; } 
+.app-header-sandwich .app-header-menu div { float:left; padding:10px; width:70px; color:#FFF; text-align:center; list-style-type:none; }
 
 /* TITLE */
 .app-title { margin:15px 0 15px 0; text-align:center; color:#E74747; font-weight:400; }
 
 /* STANDARD BUTTON */
-.app-button { position:absolute; bottom:0; left:0; width:100%; height:50px; text-align:center; background-color:#F26964; color:#FFF; line-height:50px; display:block; overflow:hidden;}
+.app-button {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:50px;
+  text-align:center;
+  background-color:#F26964;
+  color:#FFF;
+  line-height:50px;
+  display:block;
+  overflow:hidden;
+}
 
 /* HOVER TYPES */
 .app-grey-out { background-color:#F26964; }
@@ -90,7 +106,9 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-loading .app-spinner { position:absolute; top: 10px; left: 35px; }
 
 /* LOGIN PAGE */
-.app-login { position:absolute; top:0; left:0; width:100%; height:100%; }
+.app-login {
+//  position:absolute; top:0; left:0; width:100%; height:100%;
+}
 .app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
 .app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
 .app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}
@@ -140,7 +158,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-challenge:after {content: "\201D"; position: absolute; bottom: 40px; right: 10px; width: 20px; height: 20px; font-size: 73px; color: #F26964;}
 .app-prompt .app-prompt-upload { margin:0px auto; margin-bottom:30px; width: 80px; height: 80px; color:#FFF; line-height:80px; text-align:center; background-color:#F26964; border-radius: 50%; border:2px solid #F26964; display:block; -webkit-transition: background-color .5s, color .5s; font-weight: bold;text-transform: uppercase; letter-spacing: 0.12em;font-size: 13px; cursor: pointer;}
 .app-prompt .app-prompt-upload:hover {background-color: #FFF; color:#F26964; border:2px solid #F26964; -webkit-transition: background-color .5s, color .5s, border .5s;}
-.app-prompt .app-prompt-box { margin:5px 0 0 0; width:100%; height:50px; text-align:center; line-height:50px; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; letter-spacing: 0.03em;
+.app-prompt .app-prompt-box { margin:0 0 0 0; width:100%; height:50px; text-align:center; line-height:50px; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; letter-spacing: 0.03em;
   span.notice {
     color: #F26964;
   }
@@ -152,6 +170,9 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-gallery a { float:left; width:120px; height:120px; overflow:hidden;}
 .app-prompt .app-prompt-gallery a img { width:120px; height:120px; }
 .app-prompt .app-prompt-gallery a img:hover { opacity:0.7; }
+.app-prompt .app-prompt-image-container { position: relative; width:242px; border-bottom: 4px solid #F26964; border-top: 4px solid #F26964;}
+.app-prompt .app-prompt-image { width:100%; height: 100%; z-index:-1;}
+.app-prompt .app-prompt-image-caption {position:absolute; bottom:5px; left:5px; padding: 2px 4px; z-index:1; background-color: white; border: 1px solid #F26964; border-radius: 3px; opacity: .75;}
 
 .app-prompt-box { position:relative; margin:0 0 0 0; width:auto; min-height:50px; text-align:center; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; display:block; overflow:hidden;}
 .app-prompt-box .app-box-arrow { position:absolute; top:calc(50% - 25px); right:5px; }

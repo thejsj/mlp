@@ -1,16 +1,18 @@
 angular.module("mlp.prompt", ['ngFx'])
 
-.controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload, $moment) {
+.controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload, $moment, $state) {
   Auth.isAuth();
-  var dummyId = 1;
-
+  $scope.id = $state.params.id;
+  $scope.dataLoaded = false;
+  $scope.prompt = {};
+  $scope.userId = Auth.getUserId();
   $scope.onFileSelect = function ($files) {
     var file = $files[0];
     $scope.upload = $upload.upload({
       url: '/api/photo',
       method: 'POST',
       data: {
-        prompt_id: 1,
+        prompt_id: $scope.id,
         user_id: Auth.getUserId(),
       },
       file: file,
@@ -22,13 +24,10 @@ angular.module("mlp.prompt", ['ngFx'])
       console.log('ERROR:', err);
     });
   };
-
-  //TODO: take out dummyID here and instead make it fetch the proper prompt
-  //and its data.  question: how does it know which prompt_id to request?
-  PromptFactory.getPromptData(dummyId)
+  PromptFactory.getPromptData($scope.id)
     .then(function (data) {
-      data.votingEndTime = $moment(data.votingEndTime, 'mm').fromNow();
       $scope.prompt = data;
+      $scope.dataLoaded = true;
     });
 
   $scope.uploadImage = function () {

@@ -56,43 +56,34 @@ angular.module('mlp.services', [])
   })
   .factory('PromptFactory', function ($http) {
     var getAllPromptsData = function (dest) {
-      console.log("getting all prompts data from server");
-      return $http.get('/api/prompt')
-        .success(function (res) {
-          console.log(res.body);
-          dest = res.body;
-        });
+      return $http.get('/api/prompt');
     };
-    //NOTE! currently hard-coded to get the first prompt on server no matter what.
-    //TODO: make this serve specific prompts.
-    //TODO: make prompt.js use this function to render itself.
     var getPromptData = function (id) {
-      console.log("getting photo data from server");
-      return $http.get('/api/prompt/1')
+      return $http.get('/api/prompt/' + id)
         .then(function (res) {
-          console.log('api/prompt/1: res.data');
-          console.log(res.data);
           return res.data;
         });
     };
     var setPromptWinner = function (promptId, photoId) {
-      console.log("setting prompt winner");
-      $http.post('/api/prompt/setWinner', {
-        prompt_id: prompt_id,
-        password: photo_id
+      return $http.put('/api/prompt/' + promptId, {
+        photoId: photoId,
       });
     };
     var createNewPrompt = function (obj) {
-      return $http.post('/api/prompt', obj)
-        .then(function (res) {
-          console.log('createNewPrompt:');
-          console.log(res);
-          return res;
-        });
+      return $http.post('/api/prompt', obj);
     };
     return {
       getAllPromptsData: getAllPromptsData,
       getPromptData: getPromptData,
-      createNewPrompt: createNewPrompt
+      createNewPrompt: createNewPrompt,
+      setPromptWinner: setPromptWinner
     };
+  })
+  .factory('PhotoFactory', function ($http) {
+    var photoFactory = {
+      get: function (id) {
+        return $http.get('/api/photo/' + id);
+      }
+    };
+    return photoFactory;
   });

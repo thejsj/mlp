@@ -39,9 +39,9 @@ db.schema.hasTable('prompts').then(function (exists) {
       prompt.string('title', 255);
       prompt.integer('winner_id').references('photos.id');
       prompt.integer('user_id').references('users.id');
-      prompt.timestamp('startTime');
-      prompt.timestamp('endTime');
-      prompt.timestamp('votingEndTime');
+      prompt.timestamp('startTime'); // TODO: Change to lower_case
+      prompt.timestamp('endTime'); // TODO: Change to lower_case
+      prompt.timestamp('votingEndTime'); // TODO: Change to lower_case
       prompt.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);

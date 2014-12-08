@@ -1,17 +1,15 @@
-<div class="app-photo" ng-controller="commentController">
-  <img class="app-photo-image" ng-src="{{photo.url}}"/>
+<div class="app-photo" ng-controller="photoController">
+  <img class="app-photo-image" ng-src="/media/{{photo.filename}}"/>
   <a ui-sref="prompt({ id: id })" class="app-photo-back">Back</a>
 <!--   <div class="app-photo-overlay-bg" ng-class="{'app-photo-overlay-hidden': hideOverlay}"></div> -->
   <div class="app-photo-overlay" ng-class="{'app-photo-overlay-hidden': hideOverlay}">
     <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>
     <div class="app-photo-vote-box">
-      
+
       <!-- NOTE/TODO: refs below to prompt_id and photo.user_id etc are almost certainly wrong. -->
-      <div class="app-photo-choose-winner" 
-              ng-click="promptFactory.setPromptWinner(prompt_id,photo.user_id)"
-              >Set as <span>Winner!</span>
+      <div class="app-photo-choose-winner" ng-click="setWinner()">Set as <span>Winner!</span>
       </div>
-    </div>  
+    </div>
     <div ng-class-odd="'app-comment-bubble-left'" ng-class-even="'app-comment-bubble-right'" ng-repeat="comment in comments">
       <span>{{comment.author}}:</span> {{comment.text}}
     </div>
@@ -20,14 +18,11 @@
     </div>
   </div>
 </div>
-
-
-
-<!--  
-TODO: add these pseudocode lines to the choose-winner button 
+<!--
+TODO: add these pseudocode lines to the choose-winner button
 in order to only show the button if all conditions are met.
 
-ng-show="session user_id === prompt user_id && 
+ng-show="session user_id === prompt user_id &&
          voting period is active &&
          winner_id is not already set"
  -->

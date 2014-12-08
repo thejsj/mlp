@@ -45,6 +45,9 @@ models.Prompt = db.Model.extend({
   photos: function () {
     return this.hasMany(models.Photo, 'prompt_id');
   },
+  user: function () {
+    return this.hasOne(models.User, 'id'); // I have no idea why this works
+  },
   winner: function () {
     return this.hasOne(models.Photo, 'winner_id');
   }

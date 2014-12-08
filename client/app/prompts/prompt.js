@@ -9,6 +9,7 @@ angular.module("mlp.prompt", ['ngFx'])
   $scope.userId = Auth.getUserId();
   $scope.userPhotoSubmission = undefined;
   $scope.submissionPeriodIsOpen = false;
+  
   $scope.onFileSelect = function ($files) {
     var file = $files[0];
     console.log("uploading photo...")
@@ -23,50 +24,43 @@ angular.module("mlp.prompt", ['ngFx'])
     }).progress(function (evt) {
       // console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
     }).success(function (data, status, headers, config) {
-      $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
-      // Update Controller
+        $scope.update();
     }).error(function (err) {
       console.log('ERROR:', err);
     });
   };
-  PromptFactory.getPromptData($scope.id)
-    .then(function (data) {
-      console.log("getting promptdata via factory");
-      $scope.prompt = data;
-      $scope.dataLoaded = true;
-      return true;
-      console.log($scope.prompt);
-    }).then(function (bool){
-      $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
-      return true;
-    }).then(function (bool){
-      $scope.submissionPeriodIsOpen = $scope.checkIfSubmissionPeriodIsOpen();
-      console.log("has user submitted photo?",  $scope.userPhotoSubmission);
-      return true;
-    });
+  
+  $scope.update = function(){
+    PromptFactory.getPromptData($scope.id)
+      .then(function (data) {
+        $scope.prompt = data;
+        $scope.dataLoaded = true;
+        return true;
+        console.log($scope.prompt);
+      }).then(function (bool){
+        $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
+        return true;
+      }).then(function (bool){
+        $scope.submissionPeriodIsOpen = $scope.checkIfSubmissionPeriodIsOpen();
+        return true;
+      });
+  }
+  $scope.update();
 
-  $scope.uploadImage = function () {
-
-  };
-  $scope.triggerGallery = function () {
-
-  };
 
   //if current user has submitted a photo for this prompt, returns signature of that photo.
   $scope.checkForSubmissionByCurrentUser = function(){
-    console.log("checking for photo submission by this user...")
     var photos = $scope.prompt.photos;
     for (var i = 0; i < photos.length; i++) {
       var photo = photos[i];
       if(photo.user_id===$scope.userId){
         return photo;
-        console.log("this user has submitted a photo already.")
       }
     };
     return undefined;
-    console.log("this user has not submitted a photo yet.")
   }
 
+  //returns true if submission period is still active; otherwise returns false.
   $scope.checkIfSubmissionPeriodIsOpen = function(){
     console.log($scope.prompt.endTime);
     var now = Date.now();

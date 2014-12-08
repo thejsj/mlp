@@ -125,7 +125,11 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-challenge:after {content: "\201D"; position: absolute; bottom: 40px; right: 10px; width: 20px; height: 20px; font-size: 73px; color: #F26964;}
 .app-prompt .app-prompt-upload { margin:0px auto; margin-bottom:30px; width: 80px; height: 80px; color:#FFF; line-height:80px; text-align:center; background-color:#F26964; border-radius: 50%; border:2px solid #F26964; display:block; -webkit-transition: background-color .5s, color .5s; font-weight: bold;text-transform: uppercase; letter-spacing: 0.12em;font-size: 13px; cursor: pointer;}
 .app-prompt .app-prompt-upload:hover {background-color: #FFF; color:#F26964; border:2px solid #F26964; -webkit-transition: background-color .5s, color .5s, border .5s;}
-.app-prompt .app-prompt-box { margin:5px 0 0 0; width:100%; height:50px; text-align:center; line-height:50px; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; letter-spacing: 0.03em }
+.app-prompt .app-prompt-box { margin:5px 0 0 0; width:100%; height:50px; text-align:center; line-height:50px; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; letter-spacing: 0.03em;
+  span.notice {
+    color: #F26964;
+  }
+}
 .app-prompt .app-prompt-box span { font-weight:600; color:#333; }
 .app-prompt .app-prompt-box.red { background-color:#F26964; color:#FFF; border-top: solid 2px #B03531;letter-spacing: 0.2em; font-weight: bold; text-transform: uppercase; }
 .app-prompt .app-prompt-gallery { margin:0 0 0 0; width:100%; }

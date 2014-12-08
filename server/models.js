@@ -34,7 +34,13 @@ models.User = db.Model.extend({
       });
   },
   photo: function () {
-    return this.belongsTo(models.Photo);
+    return this.hasMany(models.Photo);
+  },
+  prompt: function () {
+    return this.hasMany(models.Prompt, 'user_id');
+  },
+  winner: function () {
+    return this.hasMany(models.Prompt, 'winner_id');
   }
 });
 
@@ -46,10 +52,10 @@ models.Prompt = db.Model.extend({
     return this.hasMany(models.Photo, 'prompt_id');
   },
   user: function () {
-    return this.hasOne(models.User, 'id'); // I have no idea why this works
+    return this.belongsTo(models.User);
   },
   winner: function () {
-    return this.hasOne(models.Photo, 'winner_id');
+    return this.belongsTo(models.Photo, 'winner_id');
   }
 });
 
@@ -58,10 +64,10 @@ models.Photo = db.Model.extend({
   tableName: 'photos',
   hasTimestamps: true,
   user: function () {
-    return this.hasOne(models.User, 'user_id');
+    return this.belongsTo(models.User);
   },
   winner: function () {
-    return this.belongsTo(models.Prompt);
+    return this.hasOne(models.Prompt, 'winner_id');
   },
   prompt: function () {
     return this.belongsTo(models.Prompt);
@@ -73,10 +79,10 @@ models.Comment = db.Model.extend({
   tableName: 'comments',
   hasTimestamps: true,
   user: function () {
-    return this.hasOne(models.User, 'user_id');
+    return this.belongsTo(models.User);
   },
   prompt: function () {
-    return this.hasOne(models.Prompt, 'prompt_id');
+    return this.belongsTo(models.Prompt);
   },
 });
 

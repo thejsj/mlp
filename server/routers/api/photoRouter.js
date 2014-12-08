@@ -16,14 +16,13 @@ photoRouter.post('/', function (req, res) {
     // Write File To File System
     var userId, promptId, filePath;
     if (typeof fields === 'object') {
-      userId = fields.user_id[0];
-      promptId = fields.prompt_id[0];
+      userId = fields.user_id[0] || fields.user_id;
+      promptId = fields.prompt_id[0] || fields.prompt_id;
       if (files.file) {
         filePath = files.file[0].path || null;
       } else if (files.image) {
         filePath = files.image[0].path || null;
       } else {
-        console.log('files:', files);
         res.status(404).end();
       }
     } else {
@@ -72,7 +71,9 @@ photoRouter.get('/', function (req, res) {
 photoRouter.get('/:id', function (req, res) {
   collections.Photos // Doesn't seem to be working
     .query('where', 'id', '=', req.param('id'))
-    .fetchOne()
+    .fetchOne({
+      withRelated: ['user', 'prompt']
+    })
     .then(function (model) {
       if (!model) {
         res.status(404).end();

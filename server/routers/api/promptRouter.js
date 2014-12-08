@@ -21,7 +21,6 @@ promptRouter.post('/', function (req, res) {
     .fetchOne()
     .then(function (model) {
       if (!model) {
-        res.status(400).end();
         throw new Error('User not Found');
       }
       if (!title || !startTime || !endTime || !votingEndTime || !userId) {
@@ -41,6 +40,10 @@ promptRouter.post('/', function (req, res) {
     })
     .then(function (model) {
       res.json(model.toJSON());
+    }).catch(function (err) {
+      console.log('Error:');
+      console.log(err);
+      res.status(404).end();
     });
 });
 
@@ -48,11 +51,23 @@ promptRouter.get('/:id', function (req, res) {
   collections.Prompts
     .query('where', 'id', '=', req.param('id'))
     .fetchOne({
-      withRelated: ['photos', 'user']
+      withRelated: ['photos', 'user', 'winner']
     })
     .then(function (model) {
-      if (!model) res.status(404).end();
-      // Look for images associates with this id
+      var _model = model.toJSON();
+      if (model.related('winner') !== undefined) {
+        return model.related('winner')
+          .fetch({
+            withRelated: ['user']
+          })
+          .then(function (winnerPhoto) {
+            return model;
+          });
+      }
+      return model;
+    })
+    .then(function (model) {
+      if (!model) throw new Error('No Model Found');
       res.json(model.toJSON());
       return true;
     }).catch(function (err) {

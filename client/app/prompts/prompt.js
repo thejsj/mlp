@@ -15,7 +15,7 @@ angular.module("mlp.prompt", ['ngFx'])
       //withCredentials: true,
       data: {
         prompt_id: 1,
-        userId: 1,
+        user_id: 21,
       },
       file: file, // or list of files ($files) for html5 only
       //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
@@ -27,6 +27,7 @@ angular.module("mlp.prompt", ['ngFx'])
       console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
     }).success(function (data, status, headers, config) {
       // file is uploaded successfully
+      console.log('File Upload: data');
       console.log(data);
     }).error(function (err) {
       console.log('ERROR:', err);

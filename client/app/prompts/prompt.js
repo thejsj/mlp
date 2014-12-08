@@ -6,6 +6,7 @@ angular.module("mlp.prompt", ['ngFx'])
   $scope.dataLoaded = false;
   $scope.prompt = {};
   $scope.userId = Auth.getUserId();
+  $scope.userPhotoSubmission = undefined;
   $scope.onFileSelect = function ($files) {
     var file = $files[0];
     $scope.upload = $upload.upload({
@@ -28,6 +29,9 @@ angular.module("mlp.prompt", ['ngFx'])
     .then(function (data) {
       $scope.prompt = data;
       $scope.dataLoaded = true;
+      console.log(data);
+      $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
+      console.log(typeof($scope.userPhotoSubmission));
     });
 
   $scope.uploadImage = function () {
@@ -36,4 +40,20 @@ angular.module("mlp.prompt", ['ngFx'])
   $scope.triggerGallery = function () {
 
   };
+
+  //if current user has submitted a photo for this prompt, returns signature of that photo.
+  $scope.checkForSubmissionByCurrentUser = function(){
+    var photos = $scope.prompt.photos;
+    for (var i = 0; i < photos.length; i++) {
+      var photo = photos[i];
+      console.log(photo.user_id,$scope.userId);
+      if(photo.user_id===$scope.userId){
+        console.log("user has submitted photo already");
+        return photo;
+      }
+    };
+    console.log("no photo from this user");
+    return undefined;
+  }
+
 });

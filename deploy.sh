@@ -109,9 +109,13 @@ fi
 # 2. Select node version
 selectNodeVersion
 
-apt-get update
-apt-get install build-essential
-apt-get install imagemagick
+# apt-get update
+# apt-get install build-essential
+# apt-get install imagemagick
+# wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
+# tar xvfz ImageMagick.tar.gz
+# cd ImageMagick-6.9.0-0.tar.gz
+# cd ../
 
 # 3. Install npm packages
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
@@ -134,6 +138,7 @@ fi
 # 5. Run gulp
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
   cd "$DEPLOYMENT_TARGET"
+  # Insatl
   eval $NPM_CMD install gulp
   exitWithMessageOnError "failed"
   ./node_modules/.bin/gulp

@@ -1,0 +1,22 @@
+form {
+  .form-group {
+    box-sizing: border-box;
+    $padding: 5px;
+    $sidePadding: $padding * 2;
+    padding: $padding;
+    width: calc(100% - (#{$sidePadding}));
+    label {
+      display: block;
+    }
+    input {
+      font-size: 1em;
+      padding: 5px;
+      width: 100%;
+      border: solid 1px #aaa;
+      &[readonly] {
+        background: #f7f7f7;
+        color: #999;
+      }
+    }
+  }
+}

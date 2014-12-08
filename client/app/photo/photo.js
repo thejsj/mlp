@@ -7,10 +7,7 @@ angular.module("mlp.photo", ['ngFx'])
       author: "Loring"
     };
     $scope.photo = dummyPhoto;
-
   })
-
-
   .controller("commentController", function ($scope) {
     console.log("I am the comment controller");
 
@@ -32,7 +29,7 @@ angular.module("mlp.photo", ['ngFx'])
     }, {
       author: "Loring",
       text: "Ok bye"
-    },{
+    }, {
       author: "Loring",
       text: "Time to have fun."
     }, {

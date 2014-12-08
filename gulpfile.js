@@ -15,4 +15,12 @@ gulp.task('watch', function () {
   gulp.watch('./client/scss/**/*.scss', ['sass']);
 });
 
+gulp.task('cordoba-build', function () {
+  gulp.src([
+      './client/**/*',
+    ])
+    .pipe(gulp.dest('./cordoba/www/'));
+});
+
 gulp.task('default', ['sass']);
+gulp.task('cordoba', ['cordoba-build']);

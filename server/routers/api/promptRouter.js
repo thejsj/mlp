@@ -48,7 +48,7 @@ promptRouter.get('/:id', function (req, res) {
   collections.Prompts
     .query('where', 'id', '=', req.param('id'))
     .fetchOne({
-      withRelated: ['photos']
+      withRelated: ['photos', 'user']
     })
     .then(function (model) {
       if (!model) res.status(404).end();
@@ -56,6 +56,30 @@ promptRouter.get('/:id', function (req, res) {
       res.json(model.toJSON());
       return true;
     }).catch(function (err) {
+      console.log('Error:');
+      console.log(err);
+      res.status(404).end();
+    });
+});
+
+promptRouter.put('/:id', function (req, res) {
+  var winnerId = req.body.photoId;
+  collections.Prompts
+    .query('where', 'id', '=', req.param('id'))
+    .fetchOne()
+    .then(function (model) {
+      if (!model) res.status(404).end();
+      return model.save({
+        winner_id: winnerId
+      }, {
+        patch: true
+      });
+    })
+    .then(function (model) {
+      return res.status(201).json(model.toJSON());
+    }).catch(function (err) {
+      console.log('Error:');
+      console.log(err);
       res.status(404).end();
     });
 });

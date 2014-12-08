@@ -5,11 +5,14 @@ angular.module("mlp.prompts", ['ngFx'])
   $scope.limitChar = function (string, limit) {
     return string.substr(0, limit) + "...";
   };
-  $http.get('api/prompt').success(function (data) {
-    angular.forEach(data, function (prompt) {
-      prompt.votingEndTime = $moment(prompt.votingEndTime, 'mm').fromNow();
+  PromptFactory.getAllPromptsData($scope.realPrompts)
+    .then(function (res) {
+      $scope.prompts = res.data;
+      _.each($scope.prompts, function (prompt) {
+        prompt.startTime = moment(prompt.startTime);
+        prompt.endTime = moment(prompt.endTime);
+        prompt.votingEndTime = moment(prompt.votingEndTime);
+      });
+      console.log($scope.prompts);
     });
-    $scope.prompts = data;
-  });
-  //PromptFactory.getAllPromptsData($scope.realPrompts)
 });

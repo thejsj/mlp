@@ -3,14 +3,15 @@ var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var gulpConcat = require('gulp-concat');
+var clean = require('gulp-clean');
 
 gulp.task('sass', function () {
   return gulp.src('./client/scss/*.scss')
     .pipe(sass({
       errLogToConsole: true,
-      outputStyle: compressed
+      outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest('./client/dist/css'));
+    .pipe(gulp.dest('./client/dist'));
 });
 
 gulp.task('js', function () {
@@ -51,5 +52,13 @@ gulp.task('cordoba-build', function () {
     .pipe(gulp.dest('./cordoba/www/'));
 });
 
+gulp.task('cordoba-clean', function () {
+  return gulp.src('./cordoba/www/*', {
+      read: false
+    })
+    .pipe(clean());
+});
+
+
 gulp.task('default', ['js', 'sass']);
-gulp.task('cordoba', ['cordoba-build']);
+gulp.task('cordoba', ['cordoba-clean', 'cordoba-build']);

@@ -109,9 +109,9 @@ fi
 # 2. Select node version
 selectNodeVersion
 
-sudo apt-get update
-sudo apt-get install build-essential
-sudo apt-get install imagemagick
+apt-get update
+apt-get install build-essential
+apt-get install imagemagick
 
 # 3. Install npm packages
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then

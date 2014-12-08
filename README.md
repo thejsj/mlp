@@ -7,7 +7,7 @@ Apples to Apples for your phone.
 This project assumes you have a couple of things installed globally. Make sure you install all this first.
 
 ```
-npm install -g mocha gulp nodemon cordoba
+npm install -g mocha gulp nodemon cordoba ios-sim
 ```
 
 After that, make sure you go through all these steps:
@@ -37,3 +37,19 @@ Whenever you change a file, it will re-compile them.
 ### 3. Cordoba
 
 TODO... how to set up cordoba. Basically, go through [this tutorial](http://coenraets.org/blog/cordova-phonegap-3-tutorial/).
+
+
+```
+cordova platforms add ios
+// Who cares about android...
+// cordova platforms add android
+
+cordova plugin add org.apache.cordova.device
+cordova plugin add org.apache.cordova.console
+```
+
+To Test:
+
+```
+cordova emulate ios
+```

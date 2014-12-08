@@ -4,6 +4,19 @@ var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var gulpConcat = require('gulp-concat');
 var clean = require('gulp-clean');
+var async = require('async');
+var runSequence = require('run-sequence').use(gulp);
+
+gulp.runSync = function (tasks, cb) {
+  var sync = tasks.map(function (t) {
+    if (Array.isArray(t)) {
+      return gulp.run.bind.apply(gulp.run, [gulp].concat(t));
+    }
+    return gulp.run.bind(gulp, t);
+  });
+  async.series(sync, cb);
+  return gulp;
+};
 
 gulp.task('sass', function () {
   return gulp.src('./client/scss/*.scss')
@@ -42,10 +55,7 @@ gulp.task('js', function () {
     .pipe(gulp.dest('./client/dist/'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch('./client/scss/**/*.scss', ['sass']);
-  gulp.watch('./client/**/*.js', ['js']);
-});
+
 
 gulp.task('cordoba-build', function () {
   gulp.src(['./client/**/*'])
@@ -53,12 +63,27 @@ gulp.task('cordoba-build', function () {
 });
 
 gulp.task('cordoba-clean', function () {
-  return gulp.src('./cordoba/www/*', {
-      read: false
-    })
-    .pipe(clean());
+  return gulp.src('./cordoba/www/')
+    .pipe(clean({
+      force: true
+    }));
 });
 
-
 gulp.task('default', ['js', 'sass']);
-gulp.task('cordoba', ['cordoba-clean', 'cordoba-build']);
+gulp.task('cordoba', function (cb) {
+  return runSequence('cordoba-clean', 'cordoba-build', cb);
+});
+
+gulp.task('watch', ['js', 'sass'], function () {
+  gulp.watch('./client/scss/**/*.scss', ['sass']);
+  gulp.watch('./client/**/*.js', ['js']);
+});
+
+gulp.task('cordoba-watch', ['js', 'sass', 'cordoba'], function () {
+  gulp.watch('./client/scss/**/*.scss', function () {
+    return runSequence('sass', 'cordoba');
+  });
+  gulp.watch('./client/**/*.js', function () {
+    return runSequence('js', 'cordoba');
+  });
+});

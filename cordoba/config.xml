@@ -7,6 +7,6 @@
     <author email="jorge.silva@thejsj.com" href="http://github.com/silver-octopus/">
         Silver Octopus
     </author>
-    <content src="index.html" />
+    <content src="mobile.html" />
     <access origin="*" />
 </widget>

@@ -36,8 +36,7 @@ Whenever you change a file, it will re-compile them.
 
 ### 3. Cordoba
 
-TODO... how to set up cordoba. Basically, go through [this tutorial](http://coenraets.org/blog/cordova-phonegap-3-tutorial/).
-
+All this is taken from [this tutorial](http://coenraets.org/blog/cordova-phonegap-3-tutorial/). If you have any questions, refer back to it.
 
 ```
 cordova platforms add ios
@@ -48,7 +47,15 @@ cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.console
 ```
 
-To Test:
+To build your app run the following command:
+
+```
+gulp cordoba
+```
+
+This will copy all your files into the `cordoba/www` directory.
+
+To run it in an emulator run this:
 
 ```
 cordova emulate ios

@@ -1,2 +1,2 @@
 // Adding this for Azure
-require('server/index.js');
+require('./server/index.js');

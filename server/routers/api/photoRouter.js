@@ -70,7 +70,6 @@ photoRouter.post('/', function (req, res) {
         }).then(function (photo) {
           res.json(photo.toJSON());
         }).catch(function (err) {
-          console.log('fs.rename error: ', err);
           res.status(400).end();
         });
     } else {

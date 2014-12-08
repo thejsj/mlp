@@ -41,6 +41,8 @@ client/lib*
 # Compiled Files
 client/css/*
 client/css/**/*
+client/dist/**/*
+client/dist/*
 
 # Misc
 .DS_store

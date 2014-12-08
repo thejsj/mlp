@@ -23,7 +23,6 @@ angular.module("mlp.prompt", ['ngFx'])
     }).progress(function (evt) {
       // console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
     }).success(function (data, status, headers, config) {
-      location.reload();
       $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
       // Update Controller
     }).error(function (err) {

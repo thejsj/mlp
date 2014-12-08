@@ -19,9 +19,13 @@
     </form>
   </div>
 
-  <!-- <div ng-if="userId == prompt.user.id">
-    <p>You're the author. You can't participate!</p>
-  </div> -->
+  <div ng-if="userId == prompt.user.id">
+    <p>Upload disabled: You're the author and can't participate!</p>
+  </div>
+
+  <div ng-if="userPhotoSubmission">
+    <p>Upload disabled: You've already submitted a photo!</p>
+  </div>
   
 
   <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>

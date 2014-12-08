@@ -41,6 +41,8 @@ client/lib*
 # Compiled Files
 client/css/*
 client/css/**/*
+client/dist/**/*
+client/dist/*
 
 # Misc
 .DS_store
@@ -48,3 +50,55 @@ client/css/**/*
 *.sqllite
 **/*.sqlite
 *.sqlite
+
+# ANDROID / ECLIPSE
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files - android project subfolder
+Android/bin/
+Android/gen/
+Android/assets/
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IOS / Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+IOS/www/
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+cordoba/platforms/
+cordoba/plugins/
+cordoba/www/

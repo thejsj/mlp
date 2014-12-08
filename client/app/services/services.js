@@ -1,16 +1,22 @@
 angular.module('mlp.services', [])
   .factory('Auth', function ($http, $location, $window, $state) {
     // Auth
+    var userId;
     var auth = {
-      userId: null,
       logIn: function (user) {
         return $http.post('/login', {
             email: user.email,
             password: user.password
           })
           .then(function (res) {
+            if (res.data.user_id) {
+              userId = res.data.user_id;
+            }
             $state.go('prompts');
           });
+      },
+      getUserId: function () {
+        return userId;
       },
       signUp: function (user) {
         return $http.post('/signup', {
@@ -57,7 +63,6 @@ angular.module('mlp.services', [])
           dest = res.body;
         });
     };
-
     //NOTE! currently hard-coded to get the first prompt on server no matter what.
     //TODO: make this serve specific prompts.
     //TODO: make prompt.js use this function to render itself.
@@ -70,7 +75,6 @@ angular.module('mlp.services', [])
           return res.data;
         });
     };
-
     var setPromptWinner = function (promptId, photoId) {
       console.log("setting prompt winner");
       $http.post('/api/prompt/setWinner', {
@@ -78,11 +82,17 @@ angular.module('mlp.services', [])
         password: photo_id
       });
     };
-
+    var createNewPrompt = function (obj) {
+      return $http.post('/api/prompt', obj)
+        .then(function (res) {
+          console.log('createNewPrompt:');
+          console.log(res);
+          return res;
+        });
+    };
     return {
       getAllPromptsData: getAllPromptsData,
-      getPromptData: getPromptData
+      getPromptData: getPromptData,
+      createNewPrompt: createNewPrompt
     };
-
-
   });

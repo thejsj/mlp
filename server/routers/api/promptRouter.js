@@ -15,17 +15,30 @@ promptRouter.post('/', function (req, res) {
   var startTime = req.body.startTime || req.param('startTime');
   var endTime = req.body.endTime || req.param('endTime');
   var votingEndTime = req.body.votingEndTime || req.param('votingEndTime');
-
-  if (!title || !startTime || !endTime || !votingEndTime) {
-    res.status(400).end();
-  }
-  var newPrompt = new models.Prompt({
-      title: title,
-      startTime: startTime,
-      endTime: endTime,
-      votingEndTime: votingEndTime
+  var userId = req.body.userId || req.param('userId');
+  collections.Users
+    .query('where', 'id', '=', userId)
+    .fetchOne()
+    .then(function (model) {
+      if (!model) {
+        res.status(400).end();
+        throw new Error('User not Found');
+      }
+      if (!title || !startTime || !endTime || !votingEndTime || !userId) {
+        throw new Error('Not All Fields Entered');
+      }
+      return true;
     })
-    .save()
+    .then(function () {
+      return new models.Prompt({
+          title: title,
+          user_id: userId, // We really need to normalize these
+          startTime: startTime,
+          endTime: endTime,
+          votingEndTime: votingEndTime
+        })
+        .save();
+    })
     .then(function (model) {
       res.json(model.toJSON());
     });

@@ -47,6 +47,7 @@ describe('API', function () {
             url: 'http://localhost:8000/api/prompt',
             form: {
               title: 'Do the kbtz!',
+              userId: user_id,
               startTime: now.format('x'),
               endTime: now.add(4, 'h').format('x'),
               votingEndTime: now.add(6, 'h').format('x'),

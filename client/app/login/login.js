@@ -7,7 +7,6 @@ angular.module("mlp.logIn", [])
       email: $scope.email,
       password: $scope.password
     };
-    console.log("submitting credentials: " + $scope.email + " " + $scope.password);
     Auth.logIn(credentials);
   };
 });

@@ -16,8 +16,8 @@ photoRouter.post('/', function (req, res) {
     // Write File To File System
     var userId, promptId, filePath;
     if (typeof fields === 'object') {
-      userId = fields.user_id;
-      promptId = fields.prompt_id;
+      userId = fields.user_id[0];
+      promptId = fields.prompt_id[0];
       if (files.file) {
         filePath = files.file[0].path || null;
       } else if (files.image) {
@@ -33,20 +33,27 @@ photoRouter.post('/', function (req, res) {
       imageString = req.body.image_string || null;
     }
     if (filePath !== null) {
+      filePath = path.resolve(filePath);
       var fileExtension = _.last(filePath.split('.'));
       var newImageFileName = '' + userId + '-' + promptId + '-' + moment().format('x') + '.' + fileExtension;
-      var newPath = path.join(__dirname, '/../media/', newImageFileName);
-      fs.rename(filePath, newPath, function (err) {
-        var photo = new models.Photo({
-            user_id: userId,
-            prompt_id: promptId,
-            filename: newImageFileName // Relative to /media/
-          })
-          .save()
-          .then(function (photo) {
-            res.json(photo.toJSON());
-          });
-      });
+      var newPath = path.join(__dirname, '/../../media/', newImageFileName);
+      fs.chmodAsync(filePath, '0777')
+        .then(function () {
+          return fs.renameAsync(filePath, newPath);
+        })
+        .then(function () {
+          return new models.Photo({
+              user_id: userId,
+              prompt_id: promptId,
+              filename: newImageFileName // Relative to /media/
+            })
+            .save();
+        }).then(function (photo) {
+          res.json(photo.toJSON());
+        }).catch(function (err) {
+          console.log('fs.rename error: ', err);
+          res.status(400).end();
+        });
     } else {
       res.status(400).end();
     }

@@ -65,6 +65,7 @@ angular.module('mlp.services', [])
       console.log("getting photo data from server");
       return $http.get('/api/prompt/1')
         .then(function (res) {
+          console.log('api/prompt/1: res.data');
           console.log(res.data);
           return res.data;
         });

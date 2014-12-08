@@ -16,13 +16,14 @@
   </div>
   
   <!-- Show user's photo if they have submitted one for this prompt -->
+  <!-- TODO: make css nicer; overlay "your submission" over the img -->
   <div ng-if="userPhotoSubmission">
     <img src="media/{{userPhotoSubmission.filename}}">
     <div>Your Submission</div>
   </div>
 
   <!-- show upload button IF allowed -->
-  <div ng-if="userId != prompt.user.id && !userPhotoSubmission">
+  <div ng-if="userId != prompt.user.id && !userPhotoSubmission && submissionPeriodIsOpen">
     <form>
       <input type="submit" ng-file-select="onFileSelect($files)" class="app-prompt-upload" value="Upload"/>
     </form>

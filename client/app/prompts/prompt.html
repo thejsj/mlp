@@ -13,11 +13,6 @@
       <div class="app-prompt-image-caption" >The winning photo</div>
     </div>
   </div>
-  <div ng-if="userPhotoSubmission">
-    <img src="media/square-500px/{{userPhotoSubmission.filename}}">
-    <div>Your Submission</div>
-  </div>
-
   <div ng-if="userPhotoSubmission && prompt.winner_id == null">
     <div class="app-prompt-image-container">
       <img class="app-prompt-image" ng-src="media/square-500px/{{userPhotoSubmission.filename}}">
@@ -47,7 +42,7 @@
     <span am-time-ago="prompt.votingEndTime"></span>
   </div>
   <!-- if there is a prompt.winner, display it here (photo and photo.userID) -->
-  <div class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
+  <div ng-if="prompt.winner_id != null" class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
   <div class="app-prompt-box red">Photos!</div>
   <div ng-if="!prompt.photos.length"><br><center>No photos yet - be the first!</center><br></div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">

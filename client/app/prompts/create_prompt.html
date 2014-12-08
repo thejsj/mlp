@@ -1,4 +1,15 @@
 <div class="app-prompt" ng-app="createPromptController">
+  <div class="app-header">
+    <a ui-sref="prompts" class="app-header-back">
+      <img src="img/next.png" />
+    </a>
+    <a href="#" class="app-header-sandwich">
+      <img src="img/sandwich.png" />
+      <div class="app-header-menu">
+        <div class="app-grey-out">Sign Out </div>
+      </div>
+    </a>
+  </div>
   <div class="app-title">Create Prompt</div>
   <form ng-submit="processForm()">
     <div class='form-group'>
@@ -7,15 +18,15 @@
     </div>
     <div class='form-group'>
       <label for='start_time'>Start Time</label>
-      <input type='text' name='start_time' readonly='readonly' value='{{ formData.startTime | amDateFormat:"h:mm:ss a" }}'>
+      <input type='text' name='start_time' readonly='readonly' value='{{ formData.startTime | amDateFormat:"h:mm a" }}'>
     </div>
     <div class='form-group'>
       <label for='end_time'>End Time</label>
-      <input type='text' name='end_time' readonly='readonly' value='{{ formData.endTime | amDateFormat:"h:mm:ss a" }}'>
+      <input type='text' name='end_time' readonly='readonly' value='{{ formData.endTime | amDateFormat:"h:mm a" }}'>
     </div>
     <div class='form-group'>
       <label for='voting_end_time'>Voting End Time</label>
-      <input type='text' name='voting_end_time' readonly='readonly' value='{{ formData.votingEndTime | amDateFormat:"h:mm:ss a" }}'>
+      <input type='text' name='voting_end_time' readonly='readonly' value='{{ formData.votingEndTime | amDateFormat:"h:mm a" }}'>
     </div>
     <input type="submit" class="app-prompt-upload" value="Submit"/>
   </form>

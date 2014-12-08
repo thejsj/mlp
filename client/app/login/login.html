@@ -1,11 +1,11 @@
 <div class="app-wrapper">
-  <div class="app-title">Login</div>
   <div class="app-login">
+  	<div class="app-title">Login</div>
     <form>
       <input name="email" type="text" placeholder="Email" ng-model="email"/>
       <input name="password" type="password" placeholder="Password" ng-model="password" />
       <input type="submit" placeholder="Submit" ng-click="submitCredentials()"/>
     </form>
   </div>
-  <a ui-sref="signUp">Sign Up</a>
+  <a ui-sref="signUp" class="app-button app-grey-out">Sign Up</a>
 </div>

@@ -19,11 +19,10 @@
 
   <div ng-if="userPhotoSubmission && prompt.winner_id == null">
     <div class="app-prompt-image-container">
-      <img class="app-prompt-image" ng-src="media/{{userPhotoSubmission.filename}}">
+      <img class="app-prompt-image" ng-src="media/square-500px/{{userPhotoSubmission.filename}}">
       <div class="app-prompt-image-caption">Your submission</div>
     </div>
   </div>
-
 
   <!-- show upload button IF allowed -->
   <div ng-if="userId != prompt.user.id && !userPhotoSubmission && submissionPeriodIsOpen && !prompt.winner_id">

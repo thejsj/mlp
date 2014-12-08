@@ -14,10 +14,15 @@
   </div>
   <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>
   <div class="app-prompt-box">
+      <span class='notice'>Prompt Closes</span>
+      <span am-time-ago="prompt.endTime"></span>
+    </div>
+  <div class="app-prompt-box">
+    <span class='notice'>Voting Ends</span>
     <span am-time-ago="prompt.votingEndTime"></span>
   </div>
   <!-- if there is a prompt.winner, display it here (photo and photo.userID) -->
-  <div class="app-prompt-box">Winner: <span>{{ prompt.winner || 'No Winner'}}</span></div>
+  <div class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'No Winner'}}</span></div>
   <div class="app-prompt-box red">Photos!</div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
     <a ui-sref="photo({ id: photo.id })"><img src="media/{{ photo.filename }}"/></a>

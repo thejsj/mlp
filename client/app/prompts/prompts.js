@@ -2,6 +2,7 @@ angular.module("mlp.prompts", ['ngFx'])
 
 .controller("promptsController", function ($scope, $http, PromptFactory, Auth, $moment) {
   Auth.isAuth();
+  $scope.signOut = Auth.signOut;
   $scope.limitChar = function (string, limit) {
     return string.substr(0, limit) + "...";
   };
@@ -13,6 +14,5 @@ angular.module("mlp.prompts", ['ngFx'])
         prompt.endTime = moment(prompt.endTime);
         prompt.votingEndTime = moment(prompt.votingEndTime);
       });
-      console.log($scope.prompts);
     });
 });

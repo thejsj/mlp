@@ -5,7 +5,7 @@ angular.module("mlp.photo", ['ngFx'])
   $scope.id = $state.params.id;
   $scope.photo = {};
   $scope.setWinner = function () {
-    PromptFactory.setPromptWinner($scope.id, $scope.photo.user_id)
+    PromptFactory.setPromptWinner($scope.id, $scope.photo.id)
       .then(function (res) {
         console.log(res);
       });

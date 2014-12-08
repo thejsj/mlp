@@ -14,7 +14,7 @@ mediaRouter.get('/:id', function (req, res) {
     .then(function (model) {
       if (!model) return res.status(404).end();
       var fileName = model.get('filename');
-      var filePath = path.join(mediaPath + '/' + fileName);
+      var filePath = path.join(mediaPath + '/original/' + fileName);
       res.sendFile(filePath);
     });
 });

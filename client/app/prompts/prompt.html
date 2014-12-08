@@ -4,23 +4,25 @@
   <div class="app-prompt-challenge">
     {{ prompt.title }}
   </div>
-  
+
   <!-- Show user's photo if they have submitted one for this prompt -->
   <!-- TODO: make css nicer; overlay "your submission" over the img -->
   <div ng-if="prompt.winner_id != null">
     <div class="app-prompt-image-container">
-      <img class="app-prompt-image" ng-src="media/{{prompt.winner.filename}}">
+      <img class="app-prompt-image" ng-src="media/square-500px/{{prompt.winner.filename}}">
       <div class="app-prompt-image-caption" >The winning photo</div>
     </div>
+  <div ng-if="userPhotoSubmission">
+    <img src="media/square-500px/{{userPhotoSubmission.filename}}">
+    <div>Your Submission</div>
   </div>
-    
+
   <div ng-if="userPhotoSubmission && prompt.winner_id == null">
     <div class="app-prompt-image-container">
-      <img class="app-prompt-image" ng-src="media/{{userPhotoSubmission.filename}}">
+      <img class="app-prompt-image" ng-src="media/square-500px/{{userPhotoSubmission.filename}}">
       <div class="app-prompt-image-caption">Your submission</div>
     </div>
   </div>
-
 
   <!-- show upload button IF allowed -->
   <div ng-if="userId != prompt.user.id && !userPhotoSubmission && submissionPeriodIsOpen && !prompt.winner_id">
@@ -36,7 +38,6 @@
   <div ng-if="userPhotoSubmission">
     <p>Upload disabled: You've already submitted a photo!</p>
   </div>
-  
 
   <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>
   <div ng-if="!prompt.winner" class="app-prompt-box">
@@ -52,6 +53,6 @@
   <div class="app-prompt-box red">Photos!</div>
   <div ng-if="!prompt.photos.length"><br><center>No photos yet - be the first!</center><br></div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">
-    <a ui-sref="photo({ id: photo.id })"><img src="media/{{ photo.filename }}"/></a>
+    <a ui-sref="photo({ id: photo.id })"><img src="media/square-200px/{{ photo.filename }}"/></a>
   </div>
 </div>

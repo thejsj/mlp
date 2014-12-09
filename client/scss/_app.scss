@@ -180,7 +180,10 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-upload { margin-top:15px; }
 .app-prompt .app-prompt-box span { font-weight:600; color:#333; }
 .app-prompt .app-prompt-box.red { background-color:#F26964; color:#FFF; border-top: solid 2px #B03531;letter-spacing: 0.2em; font-weight: bold; text-transform: uppercase; }
-.app-prompt .app-prompt-gallery { margin:0 0 0 0; width:100%; }
+.app-prompt .app-prompt-gallery {
+  width: 50%;
+  display: inline-block;
+}
 .app-prompt .app-prompt-gallery a { float:left; width:120px; height:120px; overflow:hidden;}
 .app-prompt .app-prompt-gallery a img { width:120px; height:120px; }
 .app-prompt .app-prompt-gallery a img:hover { opacity:0.7; }

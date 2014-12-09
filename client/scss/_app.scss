@@ -177,7 +177,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
     color: #F26964;
   }
 }
-.app-prompt .app-prompt-upload { margin-top:15px; }
+.app-prompt .app-prompt-upload { padding-top:0px;margin-top:15px; }
 .app-prompt .app-prompt-box span { font-weight:600; color:#333; }
 .app-prompt .app-prompt-box.red { background-color:#F26964; color:#FFF; border-top: solid 2px #B03531;letter-spacing: 0.2em; font-weight: bold; text-transform: uppercase; }
 .app-prompt .app-prompt-gallery { margin:0 0 0 0; width:100%; }

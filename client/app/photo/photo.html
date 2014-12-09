@@ -1,6 +1,16 @@
 <div class="app-photo" ng-controller="photoController">
   <img class="app-photo-image" ng-src="/media/original/{{photo.filename}}"/>
-  <app-header></app-header>
+  <div class="app-header">
+    <a ui-sref="prompt({id: id})" class="app-header-back">
+      <img src="img/next.png" />
+    </a>
+    <div class="app-header-sandwich">
+      <img src="img/sandwich.png" />
+      <div class="app-header-menu">
+        <div class="app-grey-out" ng-click="signOut()">Sign Out </div>
+      </div>
+    </div>
+  </div>
 <!--   <div class="app-photo-overlay-bg" ng-class="{'app-photo-overlay-hidden': hideOverlay}"></div> -->
   <div class="app-photo-overlay" ng-class="{'app-photo-overlay-hidden': hideOverlay}">
     <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>

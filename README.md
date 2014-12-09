@@ -10,7 +10,7 @@ This project assumes you have a couple of things installed globally. Make sure y
 npm install -g mocha gulp nodemon cordoba ios-sim
 ```
 
-Also install `imagemagick`.
+Also install `imagemagick` (This is big library)
 
 ```
 brew install imagemagick

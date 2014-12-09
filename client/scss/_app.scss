@@ -174,7 +174,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-allprompts .app-box-time { float:left; margin:10px 0 0 10px; width:calc(100% - 40px); font-weight:600; }
 .app-allprompts .app-box-arrow { float:right; margin:20px 10px 0 0; width:15px; height:15px; background-color:#FFF; border-radius:50%; }
 .app-allprompts .app-box-arrow img { width:15px; display:block;}
-.app-allprompts .app-box-create-round {   
+.app-allprompts .app-box-create-round {
   width:100%;
   height:50px;
   text-align:center;
@@ -193,7 +193,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-title { color: #E74747; }
 .app-prompt .app-prompt-challenge { position: relative; padding: 42px 0 39px 0; margin: 10px 8px 0px 8px; width: calc(100% - 16px); color: #333; text-align: center; font-size: 23px;}
 .app-prompt .app-prompt-challenge:before {content: "\201C"; position: absolute; top: 7px; left: -1px; width: 24px; height: 22px; font-size: 73px; color: #F26964;}
-.app-prompt .app-prompt-challenge:after {content: "\201D"; position: absolute; bottom: 40px; right: 10px; width: 20px; height: 20px; font-size: 73px; color: #F26964;}
+.app-prompt .app-prompt-challenge:after {content: "\201D"; position: absolute; bottom: 30px; right: 10px; width: 20px; height: 20px; font-size: 73px; color: #F26964;}
 .app-prompt .app-prompt-upload { margin:0px auto; margin-bottom:30px; width: 80px; height: 80px; color:#FFF; line-height:80px; text-align:center; background-color:#F26964; border-radius: 50%; border:2px solid #F26964; display:block; -webkit-transition: background-color .5s, color .5s; font-weight: bold;text-transform: uppercase; letter-spacing: 0.12em;font-size: 13px; cursor: pointer;}
 .app-prompt .app-prompt-upload:hover {background-color: #FFF; color:#F26964; border:2px solid #F26964; -webkit-transition: background-color .5s, color .5s, border .5s;}
 .app-prompt .app-prompt-box { margin:0 0 0 0; width:100%; height:50px; text-align:center; line-height:50px; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; letter-spacing: 0.03em;
@@ -207,6 +207,8 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-gallery {
   width: 50%;
   display: inline-block;
+  overflow: hidden;
+  margin-bottom: -4px;
 }
 .app-prompt .app-prompt-gallery a { float:left; width:120px; height:120px; overflow:hidden;}
 .app-prompt .app-prompt-gallery a img { width:120px; height:120px; }

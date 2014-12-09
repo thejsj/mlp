@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var path = require('path');
-
+var cors = require('cors');
 var auth = require('./auth');
 
 var authRouter = require('./routers/auth');
@@ -29,6 +29,7 @@ app.use(session({
 }));
 app.use(auth.initialize());
 app.use(auth.session());
+app.use(cors());
 
 // Application
 var port = process.env.PORT || 8000;

@@ -1,10 +1,17 @@
 <div class="app-prompt" ng-app="createPromptController">
   <app-header></app-header>
-  <div class="app-title">Create Prompt</div>
+  <div class="app-title">Create Round</div>
   <form ng-submit="processForm()">
+    <div class='prompt-suggestions'>
+    <p>Make it fun. Make it interesting. Here are some suggestions.</p>
+    <ul>
+      <li>The first thing your coworker touches after going to the bathroom and not washing their hands</li>
+      <li>Most likely to get drunk tonight</li>
+    </ul>
+    </div>
     <div class='form-group'>
-      <label for='prompt_name'>Prompt Name</label>
-      <input type='text' name='prompt_name' placeholder='Prompt Name' ng-model='formData.title'>
+      <label for='prompt_name'>Round Task</label>
+      <textarea name='prompt_name' placeholder='Most likely to get drunk tonight' ng-model='formData.title'></textarea>
     </div>
     <div class='form-group'>
       <label for='start_time'>Start Time</label>

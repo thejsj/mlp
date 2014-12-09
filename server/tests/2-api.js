@@ -88,6 +88,7 @@ describe('API', function () {
       var photo_id;
 
       it('should create a photo in a post request', function (done) {
+        this.timeout(5000);
         var fileContents = fs.readFileSync(__dirname + '/Chicago.png');
         fs.writeFileSync(__dirname + '/_Chicago.png', fileContents);
         request

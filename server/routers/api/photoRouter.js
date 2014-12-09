@@ -1,3 +1,5 @@
+//Photo Routers
+
 var express = require('express');
 var collections = require('../../collections');
 var models = require('../../models');
@@ -9,6 +11,12 @@ var moment = require('moment');
 var path = require('path');
 var _ = require('lodash');
 var imageMagick = Promise.promisifyAll(require('imagemagick'));
+var multiparty = require('multiparty'); //Multipart/form-data parser which supports streaming (www.npmjs.org/package/multiparty);
+var Promise = require('bluebird'); //Full featured Promises/A+ implementation with exceptionally good performance
+var fs = Promise.promisifyAll(require("fs"));
+var moment = require('moment'); //Parse, manipulate, and display dates. www.npmjs.org/package/moment
+var path = require('path'); //Contains utilities for handling and transforming file paths.
+var _ = require('lodash'); //A utility library delivering consistency, customization, performance, & extras. (kinda like underscore, but better)
 
 var photoRouter = express.Router();
 

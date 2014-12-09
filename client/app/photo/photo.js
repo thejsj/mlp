@@ -1,4 +1,6 @@
-angular.module("mlp.photo", ['ngFx'])
+//Controller for photo.html
+
+angular.module("mlp.photo", ['ngFx']) //A simple way to add beautiful animations to your angular apps. Animations based off animate.css. 
 
 .controller("photoController", function ($scope, Auth, PhotoFactory, PromptFactory, $state) {
   Auth.isAuth();
@@ -52,7 +54,7 @@ angular.module("mlp.photo", ['ngFx'])
     author: "Loring",
     text: "Ok bye"
   }];
-
+  $scope.hideOverlay = true;
   $scope.comments = dummyComments;
 
 });

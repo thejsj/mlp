@@ -1,6 +1,8 @@
+//index.js file that sets up server
+
 var express = require('express');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser'); //cookie parsing with signatures
 var session = require('express-session');
 var path = require('path');
 var cors = require('cors');

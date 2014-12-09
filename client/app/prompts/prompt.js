@@ -1,4 +1,11 @@
-angular.module("mlp.prompt", ['ngFx'])
+//Controller for the prompt.html file.  Allows user to view selected prompt and upload photo for round.
+
+angular.module("mlp.prompt", ['ngFx']) // ngFX is simple way to add beautiful animations to your angular apps
+
+//$moment is use to parse, validate, manipulate, and display dates in JavaScript.
+//PromptFactory and Auth are defined in service/services.js
+//The $http service is a core Angular service that facilitates communication with the remote
+//HTTP servers via the browser's XMLHttpRequest object or via JSONP.
 
 .controller("promptController", function ($scope, $http, PromptFactory, Auth, $upload, $moment, $state, $window) {
   Auth.isAuth();

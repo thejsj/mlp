@@ -1,3 +1,5 @@
+//Controller for signUp.html, submits credentials to server
+
 angular.module("mlp.signUp", [])
 
 .controller("signUpController", function ($scope, Auth) {

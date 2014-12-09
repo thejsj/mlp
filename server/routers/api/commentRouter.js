@@ -1,8 +1,10 @@
+//Comment Routers
+
 var express = require('express');
 var collections = require('../../collections');
 var models = require('../../models');
 
-var commentRouter = express.Router();
+var commentRouter = express.Router(); //call an instance of the express.Router() and apply comment routes to it
 
 commentRouter.get('/', function (req, res) {
   models.Comment.fetchAll().then(function (collection) {
@@ -10,6 +12,7 @@ commentRouter.get('/', function (req, res) {
   });
 });
 
+//creates a new comment and posts it to the server
 commentRouter.post('/', function (req, res) {
   var content = req.body.content || req.param('content');
   if (!content) {
@@ -24,6 +27,7 @@ commentRouter.post('/', function (req, res) {
     });
 });
 
+//gets comments 
 commentRouter.get('/:id', function (req, res) {
   collections.Comments
     .query('where', 'id', '=', req.param.id)

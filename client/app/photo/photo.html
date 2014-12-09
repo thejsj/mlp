@@ -6,9 +6,7 @@
     <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>
     <div class="app-photo-vote-box">
 
-      <!-- NOTE/TODO: refs below to prompt_id and photo.user_id etc are almost certainly wrong. -->
-
-      <div class="app-photo-choose-winner" ng-click="setWinner()">Set as <span>Winner!</span>
+      <div ng-if="userId == photo.prompt.user_id && votingPeriodIsOpen && photo.prompt.winner_id == null" class="app-photo-choose-winner" ng-click="setWinner()">Set as <span>Winner!</span>
       </div>
     </div>
     <div ng-class-odd="'app-comment-bubble-left'" ng-class-even="'app-comment-bubble-right'" ng-repeat="comment in comments">
@@ -19,11 +17,12 @@
     </div>
   </div>
 </div>
+
 <!--
 TODO: add these pseudocode lines to the choose-winner button
 in order to only show the button if all conditions are met.
 
-ng-show="session user_id === prompt user_id &&
-         voting period is active &&
-         winner_id is not already set"
+votingPeriodIsOpen &&
+photo.prompt.winner_id == null"
+ 
  -->

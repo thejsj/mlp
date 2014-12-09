@@ -13,7 +13,7 @@
   </div>
 <!--   <div class="app-photo-overlay-bg" ng-class="{'app-photo-overlay-hidden': hideOverlay}"></div> -->
   <div class="app-photo-overlay" ng-class="{'app-photo-overlay-hidden': hideOverlay}">
-    <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay"></div>
+    <div class="app-photo-scroll" ng-click="hideOverlay = !hideOverlay">click for comments</div>
     <div class="app-photo-vote-box">
 
       <div ng-if="userId == photo.prompt.user_id && votingPeriodIsOpen && photo.prompt.winner_id == null" class="app-photo-choose-winner" ng-click="setWinner()">Set as <span>Winner!</span>

@@ -131,7 +131,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 
 /* PHOTO PAGE */
 .app-photo { position:absolute; top:100%; left:0; width:100%; height:430px; transform: translateY(-100%); overflow:hidden;}
-.app-photo .app-photo-image { position:absolute; top:0; left:0; width:242px; height: 430px; z-index:-1}
+.app-photo .app-photo-image { position:absolute; top:45px; left:0; width:242px; z-index:-1}
 .app-photo .app-photo-overlay { position:absolute; top:0; left:0; padding:0 0 20px 0; width:100%; height:430px; background-color:#333; overflow:scroll;}
 .app-photo .app-photo-overlay-bg { position:absolute; top:0; left:0; width:100%; min-height:430px; background-color:#333;opacity:0.8;}
 .app-photo .app-photo-overlay-hidden { top:365px !important; overflow:hidden !important;}
@@ -161,6 +161,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-allprompts .app-box-time { float:left; margin:10px 0 0 10px; width:calc(100% - 40px); font-weight:600; }
 .app-allprompts .app-box-arrow { float:right; margin:20px 10px 0 0; width:15px; height:15px; background-color:#FFF; border-radius:50%; }
 .app-allprompts .app-box-arrow img { width:15px; display:block;}
+
 
 /* PROMPT PAGE */
 .app-prompt { width:100%; height:100%;

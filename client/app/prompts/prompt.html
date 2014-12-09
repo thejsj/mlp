@@ -33,7 +33,7 @@
   
 
   <div ng-if="prompt.winner_id != null" class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
-  <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>
+  <div class="app-prompt-box">Created by: <span>{{ prompt.user.email }}</span></div>
   <div ng-if="!prompt.winner_id" class="app-prompt-box">
       <span class='notice'>Prompt Closes</span>
       <span am-time-ago="prompt.endTime"></span>

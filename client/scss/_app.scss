@@ -134,11 +134,11 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-photo .app-photo-image { position:absolute; top:0; left:0; width:242px; height: 430px; z-index:-1}
 .app-photo .app-photo-overlay { position:absolute; top:0; left:0; padding:0 0 20px 0; width:100%; height:430px; background-color:#333; overflow:scroll;}
 .app-photo .app-photo-overlay-bg { position:absolute; top:0; left:0; width:100%; min-height:430px; background-color:#333;opacity:0.8;}
-.app-photo .app-photo-overlay-hidden { top:350px !important; overflow:hidden !important;}
-.app-photo .app-photo-scroll { margin:5px auto; width:10px; height:10px; background-color:#FFF; border-radius: 50%; cursor:pointer;}
+.app-photo .app-photo-overlay-hidden { top:365px !important; overflow:hidden !important;}
+.app-photo .app-photo-scroll { margin:5px auto; width:120px; background-color:#FFF; border-radius: 4px; font-size: 12px; text-align: center; cursor:pointer;}
 .app-photo .app-photo-scroll:hover {background-color:#F26964}
-.app-photo .app-photo-vote-box { margin:10px auto; width:140px; height:30px; }
-.app-photo .app-photo-choose-winner { float:left; margin:0 4px 20px 4px; width:120px; height:30px; border-radius:5px; background-color:#FFF;color:#333;text-align:center; line-height:30px; font-size:13px;cursor:pointer;-webkit-transition: box-shadow .5s;}
+.app-photo .app-photo-vote-box { margin:10px auto; width:120px; height:30px; }
+.app-photo .app-photo-choose-winner { float:left; margin:0; width:120px; height:30px; border-radius:5px; background-color:#FFF;color:#333;text-align:center; line-height:30px; font-size:13px;cursor:pointer;-webkit-transition: box-shadow .5s;}
 .app-photo .app-photo-choose-winner:hover {background-color:#F26964 ;color:#FFF; -webkit-transition: background-color .5s, color .5s;}
 .app-photo .app-photo-choose-winner span {font-weight:700; }
 .app-photo .app-photo-user { margin-bottom:10px; color:#FFF; text-align:center; font-size:14px; font-weight:100;}
@@ -184,9 +184,9 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-prompt .app-prompt-gallery a { float:left; width:120px; height:120px; overflow:hidden;}
 .app-prompt .app-prompt-gallery a img { width:120px; height:120px; }
 .app-prompt .app-prompt-gallery a img:hover { opacity:0.7; }
-.app-prompt .app-prompt-image-container { position: relative; width:242px; border-bottom: 4px solid #F26964; border-top: 4px solid #F26964;}
-.app-prompt .app-prompt-image { width:100%; height: 100%; z-index:-1;}
-.app-prompt .app-prompt-image-caption {position:absolute; bottom:0; left:0px; padding: 2px 4px; z-index:1; background-color: white; opacity: .75;}
+.app-prompt .app-prompt-image-container { position: relative; width:242px; background-color: #F26964; border-top: 4px solid #F26964;}
+.app-prompt .app-prompt-image { width:100%; height: 100%; z-index:-1; }
+.app-prompt .app-prompt-image-caption {position:absolute; bottom:4px; left:0px; padding: 2px 4px; z-index:1; background-color: white; opacity: .75;}
 
 .app-prompt-box { position:relative; margin:0 0 0 0; width:auto; min-height:50px; text-align:center; border-top:1px solid #F26964; /*border-bottom:1px solid #F26964;*/ color:#E74747; display:block; overflow:hidden;}
 .app-prompt-box .app-box-arrow { position:absolute; top:calc(50% - 25px); right:5px; }

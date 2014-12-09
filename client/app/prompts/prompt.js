@@ -61,11 +61,7 @@ angular.module("mlp.prompt", ['ngFx'])
 
   //returns true if submission period is still active; otherwise returns false.
   $scope.checkIfSubmissionPeriodIsOpen = function(){
-    console.log($scope.prompt.endTime);
-    var now = Date.now();
-    console.log(now);
-    console.log("time ends in " + ($scope.prompt.endTime - now));
-    return($scope.prompt.endTime>now);
+    return($scope.prompt.endTime>Date.now());
   }
 
 });

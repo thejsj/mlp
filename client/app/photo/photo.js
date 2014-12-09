@@ -3,19 +3,34 @@ angular.module("mlp.photo", ['ngFx'])
 .controller("photoController", function ($scope, Auth, PhotoFactory, PromptFactory, $state) {
   Auth.isAuth();
   $scope.id = $state.params.id;
+  $scope.userId = Auth.getUserId()
   $scope.photo = {};
+  $scope.submissionPeriodIsOpen = false;
+  $scope.hideOverlay = true;
+  
   $scope.setWinner = function () {
     PromptFactory.setPromptWinner($scope.id, $scope.photo.id)
       .then(function (res) {
         console.log(res);
+        $state.go('prompt',{id: $scope.photo.prompt_id});
       });
   };
+
+  $scope.checkIfVotingPeriodIsOpen = function(){
+    return($scope.photo.prompt.votingEndTime>Date.now());
+  }
 
   PhotoFactory.get($scope.id)
     .then(function (res) {
       $scope.photo = res.data;
-      console.log($scope.photo);
+      $scope.votingPeriodIsOpen = $scope.checkIfVotingPeriodIsOpen();
+      
+      console.log("scope.photo:", $scope.photo);
+      console.log("scope.id:", $scope.id);
+      console.log("scope.votingPeriodIsOpen:", $scope.votingPeriodIsOpen);
     });
+
+
   var dummyComments = [{
     author: "Dustin",
     text: "Looks like a dog."
@@ -41,6 +56,7 @@ angular.module("mlp.photo", ['ngFx'])
     author: "Loring",
     text: "Ok bye"
   }];
-  $scope.hideOverlay = true;
+
   $scope.comments = dummyComments;
+
 });

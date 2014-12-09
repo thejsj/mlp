@@ -1,3 +1,12 @@
+//Creates the factories for Auth, PromptFactory, PhotoFactory
+
+//The $http service is a core Angular service that facilitates communication with the remote
+//HTTP servers via the browser's XMLHttpRequest object or via JSONP.
+//The $state service is responsible for representing states as well as transitioning between them.
+//It also provides interfaces to ask for current state or even states you're coming from.
+//Auth.isAuth() - checkes to see if user is logged and and if they have a user id takes them to the prompt or "round" view
+//if not it takes them back to the login page
+
 angular.module('mlp.services', [])
   .factory('MainUrl', function ($window) {
     var url = $window.IP_ADDRESS || '';

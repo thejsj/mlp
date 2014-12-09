@@ -1,6 +1,8 @@
-var bluebird = require('bluebird');
-var models = require('../models');
-var db = require('../db');
+//Creates the collections for Users, Photos, Prompts, Comments from the respective user, photo, propmts and comment models.
+
+var bluebird = require('bluebird'); //Bluebird is a fully featured promise library with focus on innovative features and performance
+var models = require('../models'); //models.js creates the User, Prompt, Photo, and Comment models
+var db = require('../db'); //The db.js file creates all of the database schemas using knex and bookshelf
 
 var collections = {};
 

@@ -1,3 +1,5 @@
+//Controller for loading.html 
+
 angular.module("mlp.loading", ['ui.router'])
 
 .controller("loadingController", function ($scope, $state, $timeout) {

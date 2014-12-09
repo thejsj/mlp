@@ -1,15 +1,11 @@
-//use bookshelf and knex to
-
-//user model - email, password,
-//model for promts - one to many photo, winner - photo id, start time and end time, voting end time, title
-//photo - one to one with user, id, upvotes
+//Models for User, Prompt, Photo, and Commment
 
 var bluebird = require('bluebird');
 var bcrypt = require('bcrypt-nodejs');
 var db = require('./db');
 var models = {};
 
-// User
+// User Model
 models.User = db.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
@@ -44,7 +40,7 @@ models.User = db.Model.extend({
   }
 });
 
-// Prompt - one to many photo, winner - photo id, start time and end time, voting end time, title
+// Prompt Model - one to many photo, winner - photo id, start time and end time, voting end time, title
 models.Prompt = db.Model.extend({
   tableName: 'prompts',
   hasTimestamps: true,
@@ -59,7 +55,7 @@ models.Prompt = db.Model.extend({
   }
 });
 
-// Photo - one to one with user, id, upvotes
+// Photo model - Each photo belongs to one user, and belongs to one prompt
 models.Photo = db.Model.extend({
   tableName: 'photos',
   hasTimestamps: true,
@@ -74,7 +70,7 @@ models.Photo = db.Model.extend({
   }
 });
 
-// Comment
+// Comment model
 models.Comment = db.Model.extend({
   tableName: 'comments',
   hasTimestamps: true,

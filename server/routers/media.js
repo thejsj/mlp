@@ -1,12 +1,16 @@
+//Creates the router to send all photos from the database back to the client
+
 var express = require('express');
 var mediaRouter = express.Router();
 var path = require('path');
 var collections = require('../collections');
 
+//Static path to where all of the photos are stored
 var mediaPath = path.join(__dirname + '/../media/');
 
 mediaRouter.use(express.static(mediaPath));
 
+//Gets and sends one photo based on either photo_is or filename
 mediaRouter.get('/:id', function (req, res) {
   collections.Photos
     .query('where', 'id', '=', req.param('id'))

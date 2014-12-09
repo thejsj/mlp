@@ -1,6 +1,8 @@
 // main angular module.  whole thing is wrapped in an IIFE
 // (immediately invoked function expression) to guard against
 // errors on startup.
+
+
 (function () {
   console.log("initializing");
   var app = angular.module('mlp', [

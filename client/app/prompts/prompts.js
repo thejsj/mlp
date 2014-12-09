@@ -1,4 +1,11 @@
-angular.module("mlp.prompts", ['ngFx'])
+//Displays all prompts to prompts route
+
+angular.module("mlp.prompts", ['ngFx']) //A simple way to add beautiful animations to your angular apps. Animations based off animate.css. 
+
+//$moment is use to parse, validate, manipulate, and display dates in JavaScript.
+//PromptFactory and Auth are defined in service/services.js
+//The $http service is a core Angular service that facilitates communication with the remote
+//HTTP servers via the browser's XMLHttpRequest object or via JSONP.
 
 .controller("promptsController", function ($scope, $http, PromptFactory, Auth, $moment) {
   Auth.isAuth();

@@ -123,10 +123,23 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
   width:100%;
   height:100%;
 }
-.app-login input { padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block }
-.app-login input[type=text], .app-login input[type=password] { box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;}
+.app-login input {
+  padding: 10px; margin: 10px auto; width: 80%; border:none; background-color:#FFF; border-radius:5px; display:block;
+  font-family: 'Raleway', sans-serif;
+}
+.app-login input[type=text], .app-login input[type=password] {
+  box-shadow: 0px 4px 0px #333; -webkit-transition: box-shadow .5s;
+  font-family: 'Raleway', sans-serif;
+}
 .app-login input[type=text]:focus, .app-login input[type=password]:focus{ box-shadow: 0px 4px 0px #FFF; -webkit-transition: box-shadow .5s;}
-.app-login input[type=submit] { margin-top: 20px; width: 60px; height: 60px; color:#E74747; text-transform:uppercase; background-color:transparent; border-radius: 50%; border:2px solid #333; -webkit-transition: background-color .5s, color .5s;}
+.app-login input[type=submit] {
+  margin-top: 20px; width:70px; height: 70px; color:#E74747; text-transform:uppercase; background-color:transparent; border-radius: 50%; border:2px solid #333; -webkit-transition: background-color .5s, color .5s;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-weight: 600px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
 .app-login input[type=submit]:hover {background-color: #333; color:#FFF; -webkit-transition: background-color .5s, color .5s;}
 
 /* PHOTO PAGE */

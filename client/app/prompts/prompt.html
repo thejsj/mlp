@@ -20,7 +20,7 @@
   </div>
 
   <!-- show upload button IF allowed -->
-  <div ng-if="(userId != prompt.user.id || !userPhotoSubmission) && submissionPeriodIsOpen && !prompt.winner_id)">
+  <div ng-if="!userPhotoSubmission && submissionPeriodIsOpen && !prompt.winner_id">
     <canvas ng-show='photoTaken' id="canvas" style='background: black;' width="230" height="173"></canvas>
     <video ng-show='!photoTaken' id="video" style='background: black;' width="230" height="173" autoplay></video>
     <form class='half-form'>

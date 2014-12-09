@@ -161,7 +161,17 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
 .app-allprompts .app-box-time { float:left; margin:10px 0 0 10px; width:calc(100% - 40px); font-weight:600; }
 .app-allprompts .app-box-arrow { float:right; margin:20px 10px 0 0; width:15px; height:15px; background-color:#FFF; border-radius:50%; }
 .app-allprompts .app-box-arrow img { width:15px; display:block;}
-
+.app-allprompts .app-box-create-round {   
+  width:100%;
+  height:50px;
+  text-align:center;
+  background-color:#F26964;
+  color:#FFF;
+  line-height:50px;
+  overflow:hidden;
+  float:left;
+  postion: relative;
+}
 
 /* PROMPT PAGE */
 .app-prompt { width:100%; height:100%;

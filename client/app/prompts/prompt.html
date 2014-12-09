@@ -32,6 +32,7 @@
   <div ng-if="userPhotoSubmission">Upload disabled: You've already submitted a photo!</div>
   
 
+  <div ng-if="prompt.winner_id != null" class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
   <div class="app-prompt-box">Created by <span>{{ prompt.user.email }}</span></div>
   <div ng-if="!prompt.winner_id" class="app-prompt-box">
       <span class='notice'>Prompt Closes</span>
@@ -42,7 +43,6 @@
     <span am-time-ago="prompt.votingEndTime"></span>
   </div>
   <!-- if there is a prompt.winner, display it here (photo and photo.userID) -->
-  <div ng-if="prompt.winner_id != null" class="app-prompt-box">Winner: <span>{{ prompt.winner.user.email || 'TDB'}}</span></div>
   <div class="app-prompt-box red">Photos!</div>
   <div ng-if="!prompt.photos.length"><br><center>No photos yet - be the first!</center><br></div>
   <div class="app-prompt-gallery" ng-repeat="photo in prompt.photos">

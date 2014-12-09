@@ -6,30 +6,30 @@ var promptRouter = express.Router();
 
 promptRouter.get('/', function (req, res) {
   models.Prompt.fetchAll({
-    withRelated: ['winner', 'user']
-  })
-  .then(function (collection) {
-    var result = {
-      open : [],
-      pending: [],
-      closed: []
-    };
-    var timeNow = Date.now();
-    collection.forEach(function (prompt) {
-      var isEnded = (prompt.get('endTime') - timeNow) < 0;
-      var isVoteEnded = (prompt.get('votingEndTime') - timeNow) < 0;
-      if(isVoteEnded || prompt.get('winner') !== undefined) {
-        result['closed'].push(prompt.toJSON());
-      } else {
-        if(isEnded) {
-          result['pending'].push(prompt.toJSON());
+      withRelated: ['winner', 'user']
+    })
+    .then(function (collection) {
+      var result = {
+        open: [],
+        pending: [],
+        closed: []
+      };
+      var timeNow = Date.now();
+      collection.forEach(function (prompt) {
+        var isEnded = (prompt.get('endTime') - timeNow) < 0;
+        var isVoteEnded = (prompt.get('votingEndTime') - timeNow) < 0;
+        if (isVoteEnded || prompt.get('winner') !== undefined) {
+          result['closed'].push(prompt.toJSON());
         } else {
-          result['open'].push(prompt.toJSON());
+          if (isEnded) {
+            result['pending'].push(prompt.toJSON());
+          } else {
+            result['open'].push(prompt.toJSON());
+          }
         }
-      }
+      });
+      res.json(result);
     });
-    res.json(result);
-  });
 });
 
 promptRouter.post('/', function (req, res) {
@@ -104,9 +104,9 @@ promptRouter.put('/:id', function (req, res) {
   collections.Prompts
     .query('where', 'id', '=', req.param('id'))
     .fetchOne()
-    .then(function (model) {
-      if (!model) res.status(404).end();
-      return model.save({
+    .then(function (prompt) {
+      if (!prompt) res.status(404).end();
+      return prompt.save({
         winner_id: winnerId
       }, {
         patch: true

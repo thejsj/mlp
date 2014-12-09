@@ -99,6 +99,11 @@ angular.module('mlp.services', [])
   .directive('appHeader', function() {
     return {
       restrict: 'E',
+      scope: {
+        back: '=',
+        itemId: "=",
+        route: '@'
+      },
       templateUrl: 'app/templates/app-header.html'
     };
   })

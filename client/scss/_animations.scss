@@ -30,17 +30,8 @@
   to   {-webkit-transform: translateX(-242px); opacity:0 }
 }
 @keyframes slideOutLeft {
-    from {
-      transform: translateX(0px);
-      opacity:1;
-      -moz-transform: translateX(-242px);
-      opacity:0
-    }
-    to   {
-      transform: translateX(0px); opacity:1;
-      -moz-transform: translateX(-242px);
-      opacity:0
-    }
+    from { transform: translateX(0px); -moz-transform: translateX(0px); opacity:1; }
+    to   { transform: translateX(-242px); -moz-transform: translateX(-242px); opacity:0;  }
 }
 
 
@@ -55,10 +46,6 @@
   to   {-webkit-transform: translateX(0px); opacity:1 }
 }
 @keyframes slideInRight {
-    from {
-      transform: translateX(242px); opacity:0;
-        -moz-transform: translateX(0px); opacity:1 }
-    to   {
-      transform: translateX(242px); opacity:0;
-      -moz-transform: translateX(0px); opacity:1}
+    from { transform: translateX(242px); -moz-transform: translateX(242px); opacity:0; }
+    to   { transform: translateX(0px); -moz-transform: translateX(0px); opacity:1; }
 }

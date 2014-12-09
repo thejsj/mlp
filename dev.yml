@@ -1,0 +1,9 @@
+server:
+  build: .
+  ports:
+   - "9000:80"
+  expose:
+   - "80"
+  environment:
+    NODE_ENV: production
+    PORT: 80

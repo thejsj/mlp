@@ -11,6 +11,10 @@
 }
 
 form {
+  &.half-form {
+    width: 50%;
+    float: right;
+  }
   .form-group {
     box-sizing: border-box;
     $padding: 5px;

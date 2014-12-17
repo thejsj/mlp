@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var gulpConcat = require('gulp-concat');
 var clean = require('gulp-clean');
 var async = require('async');
+var sourcemaps = require('gulp-sourcemaps');
 var runSequence = require('run-sequence').use(gulp);
 
 
@@ -31,17 +32,17 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
   gulp.src([
       // angular-file-upload-shim.min.js must be place before angular.min.js
-      './client/lib/lodash/dist/lodash.min.js',
-      './client/lib/ng-file-upload/angular-file-upload-shim.min.js',
-      './client/lib/moment/min/moment.min.js',
-      './client/lib/angular/angular.min.js',
-      './client/lib/ng-file-upload/angular-file-upload.min.js',
+      './client/lib/lodash/dist/lodash.js',
+      './client/lib/ng-file-upload/angular-file-upload-shim.js',
+      './client/lib/moment/min/moment.js',
+      './client/lib/angular/angular.js',
+      './client/lib/ng-file-upload/angular-file-upload.js',
       './client/lib/angular-momentjs/angular-momentjs.js',
-      './client/lib/angular-ui-router/release/angular-ui-router.min.js',
+      './client/lib/angular-ui-router/release/angular-ui-router.js',
       './client/lib/ngFx/dist/ngFx.js',
       './client/app/app.js',
       './client/app/loading/loading.js',
-      './client/app/logIn/logIn.js',
+      './client/app/login/login.js',
       './client/app/signUp/signUp.js',
       './client/app/photo/photo.js',
       './client/app/prompts/create_prompt.js',
@@ -51,7 +52,9 @@ gulp.task('js', function () {
       './client/app/suggestions/suggestions_prompts.js',
       './client/app/services/services.js'
     ])
+    .pipe(sourcemaps.init())
     .pipe(gulpConcat('main.js'))
+    .pipe(sourcemaps.write())
     // .pipe(uglify()) // Takes a long time
     .pipe(gulp.dest('./client/dist/'));
 });

@@ -5,17 +5,43 @@
 var knex = require('knex');
 var path = require('path');
 
-var db = knex({
-  client: 'sqlite3',
-  connection: {
-    host: '127.0.0.1',
-    user: 'your_database_user',
-    password: 'password',
-    database: 'majorleguedb',
-    charset: 'utf8',
-    filename: path.join(__dirname, './shortly.sqlite')
-  }
-});
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
+  console.log('Connecting to Docker MySQL: ');
+  console.log(process.env.DB_PORT_3306_TCP_ADDR);
+  console.log(process.env.DB_ENV_MYSQL_USER);
+  console.log(process.env.DB_ENV_MYSQL_PASS);
+  var db = knex({
+    client: 'mysql',
+    connection: {
+      host: process.env.DB_PORT_3306_TCP_ADDR,
+      user: process.env.DB_ENV_MYSQL_USER,
+      password: process.env.DB_ENV_MYSQL_PASS,
+      database: 'kbitzr'
+    }
+  });
+} else {
+  var db = knex({
+    client: 'mysql',
+    connection: {
+      host: '127.0.0.1',
+      user: 'root',
+      password: '',
+      database: 'kbitzr'
+    }
+  });
+}
+
+// var db = knex({
+//   client: 'sqlite3',
+//   connection: {
+//     host: '127.0.0.1',
+//     user: 'your_database_user',
+//     password: 'password',
+//     database: 'majorleguedb',
+//     charset: 'utf8',
+//     filename: path.join(__dirname, './shortly.sqlite')
+//   }
+// });
 
 //user model - email, password,
 db.schema.hasTable('users').then(function (exists) {
@@ -26,7 +52,7 @@ db.schema.hasTable('users').then(function (exists) {
       user.string('password', 255);
       user.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Table `users`');
     });
   }
 });
@@ -37,14 +63,16 @@ db.schema.hasTable('prompts').then(function (exists) {
     db.schema.createTable('prompts', function (prompt) {
       prompt.increments('id').primary();
       prompt.string('title', 255);
-      prompt.integer('winner_id').references('photos.id');
-      prompt.integer('user_id').references('users.id');
+      prompt.integer('winner_id').unsigned().references('id').inTable('photos');
+      prompt.integer('user_id').unsigned().notNullable().references('id').inTable('users');
       prompt.timestamp('startTime'); // TODO: Change to lower_case
       prompt.timestamp('endTime'); // TODO: Change to lower_case
       prompt.timestamp('votingEndTime'); // TODO: Change to lower_case
       prompt.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Table `prompts`');
+    }).catch(function (err) {
+      console.log('Error creating `prompts`: ', err);
     });
   }
 });
@@ -55,11 +83,13 @@ db.schema.hasTable('photos').then(function (exists) {
     db.schema.createTable('photos', function (photo) {
       photo.increments('id').primary();
       photo.string('filename', 255); // Relative to /media/
-      photo.integer('user_id').references('users.id');
-      photo.integer('prompt_id').references('prompts.id');
+      photo.integer('user_id').unsigned().notNullable().references('id').inTable('users');
+      photo.integer('prompt_id').unsigned().notNullable().references('id').inTable('prompts');
       photo.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Table `photos`');
+    }).catch(function (err) {
+      console.log('Error creating `photos`: ', err);
     });
   }
 });
@@ -70,11 +100,13 @@ db.schema.hasTable('comments').then(function (exists) {
     db.schema.createTable('comments', function (photo) {
       photo.increments('id').primary();
       photo.string('content', 255).notNullable();
-      photo.integer('user_id').references('users.id').notNullable();
-      photo.integer('prompt_id').references('prompts.id').notNullable();
+      photo.integer('user_id').unsigned().notNullable().references('id').inTable('users');
+      photo.integer('prompt_id').unsigned().notNullable().references('id').inTable('prompts');
       photo.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Table `comments`');
+    }).catch(function (err) {
+      console.log('Error creating `comments`: ', err);
     });
   }
 });

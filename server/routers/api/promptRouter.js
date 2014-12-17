@@ -10,6 +10,7 @@ promptRouter.get('/', function (req, res) {
     })
     .then(function (collection) {
       var result = {
+        all: collection.toJSON(),
         open: [],
         pending: [],
         closed: []

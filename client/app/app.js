@@ -2,7 +2,6 @@
 // (immediately invoked function expression) to guard against
 // errors on startup.
 (function () {
-  console.log("initializing");
   var app = angular.module('mlp', [
       'ui.router',
       'ngFx',

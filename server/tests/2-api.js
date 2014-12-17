@@ -48,9 +48,9 @@ describe('API', function () {
             form: {
               title: 'Do the kbtz!',
               userId: user_id,
-              startTime: now.format('x'),
-              endTime: now.add(4, 'h').format('x'),
-              votingEndTime: now.add(6, 'h').format('x'),
+              startTime: now.format('YYYY-MM-DD HH:MM:SS'),
+              endTime: now.add(4, 'h').format('YYYY-MM-DD HH:MM:SS'),
+              votingEndTime: now.add(6, 'h').format('YYYY-MM-DD HH:MM:SS'),
             }
           }, function (err, response, body) {
             var json = JSON.parse(body);
@@ -66,8 +66,8 @@ describe('API', function () {
           .get('http://localhost:8000/api/prompt', function (err, response, body) {
             var json = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
-            expect(json).to.be.a.Array;
-            expect(_.last(json).id).to.equal(prompt_id);
+            expect(json.all).to.be.a.Array;
+            expect(_.last(json.all).id).to.equal(prompt_id);
             done();
           });
       });
@@ -86,7 +86,7 @@ describe('API', function () {
 
     describe('Photo', function () {
       var photo_id;
-
+      console.log('user_id: ', user_id);
       it('should create a photo in a post request', function (done) {
         this.timeout(5000);
         var fileContents = fs.readFileSync(__dirname + '/Chicago.png');
@@ -95,7 +95,7 @@ describe('API', function () {
           .post({
               url: 'http://localhost:8000/api/photo',
               form: {
-                user_id: 20,
+                user_id: 1,
                 prompt_id: 1,
                 image: fs.createReadStream(__dirname + '/_Chicago.png')
               }
@@ -137,7 +137,7 @@ describe('API', function () {
         .post({
           url: 'http://localhost:8000/api/comment',
           form: {
-            user_id: 20,
+            user_id: 1,
             prompt_id: 1,
             content: 'I hope this works'
           }

@@ -96,7 +96,7 @@ angular.module('mlp.services', [])
     };
     return photoFactory;
   })
-  .directive('appHeader', function() {
+  .directive('appHeader', function () {
     return {
       restrict: 'E',
       scope: {
@@ -107,7 +107,7 @@ angular.module('mlp.services', [])
       templateUrl: 'app/templates/app-header.html'
     };
   })
-  .directive('appPromptBox', function() {
+  .directive('appPromptBox', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/templates/app-prompt-box.html'

@@ -34,6 +34,8 @@ RUN chmod +x /run.sh
 ADD gulpfile.js /app/gulpfile.js
 RUN gulp
 
+VOLUME /app/server/media
+
 EXPOSE 80
 WORKDIR /
 ENTRYPOINT ["/run.sh"]

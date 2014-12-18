@@ -1,0 +1,4 @@
+FROM tutum/mysql:5.5
+MAINTAINER thejsj
+
+EXPOSE 3306

@@ -4,7 +4,6 @@
 
 
 (function () {
-  console.log("initializing");
   var app = angular.module('mlp', [
       'ui.router',
       'ngFx',

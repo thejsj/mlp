@@ -2,6 +2,7 @@
 
 var bluebird = require('bluebird');
 var bcrypt = require('bcrypt-nodejs');
+var moment = require('moment');
 var db = require('./db');
 var models = {};
 
@@ -44,6 +45,16 @@ models.User = db.Model.extend({
 models.Prompt = db.Model.extend({
   tableName: 'prompts',
   hasTimestamps: true,
+  initialize: function () {
+    this.on('saving', this.validateSave);
+  },
+  validateSave: function () {
+    var mysqlFormat = 'YYYY-MM-DD HH:MM:SS';
+    this.attributes.startTime = moment(this.attributes.startTime).format(mysqlFormat);
+    this.attributes.endTime = moment(this.attributes.endTime).format(mysqlFormat);
+    this.attributes.votingEndTime = moment(this.attributes.votingEndTime).format(mysqlFormat);
+    return this.attributes;
+  },
   photos: function () {
     return this.hasMany(models.Photo, 'prompt_id');
   },
